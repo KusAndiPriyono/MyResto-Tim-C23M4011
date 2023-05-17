@@ -1,7 +1,12 @@
-import Home from './components/Home/Home';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes';
 
 function App() {
-  return <Home />;
+  return (
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
