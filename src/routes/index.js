@@ -1,10 +1,11 @@
 import { useRoutes } from 'react-router-dom';
+import MainLayout from '../components/templates/MainLayout';
 
 const Routes = () => {
   return useRoutes([
     {
       path: '/',
-      element: '',
+      element: <MainLayout />,
       children: [
         {
           path: '/',
