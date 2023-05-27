@@ -1,5 +1,7 @@
 import { useRoutes } from 'react-router-dom';
 import MainLayout from '../components/templates/MainLayout';
+import LoginPage from '../pages/login';
+import AuthLayout from '../components/templates/AuthLayout';
 
 const Routes = () => {
   return useRoutes([
@@ -31,11 +33,11 @@ const Routes = () => {
     },
     {
       path: '/auth',
-      element: 'authLayout',
+      element: <AuthLayout />,
       children: [
         {
           path: 'login',
-          element: 'LoginPage',
+          element: <LoginPage />,
         },
         {
           path: 'register',
