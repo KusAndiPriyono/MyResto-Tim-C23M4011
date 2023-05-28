@@ -9,15 +9,8 @@ const router = express.Router();
 
 // POST /restaurant/234fad4/reviews
 // GET /restaurant/234fad4/reviews
-// GET /restaurant/234fad4/reviews/9483fdd
 
-// router
-//   .route('/:restaurantId/reviews')
-//   .post(
-//     authController.protect,
-//     authController.restrictTo('user'),
-//     reviewController.createReview
-//   );
+router.use('/:restaurantId/reviews', reviewRouter);
 
 router
   .route('/top-5-cheap')
