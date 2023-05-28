@@ -1,7 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 import MainLayout from '../components/templates/MainLayout';
-import LoginPage from '../pages/Login/login';
-import RegisterPage from '../pages/Regiter/register';
+import LoginPage from '../pages/login';
 import AuthLayout from '../components/templates/AuthLayout';
 
 const Routes = () => {
@@ -36,14 +35,14 @@ const Routes = () => {
       path: '/auth',
       element: <AuthLayout />,
       children: [
-        // {
-        //   path: 'login',
-        //   element: <LoginPage />,
-        // },
-        // {
-        //   path: 'register',
-        //   element: 'RegisterPage',
-        // },
+        {
+          path: 'login',
+          element: <LoginPage />,
+        },
+        {
+          path: 'register',
+          element: 'RegisterPage',
+        },
         {
           path: '',
           element: <replace to='/404' />,
@@ -54,16 +53,6 @@ const Routes = () => {
         },
       ],
     },
-    //route untuk sementara
-    {
-      path: 'login',
-      element: <LoginPage />,
-    },
-    {
-      path: 'register',
-      element: <RegisterPage />,
-    },
-
     {
       path: '*',
       element: <replace to='404' />,
