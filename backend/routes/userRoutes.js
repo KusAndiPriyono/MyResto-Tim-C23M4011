@@ -1,6 +1,7 @@
 const express = require('express');
 const userController = require('./../controllers/userController');
 const authController = require('./../controllers/authController');
+const reviewController = require('./../controllers/reviewController');
 
 const router = express.Router();
 
@@ -29,5 +30,17 @@ router
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
+
+// POST /restaurant/234fad4/reviews
+// GET /restaurant/234fad4/reviews
+// GET /restaurant/234fad4/reviews/9483fdd
+
+router
+  .route('/:restaurantId/reviews')
+  .post(
+    authController.protect,
+    authController.restrictTo('user'),
+    reviewController.createReview
+  );
 
 module.exports = router;

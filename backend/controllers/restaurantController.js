@@ -2,6 +2,7 @@ const Restaurant = require('./../models/restaurantModel');
 const APIFeatures = require('./../utils/apiFeatures');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
+const factory = require('./handlerFactory');
 
 exports.aliasTopRestaurants = (req, res, next) => {
   req.query.limit = '5';
@@ -80,18 +81,20 @@ exports.updateRestaurant = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteRestaurant = catchAsync(async (req, res, next) => {
-  const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
+exports.deleteRestaurant = factory.deleteOne(Restaurant);
 
-  if (!restaurant) {
-    return next(new AppError('No restaurant found with that ID', 404));
-  }
+// exports.deleteRestaurant = catchAsync(async (req, res, next) => {
+//   const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
 
-  res.status(204).json({
-    status: 'success',
-    data: null,
-  });
-});
+//   if (!restaurant) {
+//     return next(new AppError('No restaurant found with that ID', 404));
+//   }
+
+//   res.status(204).json({
+//     status: 'success',
+//     data: null,
+//   });
+// });
 
 exports.getRestaurantStats = catchAsync(async (req, res, next) => {
   const stats = await Restaurant.aggregate([
