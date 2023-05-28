@@ -1,0 +1,49 @@
+[
+  {
+    "id": 0,
+    "name": "Baked salmon with fennel & tomatoes",
+
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 37,
+    "price": 397,
+    "description": "Baked salmon with fennel & tomatoes adalah hidangan lezat yang menggabungkan salmon, fennel, dan tomat. Salmon dipanggang dengan bumbu rempah, bersama fennel dan tomat. Hasilnya adalah kombinasi rasa yang sempurna antara salmon yang lezat, fennel yang lembut, dan tomat yang segar. Hidangan ini kaya nutrisi dan cocok untuk acara istimewa atau makan malam yang enak.",
+    "summary": "Restorant ternikmat",
+    "imageCover": "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+    "startDates": ["2021-04-25,10:00", "2021-07-20,10:00", "2021-10-05,10:00"]
+  },
+
+  {
+    "id": 1,
+    "name": "Cajun spiced fish tacos",
+
+    "duration": 7,
+    "maxCapacity": 12,
+    "difficulty": "easy",
+    "ratingsAverage": 4.8,
+    "ratingsQuantity": 23,
+    "price": 497,
+    "description": "Cajun spiced fish tacos adalah hidangan lezat yang terdiri dari potongan ikan yang dibumbui dengan rempah Cajun, kemudian digoreng hingga garing. Potongan ikan ini kemudian disajikan di dalam tortilla dengan tambahan beragam topping seperti saus yogurt, irisan kubis, tomat, dan saus salsa segar. Kombinasi antara cita rasa pedas dan gurih dari rempah Cajun dengan segar dan renyahnya ikan serta tekstur tortilla yang lembut menciptakan makanan yang lezat dan memuaskan. Cajun spiced fish tacos adalah hidangan yang populer dan cocok untuk dinikmati dalam acara santai bersama keluarga dan teman-teman.",
+    "summary": "Restorant ternikmat",
+    "imageCover": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg",
+    "startDates": ["2021-06-19,10:00", "2021-07-20,10:00", "2021-08-18,10:00"]
+  },
+
+  {
+    "id": 2,
+    "name": "Escovitch Fish",
+
+    "duration": 3,
+    "maxCapacity": 8,
+    "difficulty": "easy",
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 13,
+    "price": 997,
+    "description": "Escovitch fish adalah hidangan yang terdiri dari ikan yang digoreng hingga renyah, kemudian disajikan dengan saus asam pedas dan irisan sayuran seperti paprika, bawang merah, dan wortel yang diasamkan. Hidangan ini berasal dari Karibia dan memiliki cita rasa yang kaya dan segar. Escovitch fish adalah kombinasi yang sempurna antara gurihnya ikan goreng dengan sensasi pedas dan asam dari saus dan sayuran. Hidangan ini sering disajikan sebagai hidangan utama dan sangat populer di daerah Karibia.",
+    "summary": "Restorant ternikmat",
+    "imageCover": "https://www.themealdb.com/images/media/meals/1520084413.jpg",
+    "startDates": ["2022-01-05,10:00", "2022-02-12,10:00", "2023-01-06,10:00"]
+  }
+]
