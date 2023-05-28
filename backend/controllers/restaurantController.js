@@ -30,7 +30,9 @@ exports.getAllRestaurants = catchAsync(async (req, res, next) => {
 });
 
 exports.getRestaurant = catchAsync(async (req, res, next) => {
-  const restaurant = await Restaurant.findById(req.params.id);
+  const restaurant = await Restaurant.findById(req.params.id).populate(
+    'reviews'
+  );
   // Restaurant.findOne({_id: req.params.id})
 
   if (!restaurant) {

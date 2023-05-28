@@ -1,10 +1,23 @@
 const express = require('express');
 const restaurantController = require('./../controllers/restaurantController');
 const authController = require('./../controllers/authController');
-
+// const reviewController = require('./../controllers/reviewController');
+const reviewRouter = require('./../routes/reviewRoutes');
 const router = express.Router();
 
 // router.param('id', restaurantController.checkID);
+
+// POST /restaurant/234fad4/reviews
+// GET /restaurant/234fad4/reviews
+// GET /restaurant/234fad4/reviews/9483fdd
+
+// router
+//   .route('/:restaurantId/reviews')
+//   .post(
+//     authController.protect,
+//     authController.restrictTo('user'),
+//     reviewController.createReview
+//   );
 
 router
   .route('/top-5-cheap')

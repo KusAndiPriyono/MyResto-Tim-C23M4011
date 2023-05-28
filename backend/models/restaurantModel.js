@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+// const User = require('./userModel');
 // const validator = require('validator');
 
 const restaurantSchema = new mongoose.Schema(
@@ -17,10 +18,6 @@ const restaurantSchema = new mongoose.Schema(
         10,
         'A restaurant name must have more or equal then 10 characters',
       ],
-      // validate: [
-      //   validator.isAlpha,
-      //   'Restaurant name must only contain characters',
-      // ],
     },
 
     slug: String,
@@ -28,11 +25,6 @@ const restaurantSchema = new mongoose.Schema(
     duration: {
       type: Number,
       required: [true, 'A restaurant must have a duration'],
-    },
-
-    address: {
-      type: String,
-      required: [true, 'A restaurant must have an address'],
     },
 
     maxCapacity: {
@@ -104,6 +96,36 @@ const restaurantSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    startLocation: {
+      // GeoJSON
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          enum: ['Point'],
+        },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
+    guides: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
@@ -115,11 +137,24 @@ restaurantSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
 
+// Virtual populate
+restaurantSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'restaurant',
+  localField: '_id',
+});
+
 // DOCUMENT MIDDLEWARE: runs before .save() and .create()
 restaurantSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
+
+// restaurantSchema.pre('save', async function (next) {
+//   const guidesPromise = this.guides.map(async (id) => await User.findById(id));
+//   this.guides = await Promise.all(guidesPromise);
+//   next();
+// });
 
 // restaurantSchema.pre('save', function (next) {
 //   console.log('Will save document...');
@@ -137,6 +172,15 @@ restaurantSchema.pre(/^find/, function (next) {
   this.find({ secretRestaurant: { $ne: true } });
 
   this.start = Date.now();
+  next();
+});
+
+restaurantSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    select: '-__v -passwordChangedAt',
+  });
+
   next();
 });
 
