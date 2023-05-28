@@ -54,7 +54,7 @@ const Routes = () => {
         },
       ],
     },
-    //route sementara
+    //route untuk sementara
     {
       path: 'login',
       element: <LoginPage />,
