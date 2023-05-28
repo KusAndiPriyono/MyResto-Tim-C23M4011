@@ -35,6 +35,11 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
+  function doLogout(){
+    localStorage.removeItem('userData')
+    window.location = '/'
+  };
+
   return (
     <AppBar position='static' sx={{ backgroundColor: 'white' }}>
       <Container maxWidth='xl'>
@@ -133,7 +138,7 @@ const Header = () => {
           >
             My Resto
           </Typography>
-
+          
           <Box
             sx={{
               flexGrow: 1,
@@ -162,6 +167,8 @@ const Header = () => {
                 <Avatar alt='Remy Sharp' src='./logo192.png' />
               </IconButton>
             </Tooltip>
+
+
             <Menu
               sx={{ mt: '45px' }}
               id='menu-appbar'
@@ -185,14 +192,21 @@ const Header = () => {
                   flexDirection: 'column',
                 }}
               >
+                {/* if(localStorage.getItem('pesanan')) */}
                 <NavLink tooltip='Profile' href='/profile'>
                   Profile
                 </NavLink>
                 <NavLink tooltip='Dashboard' href='/dashboard'>
                   Dashboard
                 </NavLink>
+                <NavLink tooltip='Register' href='/register'>
+                  Register
+                </NavLink>
                 <NavLink tooltip='Login' href='/login'>
                   Login
+                </NavLink>
+                <NavLink tooltip='Logout' >
+                  <a href='#' onClick={doLogout}> Logout</a>
                 </NavLink>
               </MenuItem>
             </Menu>
