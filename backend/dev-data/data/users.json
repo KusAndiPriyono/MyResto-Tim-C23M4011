@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "5c8a1d5b0190b214360dc057",
+    "name": "Andi Priyono",
+    "email": "admin@dicoding.com",
+    "role": "admin",
+    "active": true,
+    "photo": "default.jpg",
+    "password": "21232f297a57a5a743894a0e4a801fc3"
+  }
+]

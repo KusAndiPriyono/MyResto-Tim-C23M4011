@@ -1,0 +1,297 @@
+[
+  {
+    "startLocation": {
+      "description": "Jakarta, DKI",
+      "type": "Point",
+      "corrdinates": [106.845599, -6.208763],
+      "address": "jaksel"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 37,
+    "startDates": [
+      "2023-04-25T09:00:00.000Z",
+      "2023-07-20T09:00:00.000Z",
+      "2023-10-05T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2951",
+    "name": "Baked salmon with fennel & tomatoes enak",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": [
+      "5c8a21d02f8fb814b56fa189",
+      "5c8a201e2f8fb814b56fa186",
+      "5c8a1f292f8fb814b56fa184"
+    ],
+    "price": 397,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Baked salmon with fennel & tomatoes adalah hidangan lezat yang menggabungkan salmon, fennel, dan tomat. Salmon dipanggang dengan bumbu rempah, bersama fennel dan tomat. Hasilnya adalah kombinasi rasa yang sempurna antara salmon yang lezat, fennel yang lembut, dan tomat yang segar. Hidangan ini kaya nutrisi dan cocok untuk acara istimewa atau makan malam yang enak.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2958",
+        "description": "DKI",
+        "type": "Point",
+        "corrdinates": [106.845599, -6.208763],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Bandung, Jawa Barat",
+      "type": "Point",
+      "corrdinates": [107.60981, -6.917464],
+      "address": "Cisaat"
+    },
+    "ratingsAverage": 4.8,
+    "ratingsQuantity": 23,
+    "startDates": [
+      "2023-06-19T09:00:00.000Z",
+      "2023-07-20T09:00:00.000Z",
+      "2023-08-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2955",
+    "name": "Cajun spiced fish tacos",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "easy",
+    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a1f4e2f8fb814b56fa185"],
+    "price": 497,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Cajun spiced fish tacos adalah hidangan lezat yang terdiri dari potongan ikan yang dibumbui dengan rempah Cajun, kemudian digoreng hingga garing. Potongan ikan ini kemudian disajikan di dalam tortilla dengan tambahan beragam topping seperti saus yogurt, irisan kubis, tomat, dan saus salsa segar. Kombinasi antara cita rasa pedas dan gurih dari rempah Cajun dengan segar dan renyahnya ikan serta tekstur tortilla yang lembut menciptakan makanan yang lezat dan memuaskan. Cajun spiced fish tacos adalah hidangan yang populer dan cocok untuk dinikmati dalam acara santai bersama keluarga dan teman-teman.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2957",
+        "description": "Jabar",
+        "type": "Point",
+        "corrdinates": [107.60981, -6.917464],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Surabaya, Jawa Timur",
+      "type": "Point",
+      "corrdinates": [112.75, -7.25],
+      "address": "wonokromo"
+    },
+    "ratingsAverage": 4.9,
+    "ratingsQuantity": 19,
+    "startDates": [
+      "2023-08-19T09:00:00.000Z",
+      "2023-09-20T09:00:00.000Z",
+      "2023-10-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2966",
+    "name": "Fish pie enak",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": [
+      "5c8a21f22f8fb814b56fa18a",
+      "5c8a1f292f8fb814b56fa184",
+      "5c8a1f4e2f8fb814b56fa185"
+    ],
+    "price": 1497,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Fish pie adalah hidangan klasik yang terdiri dari potongan ikan yang dicampur dengan sayuran dan saus krim, lalu ditutupi dengan lapisan adonan kentang atau adonan puff pastry, kemudian dipanggang hingga kecokelatan. Hidangan ini memberikan perpaduan sempurna antara kelezatan ikan yang lembut, rasa kaya dari saus krim, dan tekstur lezat dari adonan kentang atau puff pastry yang garing. Fish pie adalah hidangan yang populer di banyak negara, terutama di Inggris dan Skotlandia, dan sering disajikan sebagai hidangan utama dalam acara makan malam keluarga.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c296b",
+        "description": "Jatim",
+        "type": "Point",
+        "corrdinates": [112.75, -7.25],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Semarang, Jawa Tengah",
+      "type": "Point",
+      "corrdinates": [110.417, -6.98333],
+      "address": "Miroto"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 28,
+    "startDates": [
+      "2023-05-19T09:00:00.000Z",
+      "2023-06-20T09:00:00.000Z",
+      "2023-07-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2970",
+    "name": "Fish Stew with Rouille",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": ["5c8a21d02f8fb814b56fa189", "5c8a1f292f8fb814b56fa184"],
+    "price": 2997,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Fish stew with rouille adalah hidangan yang terdiri dari sup ikan yang kaya dan lezat, disajikan dengan saus rouille yang pedas. Sup ini terdiri dari potongan ikan yang dimasak dalam kaldu lezat bersama dengan beragam sayuran seperti wortel, kentang, dan bawang. Rouille adalah saus khas yang terbuat dari bawang putih, cabai, dan mayones yang memberikan sentuhan pedas dan krimi pada hidangan. Fish stew with rouille adalah hidangan yang memanjakan lidah dengan perpaduan rasa ikan yang lezat, kaldu kaya, dan kelezatan pedas dari saus rouille. Hidangan ini sering disajikan sebagai hidangan utama dalam acara makan malam yang hangat dan memuaskan.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2973",
+        "description": "Jatim",
+        "type": "Point",
+        "corrdinates": [110.417, -6.98333],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Tangerang, Banten",
+      "type": "Point",
+      "corrdinates": [106.63, -6.18],
+      "address": "Jatake"
+    },
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 35,
+    "startDates": [
+      "2023-02-19T09:00:00.000Z",
+      "2023-04-20T09:00:00.000Z",
+      "2023-06-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2974",
+    "name": "Garides Saganaki",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": [
+      "5c8a21f22f8fb814b56fa18a",
+      "5c8a201e2f8fb814b56fa186",
+      "5c8a23412f8fb814b56fa18c"
+    ],
+    "price": 1997,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Garides saganaki adalah hidangan Yunani yang terdiri dari udang yang dimasak dalam saus tomat kaya dengan tambahan bawang putih, rempah-rempah, dan keju feta. Udang dimasak hingga matang dalam saus tomat yang menghasilkan rasa yang kaya, sedangkan keju feta memberikan sentuhan gurih dan sedikit garam pada hidangan. Garides saganaki sering disajikan sebagai hidangan pembuka atau hidangan utama dalam masakan Yunani. Hidangan ini memiliki cita rasa yang lezat dan menjadi favorit para pecinta udang dan makanan Mediterania.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2975",
+        "description": "Tangsel",
+        "type": "Point",
+        "corrdinates": [106.63, -6.18],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Cirebon, Jawa Barat",
+      "type": "Point",
+      "corrdinates": [108.55, -6.7],
+      "address": "Gunung Jati"
+    },
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 28,
+    "startDates": [
+      "2023-07-19T09:00:00.000Z",
+      "2023-08-20T09:00:00.000Z",
+      "2023-09-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c295e",
+    "name": "Honey Teriyaki Salmon",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a201e2f8fb814b56fa186"],
+    "price": 1497,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Grilled Portuguese sardines adalah hidangan yang terdiri dari ikan sarden yang dipanggang dengan api langsung. Sarden segar dipersiapkan dengan rempah-rempah khas Portugal seperti garam, lada, dan minyak zaitun sebelum dipanggang hingga matang. Hasilnya adalah sarden yang lezat dengan kulit yang renyah dan daging yang lembut. Hidangan ini merupakan hidangan klasik Portugal yang populer di daerah pesisir. Grilled Portuguese sardines memiliki cita rasa yang unik dan khas, dan sering disajikan dengan sajian sederhana seperti roti panggang atau salad segar.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c296f",
+        "description": "Jabar",
+        "type": "Point",
+        "corrdinates": [108.55, -6.7],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Solo, Jawa Tengah",
+      "type": "Point",
+      "corrdinates": [110.83, -7.56],
+      "address": "Gedangan"
+    },
+    "ratingsAverage": 4.9,
+    "ratingsQuantity": 33,
+    "startDates": [
+      "2023-10-19T09:00:00.000Z",
+      "2023-11-20T09:00:00.000Z",
+      "2023-12-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c296c",
+    "name": "Honey Teriyaki",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": ["5c8a22c62f8fb814b56fa18b", "5c8a23412f8fb814b56fa18c"],
+    "price": 2997,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Honey Teriyaki Salmon adalah hidangan yang terdiri dari salmon yang diselimuti dengan saus teriyaki manis yang diberi sentuhan madu. Salmon tersebut kemudian dipanggang atau dipanggang dengan sempurna hingga dagingnya menjadi lembut dan kulitnya menjadi renyah. Gabungan antara rasa gurih dan manis dari saus teriyaki serta kelembutan dan kekayaan rasa salmon menciptakan kombinasi yang lezat dan memikat. Honey Teriyaki Salmon adalah hidangan yang populer di berbagai masakan Asia dan merupakan pilihan yang cocok untuk hidangan utama yang bergizi dan lezat.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2969",
+        "description": "Jateng",
+        "type": "Point",
+        "corrdinates": [110.83, -7.56],
+        "day": 1
+      }
+    ]
+  },
+
+  {
+    "startLocation": {
+      "description": "Bekasi, Jawa Barat",
+      "type": "Point",
+      "corrdinates": [106.991, -6.23827],
+      "address": "Jalan Raya Bekasi"
+    },
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 13,
+    "startDates": [
+      "2023-01-19T09:00:00.000Z",
+      "2023-02-20T09:00:00.000Z",
+      "2023-03-18T09:00:00.000Z"
+    ],
+    "_id": "5c88fa8cf4afda39709c2959",
+    "name": "Escovitch Fish",
+    "duration": 5,
+    "maxCapacity": 10,
+    "difficulty": "medium",
+    "guides": [
+      "5c8a21f22f8fb814b56fa18a",
+      "5c8a23412f8fb814b56fa18c",
+      "5c8a201e2f8fb814b56fa186"
+    ],
+    "price": 997,
+    "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
+    "description": "Escovitch fish adalah hidangan yang terdiri dari ikan yang digoreng hingga renyah, kemudian disajikan dengan saus asam pedas dan irisan sayuran seperti paprika, bawang merah, dan wortel yang diasamkan. Hidangan ini berasal dari Karibia dan memiliki cita rasa yang kaya dan segar. Escovitch fish adalah kombinasi yang sempurna antara gurihnya ikan goreng dengan sensasi pedas dan asam dari saus dan sayuran. Hidangan ini sering disajikan sebagai hidangan utama dan sangat populer di daerah Karibia.",
+    "imageCover": "https://www.themealdb.com/images/media/meals/1520084413.jpg",
+    "locations": [
+      {
+        "_id": "5c88fa8cf4afda39709c2965",
+        "description": "Jabar",
+        "type": "Point",
+        "corrdinates": [106.991, -6.23827],
+        "day": 1
+      }
+    ]
+  }
+]
