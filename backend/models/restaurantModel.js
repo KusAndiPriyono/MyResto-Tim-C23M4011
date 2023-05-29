@@ -46,6 +46,7 @@ const restaurantSchema = new mongoose.Schema(
       default: 4.5,
       min: [1, 'Rating must be above 1.0'],
       max: [5, 'Rating must be below 5.0'],
+      set: (val) => Math.round(val * 10) / 10, // 4.666666, 46.66666, 47, 4.7
     },
 
     ratingsQuantity: {
@@ -133,6 +134,10 @@ const restaurantSchema = new mongoose.Schema(
   }
 );
 
+restaurantSchema.index({ price: 1, ratingsAverage: -1 });
+restaurantSchema.index({ slug: 1 });
+restaurantSchema.index({ startLocation: '2dsphere' });
+
 restaurantSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
 });
@@ -191,12 +196,12 @@ restaurantSchema.post(/^find/, function (docs, next) {
 });
 
 // AGGREGATION MIDDLEWARE
-restaurantSchema.pre('aggregate', function (next) {
-  this.pipeline().unshift({ $match: { secretRestaurant: { $ne: true } } });
+// restaurantSchema.pre('aggregate', function (next) {
+//   this.pipeline().unshift({ $match: { secretRestaurant: { $ne: true } } });
 
-  console.log(this.pipeline());
-  next();
-});
+//   console.log(this.pipeline());
+//   next();
+// });
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 

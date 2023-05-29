@@ -191,7 +191,7 @@ const Header = () => {
                 <NavLink tooltip='Dashboard' href='/dashboard'>
                   Dashboard
                 </NavLink>
-                <NavLink tooltip='Login' href='/login'>
+                <NavLink tooltip='Login' href='/auth/login'>
                   Login
                 </NavLink>
               </MenuItem>

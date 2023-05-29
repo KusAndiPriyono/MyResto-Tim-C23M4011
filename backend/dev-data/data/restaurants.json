@@ -3,7 +3,7 @@
     "startLocation": {
       "description": "Jakarta, DKI",
       "type": "Point",
-      "corrdinates": [106.845599, -6.208763],
+      "coordinates": [],
       "address": "jaksel"
     },
     "ratingsAverage": 4.7,
@@ -32,7 +32,7 @@
         "_id": "5c88fa8cf4afda39709c2958",
         "description": "DKI",
         "type": "Point",
-        "corrdinates": [106.845599, -6.208763],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -42,7 +42,7 @@
     "startLocation": {
       "description": "Bandung, Jawa Barat",
       "type": "Point",
-      "corrdinates": [107.60981, -6.917464],
+      "coordinates": [],
       "address": "Cisaat"
     },
     "ratingsAverage": 4.8,
@@ -67,7 +67,7 @@
         "_id": "5c88fa8cf4afda39709c2957",
         "description": "Jabar",
         "type": "Point",
-        "corrdinates": [107.60981, -6.917464],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -77,7 +77,7 @@
     "startLocation": {
       "description": "Surabaya, Jawa Timur",
       "type": "Point",
-      "corrdinates": [112.75, -7.25],
+      "coordinates": [],
       "address": "wonokromo"
     },
     "ratingsAverage": 4.9,
@@ -106,7 +106,7 @@
         "_id": "5c88fa8cf4afda39709c296b",
         "description": "Jatim",
         "type": "Point",
-        "corrdinates": [112.75, -7.25],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -116,7 +116,7 @@
     "startLocation": {
       "description": "Semarang, Jawa Tengah",
       "type": "Point",
-      "corrdinates": [110.417, -6.98333],
+      "coordinates": [],
       "address": "Miroto"
     },
     "ratingsAverage": 4.7,
@@ -141,7 +141,7 @@
         "_id": "5c88fa8cf4afda39709c2973",
         "description": "Jatim",
         "type": "Point",
-        "corrdinates": [110.417, -6.98333],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -151,7 +151,7 @@
     "startLocation": {
       "description": "Tangerang, Banten",
       "type": "Point",
-      "corrdinates": [106.63, -6.18],
+      "coordinates": [],
       "address": "Jatake"
     },
     "ratingsAverage": 4.5,
@@ -180,7 +180,7 @@
         "_id": "5c88fa8cf4afda39709c2975",
         "description": "Tangsel",
         "type": "Point",
-        "corrdinates": [106.63, -6.18],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -190,7 +190,7 @@
     "startLocation": {
       "description": "Cirebon, Jawa Barat",
       "type": "Point",
-      "corrdinates": [108.55, -6.7],
+      "coordinates": [],
       "address": "Gunung Jati"
     },
     "ratingsAverage": 4.7,
@@ -215,7 +215,7 @@
         "_id": "5c88fa8cf4afda39709c296f",
         "description": "Jabar",
         "type": "Point",
-        "corrdinates": [108.55, -6.7],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -225,7 +225,7 @@
     "startLocation": {
       "description": "Solo, Jawa Tengah",
       "type": "Point",
-      "corrdinates": [110.83, -7.56],
+      "coordinates": [],
       "address": "Gedangan"
     },
     "ratingsAverage": 4.9,
@@ -250,7 +250,7 @@
         "_id": "5c88fa8cf4afda39709c2969",
         "description": "Jateng",
         "type": "Point",
-        "corrdinates": [110.83, -7.56],
+        "coordinates": [],
         "day": 1
       }
     ]
@@ -260,7 +260,7 @@
     "startLocation": {
       "description": "Bekasi, Jawa Barat",
       "type": "Point",
-      "corrdinates": [106.991, -6.23827],
+      "coordinates": [],
       "address": "Jalan Raya Bekasi"
     },
     "ratingsAverage": 4.5,
@@ -289,7 +289,7 @@
         "_id": "5c88fa8cf4afda39709c2965",
         "description": "Jabar",
         "type": "Point",
-        "corrdinates": [106.991, -6.23827],
+        "coordinates": [],
         "day": 1
       }
     ]
