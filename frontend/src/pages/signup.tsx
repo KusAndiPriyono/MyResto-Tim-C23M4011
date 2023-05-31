@@ -89,6 +89,7 @@ const SignupPage = () => {
       name: values.name,
       email: values.email,
       password: values.password,
+      passwordConfirm: values.passwordConfirm,
     });
   };
 
