@@ -10,9 +10,9 @@ import axios from 'api/axios';
 
 interface Props {
   isAuthenticated: boolean;
-  username?: string;
+  name?: string;
 }
-const Header: React.FC<Props> = ({ isAuthenticated, username }) => {
+const Header: React.FC<Props> = ({ isAuthenticated, name }) => {
   // const [colorScheme, setColorScheme] = useState('dark');
   // const [language, setLanguage] = useState('en');
 
@@ -138,14 +138,13 @@ const Header: React.FC<Props> = ({ isAuthenticated, username }) => {
           >
             <Typography
               component='p'
-              color={'dark' ? 'white' : 'dark'}
               variant='subtitle1'
               sx={{
                 textDecoration: 'none',
                 margin: 0,
               }}
             >
-              {username}
+              {name}
             </Typography>
             <Tooltip title='Logout'>
               <IconButton
@@ -170,6 +169,6 @@ const Header: React.FC<Props> = ({ isAuthenticated, username }) => {
 
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  username: PropTypes.string,
+  name: PropTypes.string,
 };
 export default Header;

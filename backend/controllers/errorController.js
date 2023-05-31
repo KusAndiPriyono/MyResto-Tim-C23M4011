@@ -69,13 +69,13 @@ module.exports = (err, req, res, next) => {
   } else if (process.env.NODE_ENV === 'production') {
     let error = { ...err };
 
-    if (error.name === 'CastError') error = handleCastErrorDB(error);
-    if (error.code === 11000) error = handleDuplicateFieldsDB(error);
+    if (error.name === 'CastError') newRrror = handleCastErrorDB(error);
+    if (error.code === 11000) newRrror = handleDuplicateFieldsDB(error);
     if (error.name === 'ValidationError')
-      error = handleValidationErrorDB(error);
-    if (error.name === 'JsonWebTokenError') error = handleJWTError();
-    if (error.name === 'TokenExpiredError') error = handleJWTExpiredError();
+      newRrror = handleValidationErrorDB(error);
+    if (error.name === 'JsonWebTokenError') newRrror = handleJWTError();
+    if (error.name === 'TokenExpiredError') newRrror = handleJWTExpiredError();
 
-    sendErrorProd(error, res);
+    sendErrorProd(newRrror ?? error, res);
   }
 };

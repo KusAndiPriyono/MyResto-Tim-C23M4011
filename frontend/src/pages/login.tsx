@@ -66,6 +66,7 @@ const LoginPage = () => {
               Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
+                text: 'Periksa kembali data anda',
               });
               break;
           }
@@ -74,7 +75,8 @@ const LoginPage = () => {
     },
 
     onSuccess: (data) => {
-      Token.setToken(data.data.token);
+      // Token.setToken(data.data.token);
+      Token.setToken(data);
       reset();
       Swal.fire({
         icon: 'success',

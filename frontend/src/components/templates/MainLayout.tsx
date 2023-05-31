@@ -29,7 +29,7 @@ const MainLayout: React.FC = () => {
       >
         {isSuccess && (
           <>
-            <Header isAuthenticated={true} username={data.name} />
+            <Header isAuthenticated={true} name={data.data.name} />
             <main>
               <Outlet />
             </main>
