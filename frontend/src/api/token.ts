@@ -2,7 +2,7 @@ class Token {
   static getToken() {
     return localStorage.getItem('token');
   }
-  static setToken(token) {
+  static setToken(token: string) {
     localStorage.setItem('token', token);
   }
   static removeToken() {

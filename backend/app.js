@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -63,8 +63,8 @@ app.use(
 );
 
 // Serving static files
-// app.use(express.static(`${__dirname}/public`));
-app.use(express.static(path.join(__dirname, '../my-resto/public')));
+app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(path.join(__dirname, '../my-resto/public')));
 
 // Test middleware
 app.use((req, res, next) => {

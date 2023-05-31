@@ -1,7 +1,9 @@
-import { useRoutes } from 'react-router-dom';
-import MainLayout from '../components/templates/MainLayout';
-import LoginPage from '../pages/login';
-import AuthLayout from '../components/templates/AuthLayout';
+import { Navigate, useRoutes } from 'react-router-dom';
+import LoginPage from 'pages/login';
+import SignupPage from 'pages/signup';
+import PageNotFound from 'pages/404';
+import MainLayout from 'components/templates/MainLayout';
+import AuthLayout from 'components/templates/AuthLayout';
 
 const Routes = () => {
   return useRoutes([
@@ -27,7 +29,7 @@ const Routes = () => {
         },
         {
           path: '*',
-          element: <replace to='/404' />,
+          element: <Navigate replace to='/404' />,
         },
       ],
     },
@@ -40,26 +42,26 @@ const Routes = () => {
           element: <LoginPage />,
         },
         {
-          path: 'register',
-          element: 'RegisterPage',
+          path: 'signup',
+          element: <SignupPage />,
         },
         {
           path: '',
-          element: <replace to='/404' />,
+          element: <Navigate replace to='/404' />,
         },
         {
           path: '*',
-          element: <replace to='/404' />,
+          element: <Navigate replace to='/404' />,
         },
       ],
     },
     {
       path: '*',
-      element: <replace to='404' />,
+      element: <Navigate replace to='404' />,
     },
     {
       path: '404',
-      element: 'PageNotFound',
+      element: <PageNotFound />,
     },
   ]);
 };
