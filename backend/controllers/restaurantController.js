@@ -1,8 +1,64 @@
+const multer = require('multer');
+const sharp = require('sharp');
 const Restaurant = require('./../models/restaurantModel');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 const AppError = require('./../utils/appError');
 // const APIFeatures = require('./../utils/apiFeatures');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  // console.log(file);
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only image!', 400), false);
+  }
+};
+
+const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
+
+exports.uploadRestaurantImages = upload.fields([
+  { name: 'imageCover', maxCount: 1 },
+  { name: 'images', maxCount: 3 },
+]);
+
+// upload.single('image'); req.file
+// upload.array('images', 5); req.files
+
+exports.resizeRestaurantImages = catchAsync(async (req, res, next) => {
+  if (!req.files.imageCover || !req.files.images) return next();
+
+  // 1) Cover image
+  req.body.imageCover = `restaurant-${req.params.id}-${Date.now()}-cover.jpeg`;
+  await sharp(req.files.imageCover[0].buffer)
+    .resize(2000, 1333)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/restaurants/${req.body.imageCover}`);
+
+  // 2) Images
+  req.body.images = [];
+
+  await Promise.all(
+    req.files.images.map(async (file, i) => {
+      const filename = `restaurant-${req.params.id}-${Date.now()}-${
+        i + 1
+      }.jpeg`;
+
+      await sharp(file.buffer)
+        .resize(2000, 1333)
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toFile(`public/img/restaurants/${filename}`);
+
+      req.body.images.push(filename);
+    })
+  );
+
+  next();
+});
 
 exports.aliasTopRestaurants = (req, res, next) => {
   req.query.limit = '5';
@@ -12,13 +68,9 @@ exports.aliasTopRestaurants = (req, res, next) => {
 };
 
 exports.getAllRestaurants = factory.getAll(Restaurant);
-
 exports.getRestaurant = factory.getOne(Restaurant, { path: 'reviews' });
-
 exports.createRestaurant = factory.createOne(Restaurant);
-
 exports.updateRestaurant = factory.updateOne(Restaurant);
-
 exports.deleteRestaurant = factory.deleteOne(Restaurant);
 
 exports.getRestaurantStats = catchAsync(async (req, res, next) => {

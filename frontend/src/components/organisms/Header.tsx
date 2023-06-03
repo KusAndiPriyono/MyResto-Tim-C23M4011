@@ -1,174 +1,194 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Box, IconButton, Tooltip, Typography } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Container,
+  IconButton,
+  Tooltip,
+  Typography,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 
-import { Link, useNavigate } from 'react-router-dom';
-import { FiLogOut, FiMoon, FiSun } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavLink from 'components/atoms/NavLink';
 import Token from 'api/token';
 import axios from 'api/axios';
+import { useState } from 'react';
 
 interface Props {
   isAuthenticated: boolean;
   name?: string;
+  photo?: string;
 }
-const Header: React.FC<Props> = ({ isAuthenticated, name }) => {
-  // const [colorScheme, setColorScheme] = useState('dark');
-  // const [language, setLanguage] = useState('en');
 
-  // const toggleColorScheme = () => {
-  //   setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
-  // };
+const Header: React.FC<Props> = ({ isAuthenticated, name, photo }) => {
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-  // const toggleEnAndId = () => {
-  //   setLanguage(language === 'en' ? 'id' : 'en');
-  // };
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const navigate = useNavigate();
-  return (
-    <Box
-      component='header'
-      sx={{
-        position: 'unset',
-        top: '20px',
-        left: '0px',
-        padding: '16px',
-        marginBottom: '16px',
-        borderRadius: '8px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '8px',
-        rowGap: '16px',
-        boxShadow: '0px 0px 100px 10px rgba(0,0,0,.1)',
-        '@media (min-width: 768px)': {
-          flexWrap: 'nowrap',
-          padding: '18px 24px',
-          gap: '12px',
-        },
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          gap: '12px',
-        }}
-      >
-        <Box
-          component={Link}
-          to='/'
-          sx={{
-            display: 'flex',
-            gap: '12px',
-            alignItems: 'center',
-            textDecoration: 'none',
-            width: 'fit-content',
-          }}
-        >
-          <img />
-          <Typography
-            component='h1'
-            variant='h6'
-            sx={{
-              textDecoration: 'none',
-              margin: 0,
-            }}
-          >
-            My Resto
-          </Typography>
-        </Box>
-      </Box>
-      {isAuthenticated && (
-        <Box
-          sx={{
-            display: 'flex',
-            gap: '12px',
-          }}
-        >
-          <NavLink href='/' tooltip='ke home'>
-            Home
-          </NavLink>
-          <NavLink href='/booking' tooltip='ke booking'>
-            Booking
-          </NavLink>
-        </Box>
-      )}
 
+  return (
+    <Container>
       <Box
+        component='header'
         sx={{
+          position: 'unset',
+          top: '20px',
+          left: '0px',
+          padding: '16px',
+          marginBottom: '16px',
+          borderRadius: '8px',
           display: 'flex',
-          gap: '8px',
-          flexBasis: isAuthenticated ? '100%' : 'unset',
+          alignItems: 'center',
           justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px',
+          rowGap: '16px',
+          boxShadow: '0px 0px 100px 10px rgba(0,0,0,.1)',
           '@media (min-width: 768px)': {
-            flexBasis: 'unset',
+            flexWrap: 'nowrap',
+            padding: '18px 24px',
+            gap: '12px',
           },
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            gap: '8px',
+            gap: '12px',
           }}
         >
-          <Tooltip title='Toggle Color Scheme'>
-            <IconButton color='default' size='large'>
-              {'dark' ? <FiMoon /> : <FiSun />}
-            </IconButton>
-          </Tooltip>
-          <Tooltip title='Toggle Language'>
-            <IconButton color='default' size='large'>
-              <img
-                src={`/images/${'en' ? 'uk-flag' : 'id-flag'}.png`}
-                width={20}
-                height={20}
-              />
-            </IconButton>
-          </Tooltip>
-        </Box>
-        {isAuthenticated && (
           <Box
             sx={{
               display: 'flex',
-              gap: '8px',
+              gap: '12px',
               alignItems: 'center',
-              paddingLeft: '12px',
+              textDecoration: 'none',
+              width: 'fit-content',
             }}
           >
+            <img />
             <Typography
-              component='p'
-              variant='subtitle1'
+              component='h1'
+              variant='h6'
               sx={{
                 textDecoration: 'none',
                 margin: 0,
               }}
             >
-              {name}
+              My Resto
             </Typography>
-            <Tooltip title='Logout'>
-              <IconButton
-                color='default'
-                onClick={() => {
-                  // perform logout logic
-                  navigate('/auth/login', { replace: true });
-                  Token.removeToken();
-                  axios.defaults.headers.common['Authorization'] = '';
-                }}
-                size='large'
-              >
-                <FiLogOut />
-              </IconButton>
-            </Tooltip>
+          </Box>
+        </Box>
+        {isAuthenticated && (
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '12px',
+            }}
+          >
+            <NavLink href='/' tooltip='ke home'>
+              Home
+            </NavLink>
+            <NavLink href='/booking' tooltip='ke booking'>
+              Booking
+            </NavLink>
           </Box>
         )}
+
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '8px',
+            flexBasis: isAuthenticated ? '100%' : 'unset',
+            justifyContent: 'space-between',
+            '@media (min-width: 768px)': {
+              flexBasis: 'unset',
+            },
+          }}
+        >
+          {isAuthenticated && (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title='Open Settings'>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    src={photo}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '30px',
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id='menu-appbar'
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem
+                  onClick={() => {
+                    // perform logout logic
+                    navigate('/account', { replace: true });
+                    // Token.getToken();
+                    // axios.defaults.headers.common[
+                    //   'Authorization'
+                    // ] = `Bearer ${Token.getToken()}`;
+                  }}
+                >
+                  Account
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    // perform logout logic
+                    navigate('/auth/login', { replace: true });
+                    Token.removeToken();
+                    axios.defaults.headers.common['Authorization'] = '';
+                  }}
+                >
+                  Log Out
+                </MenuItem>
+              </Menu>
+            </Box>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </Container>
   );
 };
 
 Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   name: PropTypes.string,
+  photo: PropTypes.string,
 };
 export default Header;

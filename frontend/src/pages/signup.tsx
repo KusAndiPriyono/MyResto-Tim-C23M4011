@@ -8,6 +8,7 @@ import {
   Button,
   Card,
   CircularProgress,
+  Container,
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
@@ -76,7 +77,7 @@ const SignupPage = () => {
       reset();
       Swal.fire({
         title: 'Success',
-        text: 'User berhasil dibuat',
+        text: 'User berhasil dibuat Silahkan cek email anda untuk menindak lanjuti upload foto profil',
         icon: 'success',
       });
       navigate('/auth/login', {
@@ -113,211 +114,215 @@ const SignupPage = () => {
 
   return (
     <>
-      <Card
-        sx={{
-          display: 'flex',
-          gap: '40px',
-          '@media (min-width: 768px)': {
-            padding: '72px 24px',
-            alignItems: 'center',
-          },
-        }}
-      >
-        <Box
-          component='aside'
+      <Container>
+        <Card
           sx={{
-            display: 'none',
+            display: 'flex',
+            gap: '40px',
             '@media (min-width: 768px)': {
-              display: 'block',
-              flexBasis: '50%',
-              height: 'fit-content',
-            },
-          }}
-        >
-          <img
-            src='/images/register-illustration.svg'
-            alt='Register Illustration'
-            width={500}
-          />
-        </Box>
-        <Box
-          component='aside'
-          sx={{
-            flexBasis: '100%',
-            '@media (min-width: 768px)': {
-              flexBasis: '50%',
+              padding: '72px 24px',
+              alignItems: 'center',
             },
           }}
         >
           <Box
-            component='article'
+            component='aside'
             sx={{
-              marginBottom: '20px',
-            }}
-          >
-            <Typography
-              variant='h1'
-              color='text.primary'
-              sx={{
-                fontSize: '24px',
-                marginTop: 0,
-                marginBottom: '4px',
-              }}
-            >
-              Sign up
-            </Typography>
-            <Typography
-              variant='body1'
-              color='text.secondary'
-              sx={{
-                fontSize: '16px',
-                margin: 0,
-              }}
-            >
-              Buat akun baru untuk memulai
-            </Typography>
-          </Box>
-          <Box
-            component='form'
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
-            }}
-          >
-            <Controller
-              control={control}
-              name='name'
-              rules={{
-                required: 'Nama harus diisi',
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  label='nama'
-                  placeholder='Masukan nama anda'
-                  name='name'
-                  onChange={onChange}
-                  value={value}
-                  error={Boolean(errors.name?.message)}
-                  helperText={localizationValidationError(errors.name?.message)}
-                />
-              )}
-            />
-            <Controller
-              control={control}
-              name='email'
-              rules={{
-                required: 'Email harus diisi',
-                pattern: {
-                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                  message: 'Masukan email yang valid',
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  label='email'
-                  placeholder='Masukan email anda'
-                  name='email'
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    onChange(e);
-                  }}
-                  value={value}
-                  error={Boolean(errors.email?.message)}
-                  helperText={localizationValidationError(
-                    errors.email?.message
-                  )}
-                />
-              )}
-            />
-            <Controller
-              name='password'
-              control={control}
-              rules={{
-                required: 'Password harus diisi',
-                minLength: {
-                  value: 6,
-                  message: 'Password minimal 8 karakter',
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  label='password'
-                  placeholder='Masukan password anda'
-                  name='password'
-                  type='password'
-                  value={value}
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    onChange(e);
-                    if (watch('passwordConfirm') !== '') {
-                      setValue('passwordConfirm', watch('passwordConfirm'), {
-                        shouldValidate: true,
-                        shouldTouch: false,
-                      });
-                    }
-                  }}
-                  error={Boolean(errors.password?.message)}
-                  helperText={localizationValidationError(
-                    errors.password?.message
-                  )}
-                />
-              )}
-            />
-            <Controller
-              name='passwordConfirm'
-              control={control}
-              rules={{
-                required: 'Konfirmasi password harus diisi',
-                validate: {
-                  notMatch: (value) =>
-                    value === watch('password') || 'Password tidak sama',
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  label='konfirmasi password'
-                  placeholder={'Masukan ulang password anda'}
-                  name='passwordConfirmation'
-                  type='password'
-                  value={value}
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    onChange(e);
-                  }}
-                  error={Boolean(errors.passwordConfirm?.message)}
-                  helperText={localizationValidationError(
-                    errors.passwordConfirm?.message
-                  )}
-                />
-              )}
-            />
-            <Button
-              disabled={!isDirty || !isValid}
-              type='submit'
-              startIcon={
-                signupMutation.isLoading && <CircularProgress size={20} />
-              }
-            >
-              {signupMutation.isLoading ? 'Loading' : 'Daftar'}
-            </Button>
-          </Box>
-          <Typography
-            variant='body2'
-            sx={{
-              fontSize: '14px',
-              textAlign: 'center',
-              '& a': {
-                textDecoration: 'none',
-                color: 'indigo',
+              display: 'none',
+              '@media (min-width: 768px)': {
+                display: 'block',
+                flexBasis: '50%',
+                height: 'fit-content',
               },
             }}
           >
-            Sudah memiliki akun? <Link to='/auth/login'>Login</Link>
-          </Typography>
-        </Box>
-      </Card>
+            <img
+              src='/images/register-illustration.svg'
+              alt='Register Illustration'
+              width={500}
+            />
+          </Box>
+          <Box
+            component='aside'
+            sx={{
+              flexBasis: '100%',
+              '@media (min-width: 768px)': {
+                flexBasis: '50%',
+              },
+            }}
+          >
+            <Box
+              component='article'
+              sx={{
+                marginBottom: '20px',
+              }}
+            >
+              <Typography
+                variant='h1'
+                color='text.primary'
+                sx={{
+                  fontSize: '24px',
+                  marginTop: 0,
+                  marginBottom: '4px',
+                }}
+              >
+                Sign up
+              </Typography>
+              <Typography
+                variant='body1'
+                color='text.secondary'
+                sx={{
+                  fontSize: '16px',
+                  margin: 0,
+                }}
+              >
+                Buat akun baru untuk memulai
+              </Typography>
+            </Box>
+            <Box
+              component='form'
+              onSubmit={handleSubmit(onSubmit)}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              }}
+            >
+              <Controller
+                control={control}
+                name='name'
+                rules={{
+                  required: 'Nama harus diisi',
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    label='nama'
+                    placeholder='Masukan nama anda'
+                    name='name'
+                    onChange={onChange}
+                    value={value}
+                    error={Boolean(errors.name?.message)}
+                    helperText={localizationValidationError(
+                      errors.name?.message
+                    )}
+                  />
+                )}
+              />
+              <Controller
+                control={control}
+                name='email'
+                rules={{
+                  required: 'Email harus diisi',
+                  pattern: {
+                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                    message: 'Masukan email yang valid',
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    label='email'
+                    placeholder='Masukan email anda'
+                    name='email'
+                    onChange={(e) => {
+                      e.target.value = e.target.value.trim();
+                      onChange(e);
+                    }}
+                    value={value}
+                    error={Boolean(errors.email?.message)}
+                    helperText={localizationValidationError(
+                      errors.email?.message
+                    )}
+                  />
+                )}
+              />
+              <Controller
+                name='password'
+                control={control}
+                rules={{
+                  required: 'Password harus diisi',
+                  minLength: {
+                    value: 6,
+                    message: 'Password minimal 8 karakter',
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    label='password'
+                    placeholder='Masukan password anda'
+                    name='password'
+                    type='password'
+                    value={value}
+                    onChange={(e) => {
+                      e.target.value = e.target.value.trim();
+                      onChange(e);
+                      if (watch('passwordConfirm') !== '') {
+                        setValue('passwordConfirm', watch('passwordConfirm'), {
+                          shouldValidate: true,
+                          shouldTouch: false,
+                        });
+                      }
+                    }}
+                    error={Boolean(errors.password?.message)}
+                    helperText={localizationValidationError(
+                      errors.password?.message
+                    )}
+                  />
+                )}
+              />
+              <Controller
+                name='passwordConfirm'
+                control={control}
+                rules={{
+                  required: 'Konfirmasi password harus diisi',
+                  validate: {
+                    notMatch: (value) =>
+                      value === watch('password') || 'Password tidak sama',
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    label='konfirmasi password'
+                    placeholder={'Masukan ulang password anda'}
+                    name='passwordConfirmation'
+                    type='password'
+                    value={value}
+                    onChange={(e) => {
+                      e.target.value = e.target.value.trim();
+                      onChange(e);
+                    }}
+                    error={Boolean(errors.passwordConfirm?.message)}
+                    helperText={localizationValidationError(
+                      errors.passwordConfirm?.message
+                    )}
+                  />
+                )}
+              />
+              <Button
+                disabled={!isDirty || !isValid}
+                type='submit'
+                startIcon={
+                  signupMutation.isLoading && <CircularProgress size={20} />
+                }
+              >
+                {signupMutation.isLoading ? 'Loading' : 'Daftar'}
+              </Button>
+            </Box>
+            <Typography
+              variant='body2'
+              sx={{
+                fontSize: '14px',
+                textAlign: 'center',
+                '& a': {
+                  textDecoration: 'none',
+                  color: 'indigo',
+                },
+              }}
+            >
+              Sudah memiliki akun? <Link to='/auth/login'>Login</Link>
+            </Typography>
+          </Box>
+        </Card>
+      </Container>
     </>
   );
 };

@@ -14,6 +14,7 @@ import {
   Button,
   Card,
   CircularProgress,
+  Container,
   TextField,
   Typography,
 } from '@mui/material';
@@ -103,148 +104,150 @@ const LoginPage = () => {
 
   return (
     <>
-      <Card
-        sx={{
-          display: 'flex',
-          gap: '40px',
-          '@media (min-width: 768px)': {
-            padding: '72px 24px',
-            alignItems: 'center',
-          },
-        }}
-      >
-        <Box
-          component='aside'
+      <Container>
+        <Card
           sx={{
-            display: 'none',
+            display: 'flex',
+            gap: '40px',
             '@media (min-width: 768px)': {
-              display: 'block',
-              flexBasis: '50%',
-              height: 'fit-content',
-            },
-          }}
-        >
-          <img src='/images/login-illustration.svg' alt='' width={500} />
-        </Box>
-        <Box
-          component='aside'
-          sx={{
-            flexBasis: '100%',
-            '@media (min-width: 768px)': {
-              flexBasis: '50%',
+              padding: '72px 24px',
+              alignItems: 'center',
             },
           }}
         >
           <Box
-            component='article'
+            component='aside'
             sx={{
-              marginBottom: '20px',
+              display: 'none',
+              '@media (min-width: 768px)': {
+                display: 'block',
+                flexBasis: '50%',
+                height: 'fit-content',
+              },
             }}
           >
-            <Typography
-              variant='h1'
-              color={'dark' ? 'gray.300' : 'gray.700'}
+            <img src='/images/login-illustration.svg' alt='' width={500} />
+          </Box>
+          <Box
+            component='aside'
+            sx={{
+              flexBasis: '100%',
+              '@media (min-width: 768px)': {
+                flexBasis: '50%',
+              },
+            }}
+          >
+            <Box
+              component='article'
               sx={{
-                fontSize: '24px',
-                marginTop: 0,
-                marginBottom: '4px',
+                marginBottom: '20px',
               }}
             >
-              Hai, Selamat Datang
-            </Typography>
+              <Typography
+                variant='h1'
+                color={'dark' ? 'gray.300' : 'gray.700'}
+                sx={{
+                  fontSize: '24px',
+                  marginTop: 0,
+                  marginBottom: '4px',
+                }}
+              >
+                Hai, Selamat Datang
+              </Typography>
+              <Typography
+                component='p'
+                color={'dark' ? 'gray.5' : 'gray.6'}
+                sx={{
+                  fontSize: '16px',
+                  margin: 0,
+                }}
+              >
+                Senang bertemu denganmu lagi. Ayo login untuk melanjutkan
+              </Typography>
+            </Box>
+            <Box
+              component='form'
+              onSubmit={handleSubmit(onSubmit)}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              }}
+            >
+              <Controller
+                control={control}
+                name='email'
+                rules={{
+                  required: 'Email tidak boleh kosong',
+                  pattern: {
+                    value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                    message: 'Masukan email yang valid',
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    label='Email'
+                    placeholder='Masukkan email anda'
+                    name='email'
+                    onChange={(e) => {
+                      e.target.value = e.target.value.trim();
+                      onChange(e);
+                    }}
+                    value={value}
+                    error={Boolean(errors.email?.message)}
+                    helperText={errors.email?.message}
+                  />
+                )}
+              />
+              <Controller
+                name='password'
+                control={control}
+                rules={{
+                  required: 'Password tidak boleh kosong',
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <TextField
+                    label='Password'
+                    placeholder='Masukkan password anda'
+                    name='password'
+                    type='password'
+                    value={value}
+                    onChange={(e) => {
+                      e.target.value = e.target.value.trim();
+                      onChange(e);
+                    }}
+                    error={Boolean(errors.password?.message)}
+                    helperText={errors.password?.message}
+                  />
+                )}
+              />
+              <Button
+                disabled={!isDirty || !isValid}
+                type='submit'
+                variant='contained'
+                startIcon={
+                  loginMutation.isLoading && <CircularProgress size={20} />
+                }
+              >
+                {loginMutation.isLoading ? 'Loading' : 'Masuk'}
+              </Button>
+            </Box>
             <Typography
               component='p'
-              color={'dark' ? 'gray.5' : 'gray.6'}
+              variant='body1'
               sx={{
-                fontSize: '16px',
-                margin: 0,
+                fontSize: '14px',
+                textAlign: 'center',
               }}
             >
-              Senang bertemu denganmu lagi. Ayo login untuk melanjutkan
+              Belum memiliki akun?{' '}
+              <Link to='/auth/signup' color='primary'>
+                Daftar sekarang
+              </Link>
             </Typography>
           </Box>
-          <Box
-            component='form'
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
-            }}
-          >
-            <Controller
-              control={control}
-              name='email'
-              rules={{
-                required: 'Email tidak boleh kosong',
-                pattern: {
-                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                  message: 'Masukan email yang valid',
-                },
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  label='Email'
-                  placeholder='Masukkan email anda'
-                  name='email'
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    onChange(e);
-                  }}
-                  value={value}
-                  error={Boolean(errors.email?.message)}
-                  helperText={errors.email?.message}
-                />
-              )}
-            />
-            <Controller
-              name='password'
-              control={control}
-              rules={{
-                required: 'Password tidak boleh kosong',
-              }}
-              render={({ field: { onChange, value } }) => (
-                <TextField
-                  label='Password'
-                  placeholder='Masukkan password anda'
-                  name='password'
-                  type='password'
-                  value={value}
-                  onChange={(e) => {
-                    e.target.value = e.target.value.trim();
-                    onChange(e);
-                  }}
-                  error={Boolean(errors.password?.message)}
-                  helperText={errors.password?.message}
-                />
-              )}
-            />
-            <Button
-              disabled={!isDirty || !isValid}
-              type='submit'
-              variant='contained'
-              startIcon={
-                loginMutation.isLoading && <CircularProgress size={20} />
-              }
-            >
-              {loginMutation.isLoading ? 'Loading' : 'Masuk'}
-            </Button>
-          </Box>
-          <Typography
-            component='p'
-            variant='body1'
-            sx={{
-              fontSize: '14px',
-              textAlign: 'center',
-            }}
-          >
-            Belum memiliki akun?{' '}
-            <Link to='/auth/signup' color='primary'>
-              Daftar sekarang
-            </Link>
-          </Typography>
-        </Box>
-      </Card>
+        </Card>
+      </Container>
     </>
   );
 };

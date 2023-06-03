@@ -18,8 +18,8 @@ const AuthLayout: React.FC = () => {
   return (
     <Box
       sx={{
-        minHeight: '100%',
-        width: '100%',
+        // minHeight: '100%',
+        // width: '100%',
         padding: '20px',
         '@media (min-width: 640px)': {
           padding: '28px',
@@ -29,7 +29,7 @@ const AuthLayout: React.FC = () => {
         },
       }}
     >
-      <Container>
+      <Container fixed>
         <Header isAuthenticated={false} />
         <main>
           <Outlet />

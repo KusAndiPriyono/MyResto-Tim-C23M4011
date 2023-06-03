@@ -4,6 +4,8 @@ import SignupPage from 'pages/signup';
 import PageNotFound from 'pages/404';
 import MainLayout from 'components/templates/MainLayout';
 import AuthLayout from 'components/templates/AuthLayout';
+import HomePage from 'pages/homepage';
+import AccountPage from 'pages/accountPage';
 
 const Routes = () => {
   return useRoutes([
@@ -13,7 +15,7 @@ const Routes = () => {
       children: [
         {
           path: '/',
-          element: 'HomePage',
+          element: <HomePage />,
         },
         {
           path: 'menu/:id',
@@ -24,8 +26,8 @@ const Routes = () => {
           element: 'BookingPage',
         },
         {
-          path: 'contact',
-          element: 'ContactPage',
+          path: 'Account',
+          element: <AccountPage />,
         },
         {
           path: '*',

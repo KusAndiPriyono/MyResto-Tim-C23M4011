@@ -11,8 +11,8 @@ const MainLayout: React.FC = () => {
   return (
     <Box
       sx={{
-        minHeight: '100%',
-        width: '100%',
+        // minHeight: '100%',
+        // width: '100%',
         padding: '20px',
         '@media (min-width: 640px)': {
           padding: '28px',
@@ -23,13 +23,17 @@ const MainLayout: React.FC = () => {
       }}
     >
       <Container
-        sx={{
-          position: 'relative',
-        }}
+      // sx={{
+      //   position: 'relative',
+      // }}
       >
         {isSuccess && (
           <>
-            <Header isAuthenticated={true} name={data.data.name} />
+            <Header
+              isAuthenticated={true}
+              photo={data.data.photo}
+              name={data.data.name}
+            />
             <main>
               <Outlet />
             </main>
