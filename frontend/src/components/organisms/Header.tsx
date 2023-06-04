@@ -21,9 +21,10 @@ interface Props {
   isAuthenticated: boolean;
   name?: string;
   photo?: string;
+  role?: string;
 }
 
-const Header: React.FC<Props> = ({ isAuthenticated, name, photo }) => {
+const Header: React.FC<Props> = ({ isAuthenticated, photo }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -190,5 +191,6 @@ Header.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   name: PropTypes.string,
   photo: PropTypes.string,
+  role: PropTypes.string,
 };
 export default Header;

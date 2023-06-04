@@ -1,4 +1,5 @@
 import axios from 'api/axios';
+import { UpdateMePayload } from 'types/payload';
 
 class UserApi {
   static async getAuthenticatedUser() {
@@ -6,7 +7,7 @@ class UserApi {
     return response.data.data;
   }
 
-  static async updateAuthenticatedUser(data: User) {
+  static async getUpdateAuthenticatedUser(data: UpdateMePayload) {
     const response = await axios.patch<ApiResponse<User>>(
       '/api/v1/users/updateMe',
       data

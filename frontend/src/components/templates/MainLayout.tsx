@@ -33,6 +33,7 @@ const MainLayout: React.FC = () => {
               isAuthenticated={true}
               photo={data.data.photo}
               name={data.data.name}
+              role={data.data.role}
             />
             <main>
               <Outlet />

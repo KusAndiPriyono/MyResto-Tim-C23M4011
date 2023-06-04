@@ -4,6 +4,14 @@ declare interface ApiResponse<Data = undefined> {
   data: Data;
 }
 
+declare interface Restaurant {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  imageCover: string;
+}
+
 declare interface User {
   data: {
     id: string;
@@ -15,3 +23,23 @@ declare interface User {
 }
 
 declare type token = string;
+
+// duration: number;
+// maxCapacity: number;
+// difficulty: string;
+// ratingsAverage: number;
+// ratingsQuantity: number;
+// images: string;
+// startLocation: {
+//   type: string;
+//   coordinates: number[];
+//   address: string;
+//   description: string;
+// };
+// locations: {
+//   type: string;
+//   coordinates: number[];
+//   address: string;
+//   description: string;
+// };
+// guides: string;
