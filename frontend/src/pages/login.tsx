@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { LoginPayload } from 'types/payload';
 import { useMutation } from '@tanstack/react-query';
@@ -17,6 +17,7 @@ import {
   Container,
   TextField,
   Typography,
+  Link
 } from '@mui/material';
 
 const LoginPage = () => {
@@ -104,32 +105,30 @@ const LoginPage = () => {
 
   return (
     <>
-      <Container>
+      <Container sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                
+            }}>
         <Card
           sx={{
             display: 'flex',
-            gap: '40px',
+            padding:3,
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '10px',
+            backgroundColor:'#3A5A40',
+            borderRadius:3,
             '@media (min-width: 768px)': {
               padding: '72px 24px',
               alignItems: 'center',
             },
           }}
         >
+
           <Box
-            component='aside'
-            sx={{
-              display: 'none',
-              '@media (min-width: 768px)': {
-                display: 'block',
-                flexBasis: '50%',
-                height: 'fit-content',
-              },
-            }}
-          >
-            <img src='/images/login-illustration.svg' alt='' width={500} />
-          </Box>
-          <Box
-            component='aside'
+            // component='aside'
             sx={{
               flexBasis: '100%',
               '@media (min-width: 768px)': {
@@ -138,32 +137,22 @@ const LoginPage = () => {
             }}
           >
             <Box
-              component='article'
+              // component='article'
               sx={{
+                marginTop: -5,
                 marginBottom: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
               }}
             >
-              <Typography
-                variant='h1'
-                color={'dark' ? 'gray.300' : 'gray.700'}
-                sx={{
-                  fontSize: '24px',
-                  marginTop: 0,
-                  marginBottom: '4px',
-                }}
-              >
-                Hai, Selamat Datang
-              </Typography>
-              <Typography
-                component='p'
-                color={'dark' ? 'gray.5' : 'gray.6'}
-                sx={{
-                  fontSize: '16px',
-                  margin: 0,
-                }}
-              >
-                Senang bertemu denganmu lagi. Ayo login untuk melanjutkan
-              </Typography>
+              <Typography component="h1" variant="h5" sx={{
+                fontSize: '55px',
+                fontWeight:'bold',
+                color:'#F9F5EB'
+              }}>
+                Sign In
+            </Typography>
             </Box>
             <Box
               component='form'
@@ -172,6 +161,9 @@ const LoginPage = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '8px',
+                width: 300,
+                margin: 3,
+                alignItems: 'center',
               }}
             >
               <Controller
@@ -186,8 +178,8 @@ const LoginPage = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
-                    label='Email'
-                    placeholder='Masukkan email anda'
+                    // label='Email'
+                    placeholder='Email'
                     name='email'
                     onChange={(e) => {
                       e.target.value = e.target.value.trim();
@@ -196,6 +188,15 @@ const LoginPage = () => {
                     value={value}
                     error={Boolean(errors.email?.message)}
                     helperText={errors.email?.message}
+                    sx={{
+                      input: {
+                        color: "#000000",
+                        backgroundColor: "#FFFFFF",
+                        width: 300,
+                        borderRadius:2,
+                        "& fieldset": { border: 'none' },
+                      }
+                    }}
                   />
                 )}
               />
@@ -207,8 +208,8 @@ const LoginPage = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
-                    label='Password'
-                    placeholder='Masukkan password anda'
+                    // label='Password'
+                    placeholder='Password'
                     name='password'
                     type='password'
                     value={value}
@@ -218,33 +219,75 @@ const LoginPage = () => {
                     }}
                     error={Boolean(errors.password?.message)}
                     helperText={errors.password?.message}
+                    sx={{
+                      input: {
+                        color: "#000000",
+                        backgroundColor: "#FFFFFF",
+                        width: 300,
+                        borderRadius:2,
+                      }
+                    }}
                   />
                 )}
               />
+               <Box  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                    width: 300,
+                }}>
+                <Typography
+                    component='p'
+                    variant='body1'
+                    sx={{
+                        fontSize: '14px',
+                        textAlign: 'right',
+                        color: '#F9F5EB',
+                    }}
+                >
+                    <Link href="#"  color="#E0C097">
+                            Forgot password?
+                    </Link>
+                </Typography>
+
+               </Box>
               <Button
                 disabled={!isDirty || !isValid}
                 type='submit'
                 variant='contained'
+                size="large"
                 startIcon={
                   loginMutation.isLoading && <CircularProgress size={20} />
                 }
+                sx={{
+                  color: "#000000",
+                  backgroundColor: "#FFFFFF",
+                  marginTop: 2,
+                  width: 208,
+                  height: 60,
+                  borderRadius:2,
+                  '&:hover': {
+                      backgroundColor: '#c2c0c0',
+                  },
+            }}
               >
                 {loginMutation.isLoading ? 'Loading' : 'Masuk'}
               </Button>
             </Box>
             <Typography
-              component='p'
-              variant='body1'
-              sx={{
-                fontSize: '14px',
-                textAlign: 'center',
-              }}
+                component='p'
+                variant='body1'
+                sx={{
+                    fontSize: '14px',
+                    textAlign: 'center',
+                    color: '#F9F5EB',
+                }}
             >
-              Belum memiliki akun?{' '}
-              <Link to='/auth/signup' color='primary'>
-                Daftar sekarang
-              </Link>
-            </Typography>
+                Not regsiter yet?{' '}
+                <Link href='/auth/signup' color="#E0C097">
+                    Make one
+                </Link>
+          </Typography>
           </Box>
         </Card>
       </Container>
