@@ -9,8 +9,9 @@ import {
   Card,
   CircularProgress,
   Container,
+  Link,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { SignupPayload } from 'types/payload';
 import { useMutation } from '@tanstack/react-query';
@@ -114,11 +115,21 @@ const SignupPage = () => {
 
   return (
     <>
-      <Container>
+      <Container sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                
+            }}>
         <Card
           sx={{
             display: 'flex',
-            gap: '40px',
+            padding:3,
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '10px',
+            backgroundColor:'#3A5A40',
+            borderRadius:3,
             '@media (min-width: 768px)': {
               padding: '72px 24px',
               alignItems: 'center',
@@ -126,24 +137,7 @@ const SignupPage = () => {
           }}
         >
           <Box
-            component='aside'
-            sx={{
-              display: 'none',
-              '@media (min-width: 768px)': {
-                display: 'block',
-                flexBasis: '50%',
-                height: 'fit-content',
-              },
-            }}
-          >
-            <img
-              src='/images/register-illustration.svg'
-              alt='Register Illustration'
-              width={500}
-            />
-          </Box>
-          <Box
-            component='aside'
+            // component='aside'
             sx={{
               flexBasis: '100%',
               '@media (min-width: 768px)': {
@@ -152,32 +146,22 @@ const SignupPage = () => {
             }}
           >
             <Box
-              component='article'
+              // component='article'
               sx={{
+                marginTop: -2,
                 marginBottom: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
               }}
             >
-              <Typography
-                variant='h1'
-                color='text.primary'
-                sx={{
-                  fontSize: '24px',
-                  marginTop: 0,
-                  marginBottom: '4px',
-                }}
-              >
-                Sign up
-              </Typography>
-              <Typography
-                variant='body1'
-                color='text.secondary'
-                sx={{
-                  fontSize: '16px',
-                  margin: 0,
-                }}
-              >
-                Buat akun baru untuk memulai
-              </Typography>
+              <Typography component="h1" variant="h5" sx={{
+                fontSize: '55px',
+                fontWeight:'bold',
+                color:'#F9F5EB'
+              }}>
+                Sign Up
+            </Typography>
             </Box>
             <Box
               component='form'
@@ -186,6 +170,9 @@ const SignupPage = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '8px',
+                width: 300,
+                margin: 3,
+                alignItems: 'center',
               }}
             >
               <Controller
@@ -196,8 +183,8 @@ const SignupPage = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
-                    label='nama'
-                    placeholder='Masukan nama anda'
+                    // label='nama'
+                    placeholder='Name'
                     name='name'
                     onChange={onChange}
                     value={value}
@@ -205,6 +192,15 @@ const SignupPage = () => {
                     helperText={localizationValidationError(
                       errors.name?.message
                     )}
+                    sx={{
+                      input: {
+                        color: "#000000",
+                        backgroundColor: "#FFFFFF",
+                        width: 300,
+                        borderRadius:2,
+                        "& fieldset": { border: 'none' },
+                      }
+                    }}
                   />
                 )}
               />
@@ -220,8 +216,8 @@ const SignupPage = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
-                    label='email'
-                    placeholder='Masukan email anda'
+                    // label='email'
+                    placeholder='Email'
                     name='email'
                     onChange={(e) => {
                       e.target.value = e.target.value.trim();
@@ -232,6 +228,15 @@ const SignupPage = () => {
                     helperText={localizationValidationError(
                       errors.email?.message
                     )}
+                    sx={{
+                      input: {
+                        color: "#000000",
+                        backgroundColor: "#FFFFFF",
+                        width: 300,
+                        borderRadius:2,
+                        "& fieldset": { border: 'none' },
+                      }
+                    }}
                   />
                 )}
               />
@@ -247,8 +252,8 @@ const SignupPage = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
-                    label='password'
-                    placeholder='Masukan password anda'
+                    // label='password'
+                    placeholder='Password'
                     name='password'
                     type='password'
                     value={value}
@@ -266,6 +271,14 @@ const SignupPage = () => {
                     helperText={localizationValidationError(
                       errors.password?.message
                     )}
+                    sx={{
+                      input: {
+                        color: "#000000",
+                        backgroundColor: "#FFFFFF",
+                        width: 300,
+                        borderRadius:2,
+                      }
+                    }}
                   />
                 )}
               />
@@ -281,8 +294,8 @@ const SignupPage = () => {
                 }}
                 render={({ field: { onChange, value } }) => (
                   <TextField
-                    label='konfirmasi password'
-                    placeholder={'Masukan ulang password anda'}
+                    // label='konfirmasi password'
+                    placeholder={'Confirm Password'}
                     name='passwordConfirmation'
                     type='password'
                     value={value}
@@ -294,32 +307,53 @@ const SignupPage = () => {
                     helperText={localizationValidationError(
                       errors.passwordConfirm?.message
                     )}
+                    sx={{
+                      input: {
+                        color: "#000000",
+                        backgroundColor: "#FFFFFF",
+                        width: 300,
+                        borderRadius:2,
+                      }
+                    }}
                   />
                 )}
               />
               <Button
                 disabled={!isDirty || !isValid}
                 type='submit'
+                size='large'
                 startIcon={
                   signupMutation.isLoading && <CircularProgress size={20} />
                 }
+                sx={{
+                  color: "#000000",
+                  backgroundColor: "#FFFFFF",
+                  marginTop: 2,
+                  width: 208,
+                  height: 60,
+                  borderRadius:2,
+                  '&:hover': {
+                      backgroundColor: '#c2c0c0',
+                  },
+            }}
               >
-                {signupMutation.isLoading ? 'Loading' : 'Daftar'}
+                {signupMutation.isLoading ? 'Loading' : 'Register'}
               </Button>
             </Box>
             <Typography
-              variant='body2'
-              sx={{
-                fontSize: '14px',
-                textAlign: 'center',
-                '& a': {
-                  textDecoration: 'none',
-                  color: 'indigo',
-                },
-              }}
+                component='p'
+                variant='body1'
+                sx={{
+                    fontSize: '14px',
+                    textAlign: 'center',
+                    color: '#F9F5EB',
+                }}
             >
-              Sudah memiliki akun? <Link to='/auth/login'>Login</Link>
-            </Typography>
+                Already have one?{' '}
+                <Link href='/auth/login' color="#E0C097">
+                    Login
+                </Link>
+          </Typography>
           </Box>
         </Card>
       </Container>

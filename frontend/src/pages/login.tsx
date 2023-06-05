@@ -139,7 +139,7 @@ const LoginPage = () => {
             <Box
               // component='article'
               sx={{
-                marginTop: -5,
+                marginTop: -2,
                 marginBottom: '20px',
                 display: 'flex',
                 flexDirection: 'column',
@@ -194,7 +194,6 @@ const LoginPage = () => {
                         backgroundColor: "#FFFFFF",
                         width: 300,
                         borderRadius:2,
-                        "& fieldset": { border: 'none' },
                       }
                     }}
                   />
@@ -254,7 +253,7 @@ const LoginPage = () => {
               <Button
                 disabled={!isDirty || !isValid}
                 type='submit'
-                variant='contained'
+                // variant='contained'
                 size="large"
                 startIcon={
                   loginMutation.isLoading && <CircularProgress size={20} />
