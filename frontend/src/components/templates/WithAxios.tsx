@@ -16,7 +16,7 @@ const WithAxios: React.FC<Props> = ({ children }) => {
     const token = Token.getToken();
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     axios.interceptors.response.use(
-      (res) => res,
+      (res: any) => res,
       (error: AxiosError) => {
         if (error.response?.status === 401) {
           navigate('/auth/login', { replace: true });

@@ -6,12 +6,20 @@ class RestaurantApi {
     const response = await axios.get<ApiResponse<Restaurant>>(
       '/api/v1/restaurants'
     );
-    return response.data.data;
+    // console.log(response.data.data.data);
+    return response.data.data.data;
   }
 
   static async getRestaurantById({ id }: IdOnlyPayload) {
     const response = await axios.get<ApiResponse<Restaurant>>(
       `/api/v1/restaurants/${id}`
+    );
+    return response.data.data;
+  }
+
+  static async bookingRestaurant({ id }: IdOnlyPayload) {
+    const response = await axios.post<ApiResponse<Restaurant>>(
+      `/api/v1/bookings/checkout-session/${id}`
     );
     return response.data.data;
   }
