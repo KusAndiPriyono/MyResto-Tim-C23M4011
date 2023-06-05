@@ -1,8 +1,64 @@
+const multer = require('multer');
+const sharp = require('sharp');
 const Restaurant = require('./../models/restaurantModel');
-const APIFeatures = require('./../utils/apiFeatures');
 const catchAsync = require('./../utils/catchAsync');
-const AppError = require('./../utils/appError');
 const factory = require('./handlerFactory');
+const AppError = require('./../utils/appError');
+// const APIFeatures = require('./../utils/apiFeatures');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  // console.log(file);
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only image!', 400), false);
+  }
+};
+
+const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
+
+exports.uploadRestaurantImages = upload.fields([
+  { name: 'imageCover', maxCount: 1 },
+  { name: 'images', maxCount: 3 },
+]);
+
+// upload.single('image'); req.file
+// upload.array('images', 5); req.files
+
+exports.resizeRestaurantImages = catchAsync(async (req, res, next) => {
+  if (!req.files.imageCover || !req.files.images) return next();
+
+  // 1) Cover image
+  req.body.imageCover = `restaurant-${req.params.id}-${Date.now()}-cover.jpeg`;
+  await sharp(req.files.imageCover[0].buffer)
+    .resize(2000, 1333)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/restaurants/${req.body.imageCover}`);
+
+  // 2) Images
+  req.body.images = [];
+
+  await Promise.all(
+    req.files.images.map(async (file, i) => {
+      const filename = `restaurant-${req.params.id}-${Date.now()}-${
+        i + 1
+      }.jpeg`;
+
+      await sharp(file.buffer)
+        .resize(2000, 1333)
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toFile(`public/img/restaurants/${filename}`);
+
+      req.body.images.push(filename);
+    })
+  );
+
+  next();
+});
 
 exports.aliasTopRestaurants = (req, res, next) => {
   req.query.limit = '5';
@@ -11,90 +67,11 @@ exports.aliasTopRestaurants = (req, res, next) => {
   next();
 };
 
-exports.getAllRestaurants = catchAsync(async (req, res, next) => {
-  // EXECUTE QUERY
-  const features = new APIFeatures(Restaurant.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const restaurants = await features.query;
-
-  // SEND RESPONSE
-  res.status(200).json({
-    status: 'success',
-    results: restaurants.length,
-    data: {
-      restaurants,
-    },
-  });
-});
-
-exports.getRestaurant = catchAsync(async (req, res, next) => {
-  const restaurant = await Restaurant.findById(req.params.id).populate(
-    'reviews'
-  );
-  // Restaurant.findOne({_id: req.params.id})
-
-  if (!restaurant) {
-    return next(new AppError('No restaurant found with that ID', 404));
-  }
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      restaurant,
-    },
-  });
-});
-
-exports.createRestaurant = catchAsync(async (req, res, next) => {
-  const newRestaurant = await Restaurant.create(req.body);
-
-  res.status(201).json({
-    status: 'success',
-    data: {
-      restaurant: newRestaurant,
-    },
-  });
-});
-
-exports.updateRestaurant = catchAsync(async (req, res, next) => {
-  const restaurant = await Restaurant.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
-
-  if (!restaurant) {
-    return next(new AppError('No restaurant found with that ID', 404));
-  }
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      restaurant,
-    },
-  });
-});
-
+exports.getAllRestaurants = factory.getAll(Restaurant);
+exports.getRestaurant = factory.getOne(Restaurant, { path: 'reviews' });
+exports.createRestaurant = factory.createOne(Restaurant);
+exports.updateRestaurant = factory.updateOne(Restaurant);
 exports.deleteRestaurant = factory.deleteOne(Restaurant);
-
-// exports.deleteRestaurant = catchAsync(async (req, res, next) => {
-//   const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
-
-//   if (!restaurant) {
-//     return next(new AppError('No restaurant found with that ID', 404));
-//   }
-
-//   res.status(204).json({
-//     status: 'success',
-//     data: null,
-//   });
-// });
 
 exports.getRestaurantStats = catchAsync(async (req, res, next) => {
   const stats = await Restaurant.aggregate([
@@ -178,6 +155,76 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
     status: 'success',
     data: {
       plan,
+    },
+  });
+});
+
+exports.getRestaurantsWithin = catchAsync(async (req, res, next) => {
+  const { distance, latlng, unit } = req.params;
+  const [lat, lng] = latlng.split(',');
+
+  const radius = unit === 'mi' ? distance / 3963.2 : distance / 6378.1;
+
+  if (!lat || !lng) {
+    next(
+      new AppError(
+        'Please provide latitude and longitude in the format lat,lng.',
+        400
+      )
+    );
+  }
+
+  const restaurants = await Restaurant.find({
+    startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
+  });
+
+  res.status(200).json({
+    status: 'success',
+    results: restaurants.length,
+    data: {
+      data: restaurants,
+    },
+  });
+});
+
+exports.getDistances = catchAsync(async (req, res, next) => {
+  const { latlng, unit } = req.params;
+  const [lat, lng] = latlng.split(',');
+
+  const multiplier = unit === 'mi' ? 0.000621371 : 0.001;
+
+  if (!lat || !lng) {
+    next(
+      new AppError(
+        'Please provide latitude and longitude in the format lat,lng.',
+        400
+      )
+    );
+  }
+
+  const distances = await Restaurant.aggregate([
+    {
+      $geoNear: {
+        near: {
+          type: 'Point',
+          coordinates: [lng * 1, lat * 1],
+        },
+        distanceField: 'distance',
+        distanceMultiplier: multiplier,
+      },
+    },
+    {
+      $project: {
+        distance: 1,
+        name: 1,
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data: distances,
     },
   });
 });
