@@ -6,6 +6,8 @@ import MainLayout from 'components/templates/MainLayout';
 import AuthLayout from 'components/templates/AuthLayout';
 import HomePage from 'pages/homepage';
 import AccountPage from 'pages/accountPage';
+import DetailPage from 'pages/detailPage';
+import BookingPage from 'pages/bookingPage';
 
 const Routes = () => {
   return useRoutes([
@@ -18,12 +20,12 @@ const Routes = () => {
           element: <HomePage />,
         },
         {
-          path: 'menu/:id',
-          element: 'MenuDetailPage',
+          path: '/detail:id',
+          element: <DetailPage />,
         },
         {
           path: 'booking',
-          element: 'BookingPage',
+          element: <BookingPage/>
         },
         {
           path: 'Account',

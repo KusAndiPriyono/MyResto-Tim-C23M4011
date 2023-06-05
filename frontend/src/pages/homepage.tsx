@@ -90,7 +90,9 @@ const HomePage = () => {
           </CardContent>
 
           <CardActions>
-            <Button size='small'>Detail</Button>
+            <Button size='small' onClick={() => {
+              navigate('/detail:id', {replace: true})
+            }} sx={{ p: 0 }}>Detail</Button>
           </CardActions>
         </Card>
         <Card
