@@ -71,13 +71,13 @@ function RestaurantList(props: Props) {
           }}>
         Find the restaurant you like and then make a reservation.
        </Typography>
-    <Grid container wrap='wrap' spacing={2}>
+    <Grid container wrap='wrap' spacing={2} justifyContent="center">
       {(loading ? Array.from(new Array(3)) : data).map((data, index) => (
         <Card key={index} 
         sx={{ 
-          width: 220, 
-          marginRight: 2, 
-          marginLeft: 5, 
+          width: 230, 
+          marginRight: 3, 
+          marginLeft: 3, 
           my: 8,
           backgroundColor:'#FFFFFF',
           borderRadius:'30px 30px 5px 5px ',
