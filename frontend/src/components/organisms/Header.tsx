@@ -24,7 +24,7 @@ interface Props {
   role?: string;
 }
 
-const Header: React.FC<Props> = ({ isAuthenticated, photo }) => {
+const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -44,6 +44,8 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo }) => {
   };
 
   const navigate = useNavigate();
+
+  console.log(role);
 
   return (
     <Container>
@@ -140,6 +142,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo }) => {
                   />
                 </IconButton>
               </Tooltip>
+
               <Menu
                 sx={{ mt: '45px' }}
                 id='menu-appbar'
@@ -168,6 +171,18 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo }) => {
                 >
                   Account
                 </MenuItem>
+
+                {role === 'admin' && (
+                  <MenuItem
+                    onClick={() => {
+                      // perform logout logic
+                      navigate('/dashboard', { replace: true });
+                    }}
+                  >
+                    Dashboard
+                  </MenuItem>
+                )}
+
                 <MenuItem
                   onClick={() => {
                     // perform logout logic
