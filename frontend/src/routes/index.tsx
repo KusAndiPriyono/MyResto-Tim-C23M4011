@@ -21,7 +21,7 @@ const Routes = () => {
           element: <HomePage />,
         },
         {
-          path: '/detail:id',
+          path: `/detail/:id`,
           element: <DetailPage />,
         },
         {
