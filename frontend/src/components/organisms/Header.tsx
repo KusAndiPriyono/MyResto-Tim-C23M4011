@@ -45,8 +45,6 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
 
   const navigate = useNavigate();
 
-  console.log(role);
-
   return (
     <Container>
       <Box

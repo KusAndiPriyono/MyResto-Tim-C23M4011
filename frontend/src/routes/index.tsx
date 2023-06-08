@@ -21,7 +21,7 @@ const Routes = () => {
           element: <HomePage />,
         },
         {
-          path: '/restaurants/:id',
+          path: `/detail/:id`,
           element: <DetailPage />,
         },
         {

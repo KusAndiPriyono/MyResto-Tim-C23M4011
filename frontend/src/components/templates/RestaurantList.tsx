@@ -168,7 +168,7 @@ function RestaurantList(props: Props) {
                     variant='contained'
                     size='large'
                     component={Link}
-                    to={`/restaurants/${data._id}`}
+                    to={`/detail/${data._id}`}
                     className='detail-button'
                   >
                     Detail
