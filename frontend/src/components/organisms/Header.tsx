@@ -55,6 +55,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
           position: 'unset',
           top: '20px',
           left: '0px',
+          background: 'white',
           padding: '16px',
           marginBottom: '16px',
           borderRadius: '8px',
