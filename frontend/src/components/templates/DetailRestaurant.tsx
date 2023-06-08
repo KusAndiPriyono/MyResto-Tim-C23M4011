@@ -17,6 +17,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
+import { padding } from '@mui/system';
 
 const labels = {
   0.5: 'Useless',
@@ -31,40 +32,55 @@ const labels = {
   5: 'Excellent+',
 };
 
-export default function DetailPage() {
+const imageData = [
+  { id: 1, image: '/images/404.png', alt: 'Image 1' },
+  { id: 2, image: '/images/404.png', alt: 'Image 2' },
+  { id: 3, image: '/images/404.png', alt: 'Image 3' },
+];
+
+function DetailRestaurant() {
   const navigate = useNavigate();
   const value = 5;
 
   return (
-    <Card sx={{ maxWidth: 1200 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label='recipe'>
-            F
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label='settings'>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        // Location
-        title='Fish pie enak'
-        subheader='wonokromo, Surabaya, Jawa Timur'
-      />
+    <Card
+      sx={{
+        maxWidth: 1200,
+        backgroundColor: 'white',
+        fontFamily: 'Roboto',
+      }}
+    >
       <CardMedia
         component='img'
         height='450'
         image='/images/404.png'
         alt='Paella dish'
       />
-      <CardContent>
-        {/* Rating */}
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: 4,
+          justifyContent: 'space-between',
+          '& .booking-button': {
+            marginLeft: 'auto',
+          },
+          '@media (min-width: 600px)': {
+            flexDirection: 'row',
+            alignItems: 'center',
+          },
+        }}
+      >
+        <CardHeader title='Fish pie enak' />
         <Box
           sx={{
             width: 200,
             display: 'flex',
             alignItems: 'center',
+            mb: 2,
+            '@media (min-width: 600px)': {
+              mb: 0,
+            },
           }}
         >
           <Rating
@@ -81,8 +97,21 @@ export default function DetailPage() {
       </CardContent>
 
       {/* Description */}
-      <CardContent>
-        <Typography paragraph>Description</Typography>
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          alignItems: 'center',
+          justifyContent: { xs: 'flex-start', sm: 'space-between' },
+          padding: 4,
+          '@media screen and (max-width: 850px)': {
+            flexDirection: 'column',
+            '& > *:not(:last-child)': {
+              marginBottom: '20px',
+            },
+          },
+        }}
+      >
         <Typography paragraph>
           Fish pie adalah hidangan klasik yang terdiri dari potongan ikan yang
           dicampur dengan sayuran dan saus krim, lalu ditutupi dengan lapisan
@@ -92,18 +121,34 @@ export default function DetailPage() {
           lezat dari adonan kentang atau puff pastry yang garing. Fish pie
           adalah hidangan yang populer di banyak negara, terutama di Inggris dan
           Skotlandia, dan sering disajikan sebagai hidangan utama dalam acara
-          makan malam keluarga.", "summary": "restaurant ini menyediakan makanan
-          yang lezat dan sehat
+          makan malam keluarga.
         </Typography>
-        <Typography paragraph>
-          Add rice and stir very gently to distribute. Top with artichokes and
-          peppers, and cook without stirring, until most of the liquid is
-          absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved
-          shrimp and mussels, tucking them down into the rice, and cook again
-          without stirring, until mussels have opened and rice is just tender, 5
-          to 7 minutes more. (Discard any mussels that don&apos;t open.)
-        </Typography>
+        <CardMedia
+          component='img'
+          height='349'
+          image='/images/404.png'
+          alt='Paella dish'
+        />
       </CardContent>
+      <CardContent
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '20px',
+          padding: '20px',
+        }}
+      >
+        {imageData.map((item) => (
+          <CardMedia
+            key={item.id}
+            component='img'
+            height='349'
+            image={item.image}
+            alt={item.alt}
+          />
+        ))}
+      </CardContent>
+
       <CardActions
         disableSpacing
         sx={{
@@ -136,7 +181,4 @@ export default function DetailPage() {
   );
 }
 
-  return <CardMedia component='img' image={data.imageCover} />;
-};
-
-export default DetailPage;
+export default DetailRestaurant;
