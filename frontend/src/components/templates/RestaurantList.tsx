@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import * as API from 'api/services';
+
 import {
   Box,
   Container,
@@ -12,15 +15,20 @@ import {
   Rating,
   Button,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
+// import { useQuery } from '@tanstack/react-query';
+// import RestaurantApi from 'api/services/restaurant';
 
 interface Props {
   loading?: boolean;
+  // allRestaurantsLength: number;
+  // booking: boolean;
 }
 
 function RestaurantList(props: Props) {
   const { loading = false } = props;
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(['Restaurants']);
 
   useEffect(() => {
     async function fetchData() {
@@ -31,7 +39,12 @@ function RestaurantList(props: Props) {
         setData([]);
       }
     }
+    
     fetchData();
+
+    return () => {
+      setData([]);
+    }
   }, []);
 
   return (
@@ -96,6 +109,7 @@ function RestaurantList(props: Props) {
             ) : (
               <Skeleton variant='rectangular' width={210} height={118} />
             )}
+
             {data ? (
               <Box>
                 <CardContent sx={{ marginBottom: '0px' }}>
@@ -131,8 +145,15 @@ function RestaurantList(props: Props) {
                 </CardContent>
 
                 <CardContent sx={{ marginBottom: '0px', marginTop: '-10px' }}>
-                  <Typography variant='body2' color='#000000'>
-                    {data.summary}
+                  <Typography
+                    variant='body2'
+                    color='#000000'
+                    sx={{ textAlign: 'justify' }}
+                  >
+                    {data && data.description
+                      ? data.description.slice(0, 100)
+                      : ''}
+                    ...
                   </Typography>
                   <Typography variant='body2' color='text.secondary'>
                     Location : {data.Locations}
@@ -142,7 +163,17 @@ function RestaurantList(props: Props) {
                   </Typography>
                 </CardContent>
 
-                <CardContent sx={{ display: 'flex' }}>
+                <CardContent>
+                  <Button
+                    variant='contained'
+                    size='large'
+                    component={Link}
+                    to={`/detail/${data._id}`}
+                    className='detail-button'
+                  >
+                    Detail
+                  </Button>
+
                   <Typography
                     variant='body2'
                     color='#00aa17'
@@ -151,12 +182,6 @@ function RestaurantList(props: Props) {
                     Rp.{data.price}
                   </Typography>
                 </CardContent>
-                <Button
-                  sx={{ textAlign: 'right' }}
-                  onClick={() => (window.location.href = `/detail/${data.id}`)}
-                >
-                  Detail
-                </Button>
               </Box>
             ) : (
               <Box sx={{ pt: 0.5 }}>
