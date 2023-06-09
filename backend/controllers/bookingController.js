@@ -9,12 +9,14 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const restaurant = await Restaurant.findById(req.params.restaurantId);
 
   // 2) Create checkout session
+  const imageUrl = `${restaurant.imageCover}`;
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `${req.protocol}://${req.get('host')}/?restaurants=${
-      req.params.restaurantId
-    }&user=${req.user.id}&price=${restaurant.price}`,
+    success_url: 'http://localhost:3000/booking',
+    // success_url: `${req.protocol}://${req.get('host')}/?restaurants=${
+    //   req.params.restaurantId
+    // }&user=${req.user.id}&price=${restaurant.price}`,
     cancel_url: `${req.protocol}://${req.get('host')}/restaurant/${
       restaurant.slug
     }`,
@@ -29,7 +31,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
             name: `${restaurant.name} Restaurant`,
             description: restaurant.summary,
             // masih dalam pengembangan
-            images: [`http://127.0.0.1:8000/${restaurant.imageCover}`],
+            images: [imageUrl],
           },
         },
         quantity: 1,

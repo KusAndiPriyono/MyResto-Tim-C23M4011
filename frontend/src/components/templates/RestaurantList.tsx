@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import * as API from 'api/services';
 
@@ -179,7 +178,7 @@ function RestaurantList(props: Props) {
                     color='#00aa17'
                     sx={{ textAlign: 'right' }}
                   >
-                    Rp.{data.price}
+                    Usd.{data.price}
                   </Typography>
                 </CardContent>
               </Box>

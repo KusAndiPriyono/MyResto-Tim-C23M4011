@@ -8,7 +8,11 @@
     },
     "ratingsAverage": 4.7,
     "ratingsQuantity": 37,
-    "images": ["resto-1-1.jpg", "resto-1-2.jpg", "resto-1-3.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+      "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg",
+      "https://www.themealdb.com/images/media/meals/1520084413.jpg"
+    ],
     "startDates": [
       "2023-04-25T09:00:00.000Z",
       "2023-07-20T09:00:00.000Z",
@@ -27,7 +31,7 @@
     "price": 1000,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Saat Anda melangkah masuk ke Palm Court, Anda akan disambut dengan langit-langit dramatis tinggi yang dipenuhi dengan lampu kristal yang sekilas terlihat seperti kupu-kupu. Menambah suasana nyaman dengan kursi beludru hijau dengan sandaran tangan tinggi untuk menemani hingga tidak ingat melihat waktu",
-    "imageCover": "resto-1-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_e670e9a91e85404580cd365aaaa9c7ab.jpeg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2958",
@@ -48,7 +52,11 @@
     },
     "ratingsAverage": 4.8,
     "ratingsQuantity": 23,
-    "images": ["resto-2-1.jpg", "resto-2-2.jpg", "resto-2-3.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg",
+      "https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg",
+      "https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg"
+    ],
     "startDates": [
       "2023-06-19T09:00:00.000Z",
       "2023-07-20T09:00:00.000Z",
@@ -63,7 +71,7 @@
     "price": 1500,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Mempunyai interior yang terinspirasi oleh sejarah perdagangan rempah-rempah antara China dan Batavia, menawarkan 3 ruangan pribadi yang elegan dan khas untuk pertemuan intim dan acara pribadi. Restoran ini bermitra dengan Chef Fei dari restoran berbintang Michelin di Mandarin Oriental, Guangzhou. Hidangan tradisional Kanton yang ditawarkan, bergabung dengan sajian kontemporer klasik yang kreatif.",
-    "imageCover": "resto-2-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_2f52171938054042a4c7004630df75c2.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2957",
@@ -84,7 +92,11 @@
     },
     "ratingsAverage": 4.9,
     "ratingsQuantity": 19,
-    "images": ["resto-3-1.jpg", "resto-3-2.jpg", "resto-1-1.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg",
+      "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+      "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg"
+    ],
     "startDates": [
       "2023-08-19T09:00:00.000Z",
       "2023-09-20T09:00:00.000Z",
@@ -103,7 +115,7 @@
     "price": 1800,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Menikmati cita rasa Indonesia dengan pemandangan kota Jakarta yang indah. Menawarkan hidangan buffet maupun a la carte, tergantung pada pilihan selera Anda untuk menikmatinya. Untuk kenyamanan suasana acara pribadi, mereka mempunyai opsi private dining seperti The Lounge yang dapat menampung 8-50 pengunjung.",
-    "imageCover": "resto-3-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_d16146e350964a64a52f6080f84622d6.jpeg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c296b",
@@ -124,7 +136,11 @@
     },
     "ratingsAverage": 4.7,
     "ratingsQuantity": 28,
-    "images": ["resto-1-2.jpg", "resto-1-3.jpg", "resto-2-1.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg",
+      "https://www.themealdb.com/images/media/meals/1525873040.jpg",
+      "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg"
+    ],
     "startDates": [
       "2023-05-19T09:00:00.000Z",
       "2023-06-20T09:00:00.000Z",
@@ -139,7 +155,7 @@
     "price": 2100,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Ruang Makan serbaguna dan mewah, di mana tempat ini merupakan tujuan untuk para tamu yang ingin mencoba tren terbaru, koki selebriti, dan konsep kuliner lainnya. Seperti acara yang akan datang pada 10-21 November 2021 dari Restoran Terbaik Indonesia di World Culinary Awards 202, Apéritif Restaurant oleh Executive Chef Nic Vanderbeeken dan Head Chef Maxie Millian, yang juga merupakan Restaurant Manager & Sommelier I Made Yudiana.",
-    "imageCover": "resto-4-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_d3a10e435a534c47afe2e41562834bd6.jpeg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2973",
@@ -160,7 +176,11 @@
     },
     "ratingsAverage": 4.5,
     "ratingsQuantity": 35,
-    "images": ["resto-2-2.jpg", "resto-2-3.jpg", "resto-3-1.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
+      "https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg",
+      "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg"
+    ],
     "startDates": [
       "2023-02-19T09:00:00.000Z",
       "2023-04-20T09:00:00.000Z",
@@ -179,7 +199,7 @@
     "price": 1990,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Dipimpin oleh Executive Chef Hamish Lindsay, presentasi hidangan cantik akan hadir ke hadapan Anda. Berada di lantai 22 Hotel Fairmont Jakarta, dapat menambah pengalaman makan masing-masing dari Anda ke tingkat yang lebih tinggi, dengan pemandangan luar biasa. Bagi Anda yang sudah terbiasa dengan makan bersama pemandangan kota, Anda bisa memilih opsi terbaru dari mereka yaitu Pod Dining. Di mana Anda dapat menikmati hidangan di bawah langit dengan glass pod dan pelayan Anda sendiri.",
-    "imageCover": "resto-5-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_c14c76d795654e19b3852e58186d06fb.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2975",
@@ -200,7 +220,11 @@
     },
     "ratingsAverage": 4.7,
     "ratingsQuantity": 28,
-    "images": ["resto-3-2.jpg", "resto-3-3.jpg", "resto-1-1.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/1549542994.jpg",
+      "https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg",
+      "https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg"
+    ],
     "startDates": [
       "2023-07-19T09:00:00.000Z",
       "2023-08-20T09:00:00.000Z",
@@ -215,7 +239,7 @@
     "price": 2500,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Jarang bukan, menemukan buffet dengan hidangan Kanton? Di sini, selain Anda dapat menikmati berbagai jenis makanan dan minuman China, Anda juga bisa merasakan bagaimana rasanya berada di restoran mewah autentik di China. Table8 berikan sentuhan Chinoiserie pada desainnya untuk ciri khas yang lebih menonjol.",
-    "imageCover": "resto-6-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_7c8cc6c3c53d4a5f8b3a21151e1ed334.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c296f",
@@ -236,7 +260,11 @@
     },
     "ratingsAverage": 4.9,
     "ratingsQuantity": 33,
-    "images": ["resto-1-3.jpg", "resto-2-1.jpg", "resto-2-2.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/nv5lf31628771380.jpg",
+      "https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg",
+      "https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg"
+    ],
     "startDates": [
       "2023-10-19T09:00:00.000Z",
       "2023-11-20T09:00:00.000Z",
@@ -251,7 +279,7 @@
     "price": 2500,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Restoran premium Jepang, OKU, yang dipimpin oleh Chef Kazumasa Yazawa, menawarkan hidangan impor dan segar dari pasar ikan Toyosu, Tokyo. Suasana dibuat seperti Zen, santai serta nyaman untuk makan siang bisnis, makan malam acara khusus, dan tujuan setelah bekerja seharian.",
-    "imageCover": "resto-7-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_83d1d2a63ce3404a9fe5766e293db81d.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2969",
@@ -272,7 +300,11 @@
     },
     "ratingsAverage": 4.5,
     "ratingsQuantity": 13,
-    "images": ["resto-2-3.jpg", "resto-3-1.jpg", "resto-3-2.jpg"],
+    "images": [
+      "https://www.themealdb.com/images/media/meals/1529442316.jpg",
+      "https://www.themealdb.com/images/media/meals/1525873040.jpg",
+      "https://www.themealdb.com/images/media/meals/vqpwrv1511723001.jpg"
+    ],
     "startDates": [
       "2023-01-19T09:00:00.000Z",
       "2023-02-20T09:00:00.000Z",
@@ -291,7 +323,7 @@
     "price": 997,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Dibalut dengan desain canggih yang kasual, C's menyajikan hidangan grill dan masakan khasa China menggunakan kualitas yang terbaik. Salah satu programnya, Le Petite Chef, yang telah beranjak ke seri 3 sangat menarik perhatian banyak pencinta kuliner. Seperti sebuah pertunjukan teater 3D seorang koki terkecil di dunia pada piring, dirancang untuk memikat semua indra Anda.",
-    "imageCover": "resto-8-cover.jpg",
+    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_b62790ed2dea4cfa8a5003193c8e825b.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2965",

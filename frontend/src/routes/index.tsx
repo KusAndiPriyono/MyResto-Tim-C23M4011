@@ -8,7 +8,7 @@ import HomePage from 'pages/homepage';
 import AccountPage from 'pages/accountPage';
 import DetailPage from 'pages/detailPage';
 import Dashboard from 'pages/dashboard';
-import BookingPage from 'pages/bookingPage';
+// import BookingPage from 'pages/bookingPage';
 
 const Routes = () => {
   return useRoutes([
@@ -26,7 +26,7 @@ const Routes = () => {
         },
         {
           path: 'booking',
-          element: <BookingPage />,
+          element: 'bookingPage',
         },
         {
           path: 'Account',

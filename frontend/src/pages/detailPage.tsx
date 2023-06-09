@@ -1,33 +1,23 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Button from '@mui/material/Button';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
-import { Container, padding } from '@mui/system';
-import { Skeleton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import {
+  Skeleton,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+  Box,
+  Rating,
+  Container,
+} from '@mui/material';
 import { useParams } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
 import * as API from 'api/services';
+import StripeCheckout from 'react-stripe-checkout';
 
 interface Props {
   loading?: boolean;
-  // allRestaurantsLength: number;
-  // booking: boolean;
 }
 
 function DetailPage(props: Props) {
@@ -36,6 +26,33 @@ function DetailPage(props: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState<any>(null);
+  const [bookingInProgress, setBookingInProgress] = useState(false);
+
+  const handleBooking = async () => {
+    try {
+      const response = await API.DataGet2(`bookings/checkout-session/${id}`);
+      const session = response.data.session;
+
+      // const secretKey = process.env.REACT_APP_SECRET_KEY as string;
+      const secretKey =
+        'sk_test_51NElTeHFUoz6CTxAuT8whtw923sAX6990aonmfjyCCIgJgN3DQ8FcWdGEcFYXu4oOqgqFbAEoHX9EbzOSpD35DAk005K8ENTRD';
+
+      const onToken = (token: any) => {
+        console.log(token);
+      };
+
+      // Mengubah state untuk memulai proses booking
+      setBookingInProgress(true);
+
+      // Redireksi ke halaman checkout Stripe
+      const stripeCheckoutUrl = `https://checkout.stripe.com/c/pay/${session.id}`;
+      window.location.href = session.url;
+
+      return <StripeCheckout token={onToken} stripeKey={secretKey} />;
+    } catch (error) {
+      console.error('Error', error);
+    }
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -123,6 +140,13 @@ function DetailPage(props: Props) {
         </CardContent>
 
         {/* Description */}
+        <Typography
+          color='#00aa17'
+          fontSize={20}
+          sx={{ textAlign: 'right', display: 'flex' }}
+        >
+          Usd.{data.price}
+        </Typography>
         <CardContent
           sx={{
             display: 'flex',
@@ -185,12 +209,11 @@ function DetailPage(props: Props) {
           <Button
             variant='contained'
             size='large'
-            onClick={() => {
-              navigate('/booking', { replace: true });
-            }}
+            onClick={handleBooking}
+            disabled={bookingInProgress}
             className='booking-button'
           >
-            Booking
+            {bookingInProgress ? 'Booking in Progress...' : 'Booking'}
           </Button>
         </CardActions>
       </Card>
