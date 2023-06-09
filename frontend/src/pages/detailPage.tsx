@@ -13,7 +13,6 @@ const DetailPage = () => {
       const response = await API.DataGet(`restaurants/${id}`);
       if (response.status === 200) {
         setData(response.data);
-        console.log(response.data);
       } else {
         setData(null);
       }
