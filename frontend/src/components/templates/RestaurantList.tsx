@@ -28,7 +28,7 @@ interface Props {
 function RestaurantList(props: Props) {
   const { loading = false } = props;
 
-  const [data, setData] = useState(['Restaurants']);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -39,12 +39,12 @@ function RestaurantList(props: Props) {
         setData([]);
       }
     }
-    
+
     fetchData();
 
     return () => {
       setData([]);
-    }
+    };
   }, []);
 
   return (

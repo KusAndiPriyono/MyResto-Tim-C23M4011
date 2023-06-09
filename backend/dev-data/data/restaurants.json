@@ -27,7 +27,7 @@
     "price": 1000,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Saat Anda melangkah masuk ke Palm Court, Anda akan disambut dengan langit-langit dramatis tinggi yang dipenuhi dengan lampu kristal yang sekilas terlihat seperti kupu-kupu. Menambah suasana nyaman dengan kursi beludru hijau dengan sandaran tangan tinggi untuk menemani hingga tidak ingat melihat waktu",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_e670e9a91e85404580cd365aaaa9c7ab.jpeg",
+    "imageCover": "resto-1-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2958",
@@ -63,7 +63,7 @@
     "price": 1500,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Mempunyai interior yang terinspirasi oleh sejarah perdagangan rempah-rempah antara China dan Batavia, menawarkan 3 ruangan pribadi yang elegan dan khas untuk pertemuan intim dan acara pribadi. Restoran ini bermitra dengan Chef Fei dari restoran berbintang Michelin di Mandarin Oriental, Guangzhou. Hidangan tradisional Kanton yang ditawarkan, bergabung dengan sajian kontemporer klasik yang kreatif.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_2f52171938054042a4c7004630df75c2.jpg",
+    "imageCover": "resto-2-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2957",
@@ -103,7 +103,7 @@
     "price": 1800,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Menikmati cita rasa Indonesia dengan pemandangan kota Jakarta yang indah. Menawarkan hidangan buffet maupun a la carte, tergantung pada pilihan selera Anda untuk menikmatinya. Untuk kenyamanan suasana acara pribadi, mereka mempunyai opsi private dining seperti The Lounge yang dapat menampung 8-50 pengunjung.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_d16146e350964a64a52f6080f84622d6.jpeg",
+    "imageCover": "resto-3-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c296b",
@@ -139,7 +139,7 @@
     "price": 2100,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Ruang Makan serbaguna dan mewah, di mana tempat ini merupakan tujuan untuk para tamu yang ingin mencoba tren terbaru, koki selebriti, dan konsep kuliner lainnya. Seperti acara yang akan datang pada 10-21 November 2021 dari Restoran Terbaik Indonesia di World Culinary Awards 202, Apéritif Restaurant oleh Executive Chef Nic Vanderbeeken dan Head Chef Maxie Millian, yang juga merupakan Restaurant Manager & Sommelier I Made Yudiana.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_d3a10e435a534c47afe2e41562834bd6.jpeg",
+    "imageCover": "resto-4-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2973",
@@ -179,7 +179,7 @@
     "price": 1990,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Dipimpin oleh Executive Chef Hamish Lindsay, presentasi hidangan cantik akan hadir ke hadapan Anda. Berada di lantai 22 Hotel Fairmont Jakarta, dapat menambah pengalaman makan masing-masing dari Anda ke tingkat yang lebih tinggi, dengan pemandangan luar biasa. Bagi Anda yang sudah terbiasa dengan makan bersama pemandangan kota, Anda bisa memilih opsi terbaru dari mereka yaitu Pod Dining. Di mana Anda dapat menikmati hidangan di bawah langit dengan glass pod dan pelayan Anda sendiri.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_c14c76d795654e19b3852e58186d06fb.jpg",
+    "imageCover": "resto-5-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2975",
@@ -215,7 +215,7 @@
     "price": 2500,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Jarang bukan, menemukan buffet dengan hidangan Kanton? Di sini, selain Anda dapat menikmati berbagai jenis makanan dan minuman China, Anda juga bisa merasakan bagaimana rasanya berada di restoran mewah autentik di China. Table8 berikan sentuhan Chinoiserie pada desainnya untuk ciri khas yang lebih menonjol.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_7c8cc6c3c53d4a5f8b3a21151e1ed334.jpg",
+    "imageCover": "resto-6-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c296f",
@@ -251,7 +251,7 @@
     "price": 2500,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Restoran premium Jepang, OKU, yang dipimpin oleh Chef Kazumasa Yazawa, menawarkan hidangan impor dan segar dari pasar ikan Toyosu, Tokyo. Suasana dibuat seperti Zen, santai serta nyaman untuk makan siang bisnis, makan malam acara khusus, dan tujuan setelah bekerja seharian.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_83d1d2a63ce3404a9fe5766e293db81d.jpg",
+    "imageCover": "resto-7-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2969",
@@ -291,7 +291,7 @@
     "price": 997,
     "summary": "restaurant ini menyediakan makanan yang lezat dan sehat",
     "description": "Dibalut dengan desain canggih yang kasual, C's menyajikan hidangan grill dan masakan khasa China menggunakan kualitas yang terbaik. Salah satu programnya, Le Petite Chef, yang telah beranjak ke seri 3 sangat menarik perhatian banyak pencinta kuliner. Seperti sebuah pertunjukan teater 3D seorang koki terkecil di dunia pada piring, dirancang untuk memikat semua indra Anda.",
-    "imageCover": "https://images.harpersbazaar.co.id/unsafe/0x0/smart/media/body_b62790ed2dea4cfa8a5003193c8e825b.jpg",
+    "imageCover": "resto-8-cover.jpg",
     "locations": [
       {
         "_id": "5c88fa8cf4afda39709c2965",
