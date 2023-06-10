@@ -7,11 +7,17 @@ const router = express.Router();
 router.use(authController.protect);
 
 router.get(
+  '/my-restaurants',
+  authController.protect,
+  bookingController.myRestaurants
+);
+
+router.get(
   '/checkout-session/:restaurantId',
   bookingController.getCheckoutSession
 );
 
-router.use(authController.restrictTo('admin', 'lead-guide'));
+router.use(authController.restrictTo('admin', 'lead-guide', 'user'));
 
 router
   .route('/')

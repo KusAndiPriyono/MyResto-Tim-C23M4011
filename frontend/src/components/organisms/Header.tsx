@@ -190,7 +190,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                     axios.defaults.headers.common['Authorization'] = '';
                   }}
                 >
-                  Log Out
+                  {Token.getToken() ? 'Log Out' : 'Log in'}
                 </MenuItem>
               </Menu>
             </Box>

@@ -15,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as API from 'api/services';
 import StripeCheckout from 'react-stripe-checkout';
+import Swal from 'sweetalert2';
 
 interface Props {
   loading?: boolean;
@@ -50,6 +51,11 @@ function DetailPage(props: Props) {
 
       return <StripeCheckout token={onToken} stripeKey={secretKey} />;
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Mohon untuk login terlebih dahulu',
+      });
       console.error('Error', error);
     }
   };
