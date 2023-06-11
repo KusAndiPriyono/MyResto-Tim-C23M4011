@@ -10,6 +10,7 @@ import {
   Box,
   Rating,
   Container,
+  Grid,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -99,6 +100,7 @@ function DetailPage(props: Props) {
             sx={{
               width: '100%',
               height: 500,
+              filter: 'brightness(50%)',
             }}
           />
         ) : (
@@ -145,13 +147,12 @@ function DetailPage(props: Props) {
             &nbsp; ({data.ratingsQuantity})
           </Box>
         </CardContent>
-        {/* Description */}
         <Typography
           color='#00aa17'
           fontSize={20}
-          sx={{ textAlign: 'right', display: 'flex' }}
+          sx={{ textAlign: 'right', display: 'flex', padding: 4, pt: 2, pb: 2 }}
         >
-          Usd.{data.price}
+          Price: Usd.{data.price}
         </Typography>
         <CardContent
           sx={{
@@ -159,8 +160,9 @@ function DetailPage(props: Props) {
             flexDirection: { xs: 'column', sm: 'row' },
             alignItems: 'center',
             justifyContent: { xs: 'flex-start', sm: 'space-between' },
-            padding: 4,
-            '@media screen and (max-width: 850px)': {
+            padding: 6,
+            gap: 3,
+            '@media screen and (max-width: 1100px)': {
               flexDirection: 'column',
               '& > *:not(:last-child)': {
                 marginBottom: '20px',
@@ -168,26 +170,41 @@ function DetailPage(props: Props) {
             },
           }}
         >
-          <Typography paragraph>{data.description}</Typography>
-          <CardMedia
-            component='img'
-            height='349'
-            image='/images/404.png'
-            alt='Paella dish'
-          />
+          <Typography sx={{ textAlign: 'justify' }} paragraph>
+            {data.description}
+          </Typography>
+          {data ? (
+            <CardMedia
+              component='img'
+              image={data.imageCover}
+              sx={{
+                width: 500,
+                filter: 'brightness(50%)',
+                borderRadius: 4,
+              }}
+            />
+          ) : (
+            <Skeleton variant='rectangular' width={210} height={118} />
+          )}
         </CardContent>
-        <CardContent
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '20px',
-            padding: '20px',
-          }}
+        <Grid
+          container
+          wrap='wrap'
+          spacing={2}
+          gap={2}
+          justifyContent='center'
+          columns={{ xs: 4, sm: 8, md: 6 }}
         >
           {data.images.map((val: any, key: any) => {
             return (
               <div key={key}>
                 <CardMedia
+                  sx={{
+                    filter: 'brightness(80%)',
+                    borderRadius: 4,
+                    width: 330,
+                    height: 'auto',
+                  }}
                   component='img'
                   height='349'
                   onError={(error) => {
@@ -199,7 +216,7 @@ function DetailPage(props: Props) {
               </div>
             );
           })}
-        </CardContent>
+        </Grid>
 
         <ReviewsLayout reviews={data.reviews} />
 
