@@ -16,6 +16,7 @@ import { useState, useEffect } from 'react';
 import * as API from 'api/services';
 import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2';
+import MapboxLayout from 'components/templates/MapboxLayout';
 
 interface Props {
   loading?: boolean;
@@ -35,8 +36,7 @@ function DetailPage(props: Props) {
       const session = response.data.session;
 
       // const secretKey = process.env.REACT_APP_SECRET_KEY as string;
-      const secretKey =
-        'sk_test_51NElTeHFUoz6CTxAuT8whtw923sAX6990aonmfjyCCIgJgN3DQ8FcWdGEcFYXu4oOqgqFbAEoHX9EbzOSpD35DAk005K8ENTRD';
+      const secretKey = process.env.REACT_APP_SECRET_KEY as string;
 
       const onToken = (token: any) => {
         console.log(token);
@@ -144,7 +144,6 @@ function DetailPage(props: Props) {
             &nbsp; ({data.ratingsQuantity})
           </Box>
         </CardContent>
-
         {/* Description */}
         <Typography
           color='#00aa17'
@@ -200,6 +199,8 @@ function DetailPage(props: Props) {
             );
           })}
         </CardContent>
+
+        <MapboxLayout />
 
         <CardActions
           disableSpacing

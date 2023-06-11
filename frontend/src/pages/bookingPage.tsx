@@ -61,7 +61,7 @@ export default function BookingPage(props: Props) {
           },
         }}
       >
-        Restaurants
+        My Booking Restaurant
       </Typography>
       <Typography
         variant='h6'
