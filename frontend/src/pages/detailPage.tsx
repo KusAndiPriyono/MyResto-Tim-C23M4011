@@ -17,6 +17,7 @@ import * as API from 'api/services';
 import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2';
 import MapboxLayout from 'components/templates/MapboxLayout';
+import ReviewsLayout from 'components/templates/ReviewsLayout';
 
 interface Props {
   loading?: boolean;
@@ -199,6 +200,8 @@ function DetailPage(props: Props) {
             );
           })}
         </CardContent>
+
+        <ReviewsLayout reviews={data.reviews} />
 
         <MapboxLayout />
 
