@@ -175,7 +175,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                   <MenuItem
                     onClick={() => {
                       // perform logout logic
-                      navigate('/dashboard', { replace: true });
+                      navigate('/dashboardAdmin', { replace: true });
                     }}
                   >
                     Dashboard

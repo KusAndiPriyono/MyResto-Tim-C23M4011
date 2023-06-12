@@ -4,11 +4,12 @@ import {
   CardMedia,
   Button,
 } from '@mui/material';
+import { useNavigate} from 'react-router-dom';
 
 
 
 function HeroLayout() {
-  
+  const navigate = useNavigate();
 
   return (
     <Box sx={{
@@ -44,6 +45,9 @@ function HeroLayout() {
         <Button
             type='submit'
             size="large" 
+            onClick={() => {
+              navigate('/homepage', { replace: true });
+            }}
             sx={{
               color: "#000000",
               backgroundColor: "#FFFFFF",
