@@ -15,7 +15,7 @@ interface Props {
 
 export default function ReviewsLayout(props: Props) {
   const { reviews } = props;
-  const { id } = useParams();
+  const { id, name } = useParams();
   const [data, setData] = useState(null);
 
   const settings = {
@@ -32,25 +32,25 @@ export default function ReviewsLayout(props: Props) {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -58,7 +58,6 @@ export default function ReviewsLayout(props: Props) {
       const response = await API.DataGet(`restaurants/${id}`);
       if (response.status === 200) {
         setData(response.data.reviews);
-        console.log(response.data.reviews);
       } else {
         setData(null);
       }
@@ -69,7 +68,7 @@ export default function ReviewsLayout(props: Props) {
     return () => {
       setData(null);
     };
-  }, [id, reviews]);
+  }, [id, name, reviews]);
 
   return (
     <Slider {...settings}>

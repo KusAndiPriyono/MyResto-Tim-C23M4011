@@ -147,7 +147,11 @@ function RestaurantList(props: Props) {
                   <Typography
                     variant='body2'
                     color='#000000'
-                    sx={{ textAlign: 'justify' }}
+                    sx={{
+                      letterSpacing: '0.5px',
+                      textAlign: 'justify',
+                      whiteSpace: 'pre-line',
+                    }}
                   >
                     {data && data.description
                       ? data.description.slice(0, 100)
@@ -155,7 +159,7 @@ function RestaurantList(props: Props) {
                     ...
                   </Typography>
                   <Typography variant='body2' color='text.secondary'>
-                    Location : {data.Locations}
+                    Location : {data.startLocation.address}
                   </Typography>
                   <Typography variant='body2'>
                     Capacity : {data.maxCapacity}

@@ -13,7 +13,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import {  Button, } from '@mui/material';
+import { Button } from '@mui/material';
 import NavDashboard from '../nav/NavDashboard';
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -35,6 +35,7 @@ export default function UserListAdmin(props: Props) {
       const response = await API.DataGet('users');
       if (response.status === 200) {
         setData(response.data);
+        console.log(response.data);
       } else {
         setData([]);
       }
@@ -51,9 +52,9 @@ export default function UserListAdmin(props: Props) {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <NavDashboard/>
+        <NavDashboard />
         <Box
-          component="main"
+          component='main'
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === 'light'
@@ -65,53 +66,57 @@ export default function UserListAdmin(props: Props) {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Paper sx={{ width: '100%', overflow: 'hidden'}}>
-            <TableContainer sx={{ maxHeight: 500,  pl:5}}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow >
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Role</TableCell>
-                  <TableCell align="center">Action</TableCell>
-                </TableRow>
-              </TableHead>
-                <TableBody>
-                {(loading ? Array.from(new Array(3)) : data).map((data, index) => (
-                  <TableRow
-                  key={data._id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {data.name}
-                  </TableCell>
-                  <TableCell >{data.email}</TableCell>
-                  <TableCell >{data.role}</TableCell>
-                  <TableCell align="center" >
-                      <Button
-                          variant='contained'
-                          // component={Link}
-                          // to={`/detail/${data._id}`}
-                          sx={{ backgroundColor:'#007c17',}}
+          <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+              <TableContainer sx={{ maxHeight: 500, pl: 5 }}>
+                <Table stickyHeader aria-label='sticky table'>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Email</TableCell>
+                      <TableCell>Role</TableCell>
+                      <TableCell align='center'>Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {(loading ? Array.from(new Array(3)) : data).map(
+                      (data, index) => (
+                        <TableRow
+                          key={data._id}
+                          sx={{
+                            '&:last-child td, &:last-child th': { border: 0 },
+                          }}
                         >
-                          Edit
-                        </Button>
-                        <Button
-                          variant='contained'
-                          // component={Link}
-                          // to={`/detail/${data._id}`}
-                          sx={{ margin:2 ,backgroundColor:'#c50000',}}
-                        >
-                          Delete
-                        </Button>
-                  </TableCell>
-                </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
+                          <TableCell component='th' scope='row'>
+                            {data.name}
+                          </TableCell>
+                          <TableCell>{data.email}</TableCell>
+                          <TableCell>{data.role}</TableCell>
+                          <TableCell align='center'>
+                            <Button
+                              variant='contained'
+                              // component={Link}
+                              // to={`/detail/${data._id}`}
+                              sx={{ backgroundColor: '#007c17' }}
+                            >
+                              Edit
+                            </Button>
+                            <Button
+                              variant='contained'
+                              // component={Link}
+                              // to={`/detail/${data._id}`}
+                              sx={{ margin: 2, backgroundColor: '#c50000' }}
+                            >
+                              Delete
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
           </Container>
         </Box>
       </Box>

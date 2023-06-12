@@ -88,7 +88,7 @@ function DetailPage(props: Props) {
     >
       <Card
         sx={{
-          maxWidth: 1200,
+          maxWidth: '100%',
           backgroundColor: '#fff',
           fontFamily: 'Roboto',
         }}
@@ -152,7 +152,7 @@ function DetailPage(props: Props) {
           fontSize={20}
           sx={{ textAlign: 'right', display: 'flex', padding: 4, pt: 2, pb: 2 }}
         >
-          Price: Usd.{data.price}
+          Price: ${data.price}
         </Typography>
         <CardContent
           sx={{
