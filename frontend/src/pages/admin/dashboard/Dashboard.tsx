@@ -20,6 +20,9 @@ import { mainListItems } from '../nav/listItems';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import NavDashboard from '../nav/NavDashboard';
+import OverviewTotalCustomers from 'components/atoms/chart-overview/overviewTotalCustomer';
+import OverviewLatestProducts from 'components/atoms/chart-overview/overviewLatestProduct';
+import OverviewUser from 'components/atoms/chart-overview/overviewUser';
 
 const drawerWidth: number = 240;
 
@@ -98,6 +101,17 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
+          <Container
+            sx={{
+              mt: 2,
+              display: 'flex',
+              gap: '1em',
+            }}
+          >
+            <OverviewUser />
+            <OverviewLatestProducts />
+            <OverviewTotalCustomers value={''} />
+          </Container>
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
