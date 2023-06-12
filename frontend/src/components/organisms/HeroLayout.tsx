@@ -1,11 +1,62 @@
-import { Box, Typography, CardMedia, Button } from '@mui/material';
+import {
+  Box,
+  Typography,
+  CardMedia,
+  Button,
+  Container,
+  Grid,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 function HeroLayout() {
   const navigate = useNavigate();
 
   return (
-    <Box
+    <Container fixed>
+      <Box
+        sx={{
+          backgroundColor: '#3A5A40',
+          width: 'calc(100% - 200px)',
+          margin: '0px 200px',
+          height: '329px',
+          borderRadius: '40px 0px 0px 0px',
+          '@media (max-width: 900px)': {
+            width: 'calc(100% - 200px)',
+            margin: '0px 200px',
+          },
+        }}
+      />
+      <CardMedia
+        component='img'
+        image='https://www.themealdb.com/images/media/meals/1548772327.jpg'
+        sx={{
+          width: 250,
+          height: 250,
+          borderRadius: '50%',
+          marginTop: '-120px',
+          position: 'absolute',
+        }}
+      />
+      <CardMedia
+        component='img'
+        image='https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg'
+        sx={{
+          width: 200,
+          height: 200,
+          borderRadius: '50%',
+          marginLeft: '150px',
+          marginTop: '-50px',
+          position: 'absolute',
+        }}
+      />
+    </Container>
+  );
+}
+
+export default HeroLayout;
+
+{
+  /* <Box
       sx={{
         marginBottom: '30px',
         display: 'grid',
@@ -21,6 +72,9 @@ function HeroLayout() {
           gridArea: 'sidebar',
           marginRight: '30px',
           display: 'grid',
+          flexGrow: 1,
+          overflow: 'hidden',
+          px: 3,
           gridTemplateColumns: 'repeat(4, 1fr)',
           '@media (max-width: 900px)': {
             width: '540px',
@@ -46,7 +100,7 @@ function HeroLayout() {
             type='submit'
             size='large'
             onClick={() => {
-              navigate('/homepage', { replace: true });
+              navigate('/auth/login', { replace: true });
             }}
             sx={{
               color: '#000000',
@@ -62,7 +116,7 @@ function HeroLayout() {
               },
             }}
           >
-            Reservation
+            Get Started
           </Button>
         </Typography>
       </Box>
@@ -96,8 +150,5 @@ function HeroLayout() {
           },
         }}
       />
-    </Box>
-  );
+    </Box> */
 }
-
-export default HeroLayout;
