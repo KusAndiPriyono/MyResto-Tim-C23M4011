@@ -54,8 +54,8 @@ export default function Orders() {
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Role</TableCell>
+            <TableCell>Restaurant Name</TableCell>
+            <TableCell>User</TableCell>
             <TableCell align='right'>Sale Amount</TableCell>
           </TableRow>
         </TableHead>
