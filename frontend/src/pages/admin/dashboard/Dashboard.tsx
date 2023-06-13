@@ -20,7 +20,7 @@ import { mainListItems } from '../nav/listItems';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import NavDashboard from '../nav/NavDashboard';
-import OverviewTotalCustomers from 'components/atoms/chart-overview/overviewTotalCustomer';
+import { OverviewTotalCustomers } from 'components/atoms/chart-overview/overviewTotalCustomer';
 import OverviewLatestProducts from 'components/atoms/chart-overview/overviewLatestProduct';
 import OverviewUser from 'components/atoms/chart-overview/overviewUser';
 

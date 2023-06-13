@@ -15,7 +15,7 @@ function HeroLayout() {
     <Container fixed>
       <Box
         sx={{
-          backgroundColor: '#3A5A40',
+          backgroundColor: '#588157',
           width: 'calc(100% - 200px)',
           margin: '0px 200px',
           height: '329px',
@@ -25,15 +25,56 @@ function HeroLayout() {
             margin: '0px 200px',
           },
         }}
-      />
+      >
+        <Typography
+          variant='body2'
+          sx={{
+            color: '#FFFFFF',
+            width: '610px',
+            height: '229px',
+            fontSize: '18px',
+            gridArea: 'sidebar',
+            margin: '30px 30px 30px 30px',
+            marginLeft: '250px',
+            paddingTop: '100px'
+          }}
+        >
+          Aplikasi My Resto adalah sebuah platform yang dirancang untuk membantu
+          pengguna dalam mencari dan menemukan tempat restoran. 
+          Yuk segera cari restaurant favoritmu!!!
+          <Button
+            type='submit'
+            size='large'
+            onClick={() => {
+              navigate('/auth/login', { replace: true });
+            }}
+            sx={{
+              color: '#000000',
+              backgroundColor: '#FFFFFF',
+              marginTop: 7,
+              marginLeft: 50,
+              width: 208,
+              height: 60,
+              borderRadius: 2,
+              gridArea: 'sidebar',
+              '&:hover': {
+                backgroundColor: '#c2c0c0',
+              },
+            }}
+          >
+            Get Started
+          </Button>
+        </Typography>
+      </Box>
       <CardMedia
         component='img'
         image='https://www.themealdb.com/images/media/meals/1548772327.jpg'
         sx={{
-          width: 250,
-          height: 250,
+          width: 350,
+          height: 350,
           borderRadius: '50%',
-          marginTop: '-120px',
+          marginLeft: '60px',
+          marginTop: '-200px',
           position: 'absolute',
         }}
       />
@@ -44,7 +85,7 @@ function HeroLayout() {
           width: 200,
           height: 200,
           borderRadius: '50%',
-          marginLeft: '150px',
+          marginLeft: '350px',
           marginTop: '-50px',
           position: 'absolute',
         }}
