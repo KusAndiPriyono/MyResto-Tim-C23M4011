@@ -78,7 +78,7 @@ export default function ReviewsLayout(props: Props) {
   }, [id, name, reviews]);
 
   return (
-    <Container sx={{ mt: 10, mb: 10 }}>
+    <Container sx={{ mt: 6, mb: 6 }}>
       <Slider {...settings}>
         {reviews.map((review) => (
           <div key={review.id}>

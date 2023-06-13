@@ -51,6 +51,7 @@ function RestaurantList(props: Props) {
       <Typography
         variant='h2'
         sx={{
+          color: '#152A38',
           fontWeight: 'bold',
           my: 3,
           textAlign: 'center',
@@ -64,7 +65,7 @@ function RestaurantList(props: Props) {
       >
         Restaurants
       </Typography>
-      <Typography variant='h6' sx={{ my: 3, textAlign: 'center' }}>
+      <Typography variant='h6' sx={{ my: 3, textAlign: 'center',  color: '#152A38' }}>
         Find the restaurant you like and then make a reservation.
       </Typography>
       <Grid container spacing={3}>
@@ -75,6 +76,8 @@ function RestaurantList(props: Props) {
                 height: '100%',
                 borderRadius: '30px 30px 0 0',
                 boxShadow: 1,
+                backgroundColor: '#152A38',
+                color: '#fff',
               }}
             >
               {data ? (
@@ -82,7 +85,12 @@ function RestaurantList(props: Props) {
                   component='img'
                   image={data.imageCover}
                   alt={data.name}
-                  sx={{ height: 200, borderRadius: '30px 30px 0 0' }}
+                  sx={{
+                    width: '95%',
+                    height: 200,
+                    margin: '10px 10px 0px 10px',
+                    borderRadius: '30px 30px 0 0',
+                  }}
                 />
               ) : (
                 <Skeleton variant='rectangular' width={210} height={118} />
@@ -96,11 +104,7 @@ function RestaurantList(props: Props) {
                   >
                     {data.name}
                   </Typography>
-                  <Typography
-                    variant='body2'
-                    color='#000000'
-                    sx={{ display: 'flex' }}
-                  >
+                  <Typography variant='body2' sx={{ display: 'flex' }}>
                     {data.ratingsAverage}
                     &nbsp;
                     <Rating
@@ -112,11 +116,7 @@ function RestaurantList(props: Props) {
                     />
                     &nbsp; ({data.ratingsQuantity})
                   </Typography>
-                  <Typography
-                    sx={{ mt: 2 }}
-                    variant='body2'
-                    color='text.secondary'
-                  >
+                  <Typography sx={{ mt: 2 }} variant='body2'>
                     {data?.description?.slice(0, 100) || ''}
                     ...
                   </Typography>

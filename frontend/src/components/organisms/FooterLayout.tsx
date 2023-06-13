@@ -8,7 +8,7 @@ export default function FooterLayout() {
   return (
     <Box
       sx={{
-        background: '#3A5A40',
+        background: '#152A38',
         color: '#FFFFFF',
         pt: 10,
         pb: 10,

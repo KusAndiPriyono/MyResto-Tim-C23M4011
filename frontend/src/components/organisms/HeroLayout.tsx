@@ -15,7 +15,7 @@ function HeroLayout() {
     <Container fixed>
       <Box
         sx={{
-          backgroundColor: '#588157',
+          backgroundColor: '#152A38',
           width: 'calc(100% - 200px)',
           margin: '0px 200px',
           height: '329px',
