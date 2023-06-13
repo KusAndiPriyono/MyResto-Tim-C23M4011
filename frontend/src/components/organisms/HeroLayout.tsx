@@ -35,11 +35,13 @@ function HeroLayout() {
             fontSize: '18px',
             gridArea: 'sidebar',
             margin: '30px 30px 30px 30px',
+            marginLeft: '250px',
+            paddingTop: '100px'
           }}
         >
           Aplikasi My Resto adalah sebuah platform yang dirancang untuk membantu
-          pengguna dalam mencari dan menemukan tempat restoran. Yuk segera cari
-          restaurant favoritmu!!!
+          pengguna dalam mencari dan menemukan tempat restoran. 
+          Yuk segera cari restaurant favoritmu!!!
           <Button
             type='submit'
             size='large'
@@ -50,7 +52,7 @@ function HeroLayout() {
               color: '#000000',
               backgroundColor: '#FFFFFF',
               marginTop: 7,
-              marginLeft: 40,
+              marginLeft: 50,
               width: 208,
               height: 60,
               borderRadius: 2,
