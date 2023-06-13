@@ -105,7 +105,7 @@ export default function ReviewsLayout(props: Props) {
                   transition: 'background-color 0.3s',
                   '&:hover': {
                     backgroundColor: '#fff',
-                    color: '#000'
+                    color: '#000',
                   },
                 }}
               >
@@ -123,10 +123,7 @@ export default function ReviewsLayout(props: Props) {
                 </Typography>
                 <Typography>
                   <p>{review.review}</p>
-                  <Typography
-                    variant='body2'
-                    sx={{ display: 'flex'}}
-                  >
+                  <Typography variant='body2' sx={{ display: 'flex' }}>
                     &nbsp;
                     <Rating
                       size='small'
@@ -143,6 +140,14 @@ export default function ReviewsLayout(props: Props) {
           </div>
         ))}
       </Slider>
+      <style>
+        {`
+        .slick-prev:before,
+          .slick-next:before {
+            color: black !important;
+          }
+        `}
+      </style>
     </Container>
   );
 }
