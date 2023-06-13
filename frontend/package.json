@@ -5,10 +5,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.0",
     "@mui/system": "^5.13.2",
     "@mui/x-date-pickers": "^6.6.0",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.54.0",
     "@tanstack/react-query": "^4.29.12",
     "@tanstack/react-query-devtools": "^4.29.12",
     "@testing-library/jest-dom": "^5.16.5",
@@ -20,21 +23,27 @@
     "@types/react-dom": "^18.2.4",
     "axios": "^1.4.0",
     "dayjs": "^1.11.8",
+    "mapbox-gl": "^2.15.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.9.0",
+    "react-map-gl": "^7.0.25",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "react-slick-carousel": "^0.14.9",
+    "react-stripe-checkout": "^2.6.3",
+    "stripe": "^12.9.0",
     "sweetalert2": "^11.7.8",
     "typescript": "^5.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -57,6 +66,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.10"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.10",
+    "@types/react-slick": "^0.23.10",
+    "date-fns": "^2.30.0"
   }
 }

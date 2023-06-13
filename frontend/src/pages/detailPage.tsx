@@ -1,33 +1,27 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Button from '@mui/material/Button';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
-import { Container, padding } from '@mui/system';
-import { Skeleton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import {
+  Skeleton,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+  Box,
+  Rating,
+  Container,
+  Grid,
+} from '@mui/material';
 import { useParams } from 'react-router-dom';
-
 import { useState, useEffect } from 'react';
 import * as API from 'api/services';
+import StripeCheckout from 'react-stripe-checkout';
+import Swal from 'sweetalert2';
+import MapboxLayout from 'components/templates/MapboxLayout';
+import ReviewsLayout from 'components/templates/ReviewsLayout';
 
 interface Props {
   loading?: boolean;
-  // allRestaurantsLength: number;
-  // booking: boolean;
 }
 
 function DetailPage(props: Props) {
@@ -36,6 +30,37 @@ function DetailPage(props: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState<any>(null);
+  const [bookingInProgress, setBookingInProgress] = useState(false);
+
+  const handleBooking = async () => {
+    try {
+      const response = await API.DataGet2(`bookings/checkout-session/${id}`);
+      const session = response.data.session;
+
+      // const secretKey = process.env.REACT_APP_SECRET_KEY as string;
+      const secretKey = process.env.REACT_APP_SECRET_KEY as string;
+
+      const onToken = (token: any) => {
+        console.log(token);
+      };
+
+      // Mengubah state untuk memulai proses booking
+      setBookingInProgress(true);
+
+      // Redireksi ke halaman checkout Stripe
+      const stripeCheckoutUrl = `https://checkout.stripe.com/c/pay/${session.id}`;
+      window.location.href = session.url;
+
+      return <StripeCheckout token={onToken} stripeKey={secretKey} />;
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Mohon untuk login terlebih dahulu',
+      });
+      console.error('Error', error);
+    }
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -63,7 +88,7 @@ function DetailPage(props: Props) {
     >
       <Card
         sx={{
-          maxWidth: 1200,
+          maxWidth: '100%',
           backgroundColor: '#fff',
           fontFamily: 'Roboto',
         }}
@@ -75,6 +100,7 @@ function DetailPage(props: Props) {
             sx={{
               width: '100%',
               height: 500,
+              filter: 'brightness(50%)',
             }}
           />
         ) : (
@@ -121,16 +147,22 @@ function DetailPage(props: Props) {
             &nbsp; ({data.ratingsQuantity})
           </Box>
         </CardContent>
-
-        {/* Description */}
+        <Typography
+          color='#00aa17'
+          fontSize={20}
+          sx={{ textAlign: 'right', display: 'flex', padding: 4, pt: 2, pb: 2 }}
+        >
+          Price: ${data.price}
+        </Typography>
         <CardContent
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', sm: 'row' },
             alignItems: 'center',
             justifyContent: { xs: 'flex-start', sm: 'space-between' },
-            padding: 4,
-            '@media screen and (max-width: 850px)': {
+            padding: 6,
+            gap: 3,
+            '@media screen and (max-width: 1100px)': {
               flexDirection: 'column',
               '& > *:not(:last-child)': {
                 marginBottom: '20px',
@@ -138,26 +170,41 @@ function DetailPage(props: Props) {
             },
           }}
         >
-          <Typography paragraph>{data.description}</Typography>
-          <CardMedia
-            component='img'
-            height='349'
-            image='/images/404.png'
-            alt='Paella dish'
-          />
+          <Typography sx={{ textAlign: 'justify' }} paragraph>
+            {data.description}
+          </Typography>
+          {data ? (
+            <CardMedia
+              component='img'
+              image={data.imageCover}
+              sx={{
+                width: 500,
+                filter: 'brightness(50%)',
+                borderRadius: 4,
+              }}
+            />
+          ) : (
+            <Skeleton variant='rectangular' width={210} height={118} />
+          )}
         </CardContent>
-        <CardContent
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '20px',
-            padding: '20px',
-          }}
+        <Grid
+          container
+          wrap='wrap'
+          spacing={2}
+          gap={2}
+          justifyContent='center'
+          columns={{ xs: 4, sm: 8, md: 6 }}
         >
           {data.images.map((val: any, key: any) => {
             return (
               <div key={key}>
                 <CardMedia
+                  sx={{
+                    filter: 'brightness(80%)',
+                    borderRadius: 4,
+                    width: 330,
+                    height: 'auto',
+                  }}
                   component='img'
                   height='349'
                   onError={(error) => {
@@ -169,7 +216,11 @@ function DetailPage(props: Props) {
               </div>
             );
           })}
-        </CardContent>
+        </Grid>
+
+        <ReviewsLayout reviews={data.reviews} />
+
+        <MapboxLayout />
 
         <CardActions
           disableSpacing
@@ -185,12 +236,11 @@ function DetailPage(props: Props) {
           <Button
             variant='contained'
             size='large'
-            onClick={() => {
-              navigate('/booking', { replace: true });
-            }}
+            onClick={handleBooking}
+            disabled={bookingInProgress}
             className='booking-button'
           >
-            Booking
+            {bookingInProgress ? 'Booking in Progress...' : 'Booking'}
           </Button>
         </CardActions>
       </Card>

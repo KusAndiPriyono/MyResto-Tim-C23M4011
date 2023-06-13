@@ -3,8 +3,11 @@ import { UpdateMePayload } from 'types/payload';
 
 class UserApi {
   static async getAuthenticatedUser() {
-    const response = await axios.get<ApiResponse<User>>('/api/v1/users/me');
-    return response.data.data;
+    if (localStorage.getItem('token')) {
+      const response = await axios.get<ApiResponse<User>>('/api/v1/users/me');
+      return response.data.data;
+    }
+    return null;
   }
 
   static async getUpdateAuthenticatedUser(data: UpdateMePayload) {

@@ -53,7 +53,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
           position: 'unset',
           top: '20px',
           left: '0px',
-          background: 'white',
+          background: '#F9F5EB',
           padding: '16px',
           marginBottom: '16px',
           borderRadius: '8px',
@@ -63,7 +63,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
           flexWrap: 'wrap',
           gap: '8px',
           rowGap: '16px',
-          boxShadow: '0px 0px 100px 10px rgba(0,0,0,.1)',
+          // boxShadow: '0px 0px 100px 10px rgba(0,0,0,.1)',
           '@media (min-width: 768px)': {
             flexWrap: 'nowrap',
             padding: '18px 24px',
@@ -87,16 +87,21 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
             }}
           >
             <img />
-            <Typography
-              component='h1'
-              variant='h6'
-              sx={{
-                textDecoration: 'none',
-                margin: 0,
-              }}
-            >
-              My Resto
-            </Typography>
+            {isAuthenticated && (
+              <Typography
+                component='h1'
+                variant='h4'
+                sx={{
+                  textDecoration: 'none',
+                  margin: 0,
+                  fontFamily: 'Poppins, sans-serif',
+                  fontWeight: 'Bold',
+                  color: '#588157',
+                }}
+              >
+                🥗My Resto
+              </Typography>
+            )}
           </Box>
         </Box>
         {isAuthenticated && (
@@ -175,7 +180,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                   <MenuItem
                     onClick={() => {
                       // perform logout logic
-                      navigate('/dashboard', { replace: true });
+                      navigate('/dashboardAdmin', { replace: true });
                     }}
                   >
                     Dashboard
@@ -190,7 +195,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                     axios.defaults.headers.common['Authorization'] = '';
                   }}
                 >
-                  Log Out
+                  {Token.getToken() ? 'Log Out' : 'Log in'}
                 </MenuItem>
               </Menu>
             </Box>

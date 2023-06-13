@@ -1,15 +1,26 @@
 // const express = require('express');
-// const viewController = require('../controllers/viewsController');
+// const viewsController = require('../controllers/viewsController');
 // const authController = require('../controllers/authController');
+// const bookingController = require('../controllers/bookingController');
 
 // const router = express.Router();
 
-// router.get('/', viewController.getOverview);
+// router.use(viewsController.alerts);
+
+// router.get('/', bookingController.createBookingCheckout);
+
+// router.get(
+//   '/my-restaurants',
+//   bookingController.createBookingCheckout,
+//   authController.protect,
+//   viewsController.getMyRestaurants
+// );
+
 // router.get(
 //   '/restaurant/:slug',
 //   authController.protect,
-//   viewController.getRestaurant
+//   viewsController.getRestaurant
 // );
-// router.get('/login', viewController.getLogin);
+// // router.get('/login', viewsController.getLogin);
 
 // module.exports = router;

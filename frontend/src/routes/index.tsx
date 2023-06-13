@@ -7,8 +7,10 @@ import AuthLayout from 'components/templates/AuthLayout';
 import HomePage from 'pages/homepage';
 import AccountPage from 'pages/accountPage';
 import DetailPage from 'pages/detailPage';
-import Dashboard from 'pages/dashboard';
+import Dashboard from 'pages/admin/dashboard/Dashboard';
 import BookingPage from 'pages/bookingPage';
+import RestauranListAdmin from 'pages/admin/restaurant/RestaurantListAdmin';
+import UserListAdmin from 'pages/admin/user/UserListAdmin';
 
 const Routes = () => {
   return useRoutes([
@@ -32,10 +34,7 @@ const Routes = () => {
           path: 'Account',
           element: <AccountPage />,
         },
-        {
-          path: 'dashboard',
-          element: <Dashboard />,
-        },
+        
         {
           path: '*',
           element: <Navigate replace to='/404' />,
@@ -63,6 +62,20 @@ const Routes = () => {
           element: <Navigate replace to='/404' />,
         },
       ],
+    },
+    //Dashboard
+    {
+      path: 'dashboardAdmin',
+      element: <Dashboard />,
+    },
+    {
+      path: 'restaurantlistadmin',
+      element: <RestauranListAdmin />,
+
+    },
+    {
+      path: 'userlistadmin',
+      element: <UserListAdmin />,
     },
     {
       path: '*',
