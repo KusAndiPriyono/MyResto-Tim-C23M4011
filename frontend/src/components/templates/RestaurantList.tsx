@@ -40,7 +40,7 @@ function RestaurantList(props: Props) {
   }, []);
 
   return (
-    <Container sx={{ mt: 20 }}>
+    <Container sx={{ mt: 25 }}>
       <Typography
         variant='h2'
         sx={{
