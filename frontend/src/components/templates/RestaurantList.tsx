@@ -40,7 +40,14 @@ function RestaurantList(props: Props) {
   }, []);
 
   return (
-    <Container sx={{ mt: 25 }}>
+    <Container
+      sx={{
+        mt: 25,
+        '@media (max-width: 1200px)': {
+          mt: 15,
+        },
+      }}
+    >
       <Typography
         variant='h2'
         sx={{
@@ -49,6 +56,9 @@ function RestaurantList(props: Props) {
           textAlign: 'center',
           '@media (max-width: 1000px)': {
             mt: 20,
+          },
+          '@media (max-width: 900px)': {
+            mt: 2,
           },
         }}
       >
