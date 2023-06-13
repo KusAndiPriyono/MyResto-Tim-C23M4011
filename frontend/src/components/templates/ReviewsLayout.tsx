@@ -89,20 +89,23 @@ export default function ReviewsLayout(props: Props) {
               gap={2}
               justifyContent='center'
               columns={{ xs: 4, sm: 8, md: 6 }}
+              padding={2}
             >
               <Card
                 sx={{
                   maxWidth: 1200,
                   height: 150,
                   width: 200,
-                  backgroundColor: '#ffffff',
+                  backgroundColor: '#152A38',
+                  color: '#fff',
                   padding: '50px',
                   boxShadow: 1,
                   marginBottom: '10px',
-                  borderRadius: '8px',
+                  borderRadius: 4,
                   transition: 'background-color 0.3s',
                   '&:hover': {
-                    backgroundColor: '#c2c0c0',
+                    backgroundColor: '#fff',
+                    color: '#000'
                   },
                 }}
               >
@@ -122,7 +125,6 @@ export default function ReviewsLayout(props: Props) {
                   <p>{review.review}</p>
                   <Typography
                     variant='body2'
-                    color='#000000'
                     sx={{ display: 'flex'}}
                   >
                     &nbsp;

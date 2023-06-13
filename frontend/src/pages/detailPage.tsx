@@ -89,8 +89,9 @@ function DetailPage(props: Props) {
       <Card
         sx={{
           maxWidth: '100%',
-          backgroundColor: '#fff',
+          backgroundColor: '#EFF0FF',
           fontFamily: 'Roboto',
+          boxShadow: 'none',
         }}
       >
         {data ? (
@@ -101,6 +102,9 @@ function DetailPage(props: Props) {
               width: '100%',
               height: 500,
               filter: 'brightness(50%)',
+              borderRadius: 4,
+              margin: 'auto',
+              boxShadow: 5,
             }}
           />
         ) : (
@@ -112,7 +116,7 @@ function DetailPage(props: Props) {
             flexDirection: 'column',
             padding: 4,
             justifyContent: 'space-between',
-            fontSize: '25px',
+            fontSize: '35px',
             fontWeight: 'bold',
             '& .booking-button': {
               marginLeft: 'auto',
@@ -129,6 +133,7 @@ function DetailPage(props: Props) {
               width: 200,
               display: 'flex',
               alignItems: 'center',
+              fontSize: '25px',
               mb: 2,
               '@media (min-width: 600px)': {
                 mb: 0,

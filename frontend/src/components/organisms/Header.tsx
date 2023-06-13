@@ -53,7 +53,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
           position: 'unset',
           top: '20px',
           left: '0px',
-          background: '#F9F5EB',
+          background: '##EFF0FF',
           padding: '16px',
           marginBottom: '16px',
           borderRadius: '8px',
@@ -96,7 +96,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                   margin: 0,
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: 'Bold',
-                  color: '#588157',
+                  color: '#152A38',
                 }}
               >
                 🥗My Resto
