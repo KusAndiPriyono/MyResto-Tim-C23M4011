@@ -1,7 +1,9 @@
 import ReactMapGL, {
   FullscreenControl,
+  GeolocateControl,
   Marker,
   NavigationControl,
+  Popup,
 } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useState } from 'react';
@@ -10,9 +12,16 @@ import * as API from 'api/services';
 export default function MapboxLayout() {
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
-  const [data, setData] = useState([]);
-  const [lng, setLng] = useState();
-  const [lat, setLat] = useState();
+  const [data, setData] = useState<
+    {
+      startLocation: { coordinates: number[] };
+      name: string;
+      description: string;
+    }[]
+  >([]);
+  const [lng, setLng] = useState<number>();
+  const [lat, setLat] = useState<number>();
+  const [selectedMarker, setSelectedMarker] = useState<any>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -39,6 +48,10 @@ export default function MapboxLayout() {
     };
   }, []);
 
+  const handleMarkerClick = (marker: any) => {
+    setSelectedMarker(marker);
+  };
+
   return (
     <>
       <ReactMapGL
@@ -52,10 +65,37 @@ export default function MapboxLayout() {
             key={item}
             latitude={item.startLocation.coordinates[0]}
             longitude={item.startLocation.coordinates[1]}
-          ></Marker>
+          >
+            <img
+              onClick={() => handleMarkerClick(item)}
+              style={{
+                width: '50px',
+                height: '50px',
+                cursor: 'pointer',
+                backgroundImage: `url(../images/mapbox-icon.png)`,
+              }}
+              src='../images/mapbox-icon.png'
+            />
+          </Marker>
         ))}
+
+        {selectedMarker && (
+          <Popup
+            latitude={selectedMarker.startLocation.coordinates[0]}
+            longitude={selectedMarker.startLocation.coordinates[1]}
+            onClose={() => setSelectedMarker(null)}
+            closeOnClick={false}
+          >
+            <div>
+              <h3>{selectedMarker.name}</h3>
+              <p>{selectedMarker.description}</p>
+            </div>
+          </Popup>
+        )}
+
         <NavigationControl position='bottom-right' />
         <FullscreenControl />
+        <GeolocateControl />
       </ReactMapGL>
     </>
   );
