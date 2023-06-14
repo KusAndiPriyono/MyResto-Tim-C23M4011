@@ -16,6 +16,8 @@ import NavLink from 'components/atoms/NavLink';
 import Token from 'api/token';
 import axios from 'api/axios';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import UserApi from 'api/services/user';
 
 interface Props {
   isAuthenticated: boolean;
@@ -27,6 +29,8 @@ interface Props {
 const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+  const { data, isSuccess } = useQuery(['User'], UserApi.getAuthenticatedUser);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -172,8 +176,23 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                     //   'Authorization'
                     // ] = `Bearer ${Token.getToken()}`;
                   }}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
                 >
                   Account
+                  <MenuItem
+                    sx={{
+                      cursor: 'none',
+                      '&:hover': {
+                        background: 'none',
+                      },
+                    }}
+                  >
+                    {data?.data.name.toLowerCase()}
+                  </MenuItem>
                 </MenuItem>
 
                 {role === 'admin' && (

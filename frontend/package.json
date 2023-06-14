@@ -36,6 +36,7 @@
     "react-slick": "^0.29.0",
     "react-slick-carousel": "^0.14.9",
     "react-stripe-checkout": "^2.6.3",
+    "recharts": "^2.6.2",
     "stripe": "^12.9.0",
     "sweetalert2": "^11.7.8",
     "typescript": "^5.0.4",
