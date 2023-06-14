@@ -47,6 +47,7 @@ export default function BookingPage(props: Props) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        gap: 2,
       }}
     >
       <Typography
@@ -160,19 +161,23 @@ export default function BookingPage(props: Props) {
                       </Typography>
                     </CardContent>
 
-                    <CardContent sx={{ marginBottom: '0px' }}>
+                    <CardContent
+                      sx={{
+                        marginBottom: '0px',
+                        gap: 4,
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
                       <Typography
                         variant='body2'
                         color='#000000'
                         sx={{ textAlign: 'justify' }}
                       >
-                        {data && data.restaurant.description
-                          ? data.restaurant.description.slice(0, 100)
-                          : ''}
-                        ...
+                        {data && data.restaurant.description}
                       </Typography>
                       <Typography variant='body2' color='text.secondary'>
-                      Tanggal Booking: {data.createdAt.slice(0, 10)}
+                        Tanggal Booking: {data.createdAt.slice(0, 10)}
                       </Typography>
                     </CardContent>
                   </Box>
@@ -185,20 +190,10 @@ export default function BookingPage(props: Props) {
                       padding: '10px',
                     }}
                   >
-                    <Button
-                      variant='contained'
-                      size='large'
-                      component={Link}
-                      to={`/detail/${data._id}`}
-                      className='detail-button'
-                    >
-                      Detail
-                    </Button>
-
                     <Typography
                       variant='body2'
                       color='#00aa17'
-                      sx={{ textAlign: 'right', padding: '10px' }}
+                      sx={{ textAlign: 'right', padding: '19px', fontSize: 15 }}
                     >
                       $.{data.price}
                     </Typography>

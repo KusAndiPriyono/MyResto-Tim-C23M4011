@@ -85,12 +85,7 @@ function RestaurantList(props: Props) {
                   component='img'
                   image={data.imageCover}
                   alt={data.name}
-                  sx={{
-                    width: '95%',
-                    height: 200,
-                    margin: '10px 10px 0px 10px',
-                    borderRadius: '30px 30px 0 0',
-                  }}
+                  sx={{ height: 200, borderRadius: '30px 30px 0 0' }}
                 />
               ) : (
                 <Skeleton variant='rectangular' width={210} height={118} />
