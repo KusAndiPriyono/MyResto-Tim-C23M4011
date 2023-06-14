@@ -5,6 +5,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TablePagination from '@mui/material/TablePagination';
 import Title from './Title';
 import { useEffect, useState } from 'react';
 import * as API from 'api/services';
@@ -47,6 +48,18 @@ export default function Orders() {
     };
   }, []);
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
     <React.Fragment>
       <Title>Recent Orders</Title>
@@ -61,9 +74,11 @@ export default function Orders() {
         </TableHead>
         <TableBody>
           {data &&
-            data.map((booking) => (
+            data
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((booking) => (
               <TableRow key={booking._id}>
-                <TableCell>{booking.createdAt}</TableCell>
+                <TableCell>{booking.createdAt.slice(0,10)}</TableCell>
                 <TableCell>{booking.restaurant.name}</TableCell>
                 <TableCell>{booking.user.name}</TableCell>
                 <TableCell align='right'>{`$${booking.price}`}</TableCell>
@@ -71,9 +86,15 @@ export default function Orders() {
             ))}
         </TableBody>
       </Table>
-      <Link color='primary' href='#' onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 50]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </React.Fragment>
   );
 }
