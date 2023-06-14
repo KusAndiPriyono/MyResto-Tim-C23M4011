@@ -66,40 +66,49 @@ export default function FooterLayout() {
                 }
               }
             >
-              Copyright@ My Resto - 2023️
+              Copyright &#64; My Resto - 2023️
             </Typography>
           </Box>
         </Grid>
         <Grid item md={6} lg={2}></Grid>
-        <Grid item md={6} lg={2}></Grid>
-        <Grid item md={6} lg={2}>
+        <Grid item md={6} lg={4}>
           <Typography sx={{ mr: 1 }} variant='body1'>
             My Team
           </Typography>
           <List>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-                Andi
+              Kus Andi Priyono
               </Typography>
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-                Nirwan
+              Nirwan Arrachman
               </Typography>
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-                Widha
+              Widha Astianna
               </Typography>
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-                Rozin
+              Muhammad Fatkhurrozin
               </Typography>
             </ListItemText>
           </List>
+          <Box mt={2}>
+            <img
+              style={{
+                width: '350px',
+                height: '50px',
+              }}
+              src='../images/payment.png'
+            />
+          </Box>
         </Grid>
       </Grid>
+          
     </Box>
   );
 }
