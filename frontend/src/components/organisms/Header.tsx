@@ -113,6 +113,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
             sx={{
               display: 'flex',
               gap: '12px',
+              marginLeft: '250px',
             }}
           >
             <NavLink href='/' tooltip='ke home'>
