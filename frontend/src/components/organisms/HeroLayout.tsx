@@ -39,7 +39,8 @@ function HeroLayout() {
             color: '#FFFFFF',
             width: '610px',
             height: '229px',
-            fontSize: '18px',
+            fontSize: '22px',
+            fontFamily: 'Poppins, sans-serif',
             gridArea: 'sidebar',
             margin: '30px 30px 30px 30px',
             marginLeft: '250px',
@@ -59,9 +60,8 @@ function HeroLayout() {
             },
           }}
         >
-          Aplikasi My Resto adalah sebuah platform yang dirancang untuk membantu
-          pengguna dalam mencari dan menemukan tempat restoran. Yuk segera cari
-          restaurant favoritmu!!!
+          This platform is designed to make it easier for you to find a
+          restaurant you like. Let's find your favorite restaurant!!
           <Button
             type='submit'
             size='large'
@@ -70,7 +70,9 @@ function HeroLayout() {
             }}
             sx={{
               color: '#000000',
-              backgroundColor: '#FFFFFF',
+              backgroundColor: '#FFCC1D',
+              fontFamily: 'Poppins, sans-serif',
+              fontWeight: '600',
               marginTop: 7,
               marginLeft: 50,
               width: 208,
@@ -78,7 +80,7 @@ function HeroLayout() {
               borderRadius: 2,
               gridArea: 'sidebar',
               '&:hover': {
-                backgroundColor: '#c2c0c0',
+                backgroundColor: '#FFFFFF',
               },
               '@media (max-width: 1250px)': {
                 width: 'calc(40 - 200px)',

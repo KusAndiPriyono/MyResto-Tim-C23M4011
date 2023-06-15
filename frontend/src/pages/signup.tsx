@@ -115,21 +115,22 @@ const SignupPage = () => {
 
   return (
     <>
-      <Container sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                
-            }}>
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
         <Card
           sx={{
             display: 'flex',
-            padding:3,
+            padding: 3,
             flexDirection: 'column',
             alignItems: 'center',
             gap: '10px',
-            backgroundColor:'#3A5A40',
-            borderRadius:3,
+            backgroundColor: '#152A38',
+            borderRadius: 3,
             '@media (min-width: 768px)': {
               padding: '72px 24px',
               alignItems: 'center',
@@ -155,13 +156,17 @@ const SignupPage = () => {
                 alignItems: 'center',
               }}
             >
-              <Typography component="h1" variant="h5" sx={{
-                fontSize: '55px',
-                fontWeight:'bold',
-                color:'#F9F5EB'
-              }}>
+              <Typography
+                component='h1'
+                variant='h5'
+                sx={{
+                  fontSize: '55px',
+                  fontWeight: 'bold',
+                  color: '#FFCC1D',
+                }}
+              >
                 Sign Up
-            </Typography>
+              </Typography>
             </Box>
             <Box
               component='form'
@@ -194,12 +199,12 @@ const SignupPage = () => {
                     )}
                     sx={{
                       input: {
-                        color: "#000000",
-                        backgroundColor: "#FFFFFF",
+                        color: '#000000',
+                        backgroundColor: '#FFFFFF',
                         width: 300,
-                        borderRadius:2,
-                        "& fieldset": { border: 'none' },
-                      }
+                        borderRadius: 2,
+                        '& fieldset': { border: 'none' },
+                      },
                     }}
                   />
                 )}
@@ -230,12 +235,12 @@ const SignupPage = () => {
                     )}
                     sx={{
                       input: {
-                        color: "#000000",
-                        backgroundColor: "#FFFFFF",
+                        color: '#000000',
+                        backgroundColor: '#FFFFFF',
                         width: 300,
-                        borderRadius:2,
-                        "& fieldset": { border: 'none' },
-                      }
+                        borderRadius: 2,
+                        '& fieldset': { border: 'none' },
+                      },
                     }}
                   />
                 )}
@@ -273,11 +278,11 @@ const SignupPage = () => {
                     )}
                     sx={{
                       input: {
-                        color: "#000000",
-                        backgroundColor: "#FFFFFF",
+                        color: '#000000',
+                        backgroundColor: '#FFFFFF',
                         width: 300,
-                        borderRadius:2,
-                      }
+                        borderRadius: 2,
+                      },
                     }}
                   />
                 )}
@@ -309,11 +314,11 @@ const SignupPage = () => {
                     )}
                     sx={{
                       input: {
-                        color: "#000000",
-                        backgroundColor: "#FFFFFF",
+                        color: '#000000',
+                        backgroundColor: '#FFFFFF',
                         width: 300,
-                        borderRadius:2,
-                      }
+                        borderRadius: 2,
+                      },
                     }}
                   />
                 )}
@@ -326,34 +331,34 @@ const SignupPage = () => {
                   signupMutation.isLoading && <CircularProgress size={20} />
                 }
                 sx={{
-                  color: "#000000",
-                  backgroundColor: "#FFFFFF",
+                  color: '#000000',
+                  backgroundColor: '#FFCC1D',
                   marginTop: 2,
                   width: 208,
                   height: 60,
-                  borderRadius:2,
+                  borderRadius: 2,
                   '&:hover': {
-                      backgroundColor: '#c2c0c0',
+                    backgroundColor: '#FFFFFF',
                   },
-            }}
+                }}
               >
                 {signupMutation.isLoading ? 'Loading' : 'Register'}
               </Button>
             </Box>
             <Typography
-                component='p'
-                variant='body1'
-                sx={{
-                    fontSize: '14px',
-                    textAlign: 'center',
-                    color: '#F9F5EB',
-                }}
+              component='p'
+              variant='body1'
+              sx={{
+                fontSize: '14px',
+                textAlign: 'center',
+                color: '#FFFFFF',
+              }}
             >
-                Already have one?{' '}
-                <Link href='/auth/login' color="#E0C097">
-                    Login
-                </Link>
-          </Typography>
+              Already have one?{' '}
+              <Link href='/auth/login' color='#FFCC1D'>
+                Login
+              </Link>
+            </Typography>
           </Box>
         </Card>
       </Container>
