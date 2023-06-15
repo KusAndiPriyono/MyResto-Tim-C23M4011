@@ -10,9 +10,47 @@ import {
   SvgIcon,
   Typography,
 } from '@mui/material';
+import { useEffect, useState } from 'react';
+import * as API from 'api/services';
+
+
+type Booking = {
+  _id: string;
+  createdAt: string;
+  restaurant: {
+    _id: string;
+    name: string;
+  };
+  user: {
+    _id: string;
+    name: string;
+  };
+  price: number;
+};
 
 export const OverviewTotalCustomers = (props: any) => {
   const { difference, positive = false, sx, value } = props;
+
+  const [data, setData] = useState<Booking[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await API.DataGet('bookings');
+      if (response.status === 200) {
+        setData(response.data);
+      } else {
+        setData([]);
+      }
+    }
+
+    fetchData();
+
+    return () => {
+      setData([]);
+    };
+  }, []);
+
+  const totalOrder = data.length;
 
   return (
     <Card sx={sx}>
@@ -59,6 +97,7 @@ export const OverviewTotalCustomers = (props: any) => {
             </Typography>
           </Stack>
         )}
+        {totalOrder}
       </CardContent>
     </Card>
   );

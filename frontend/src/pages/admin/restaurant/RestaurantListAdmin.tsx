@@ -18,6 +18,7 @@ import {
   Button,
 } from '@mui/material';
 import NavDashboard from '../nav/NavDashboard';
+import TablePagination from '@mui/material/TablePagination';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -50,6 +51,18 @@ export default function RestaurantListAdmin(props: Props) {
     };
   }, []);
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(4);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -78,7 +91,9 @@ export default function RestaurantListAdmin(props: Props) {
               ADD RRSTAURANTS
             </Button>
             <Grid container wrap='wrap' spacing={2} justifyContent='center'>
-            {(loading ? Array.from(new Array(3)) : data).map((data, index) => (
+            {(loading ? Array.from(new Array(3)) : data)
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((data, index) => (
               <Card
                 key={index}
                 sx={{
@@ -167,6 +182,15 @@ export default function RestaurantListAdmin(props: Props) {
               </Card>
             ))}
           </Grid>
+          <TablePagination
+        rowsPerPageOptions={[4, 8, 12]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
           </Container>
         </Box>
       </Box>
