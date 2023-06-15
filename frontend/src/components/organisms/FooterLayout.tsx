@@ -78,22 +78,22 @@ export default function FooterLayout() {
           <List>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-              Kus Andi Priyono
+                Kus Andi Priyono
               </Typography>
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-              Nirwan Arrachman
+                Nirwan Arrachman
               </Typography>
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-              Widha Astianna
+                Widha Astianna
               </Typography>
             </ListItemText>
             <ListItemText>
               <Typography lineHeight={2} variant='body2'>
-              Muhammad Fatkhurrozin
+                Muhammad Fatkhurrozin
               </Typography>
             </ListItemText>
           </List>
@@ -108,7 +108,6 @@ export default function FooterLayout() {
           </Box>
         </Grid>
       </Grid>
-          
     </Box>
   );
 }

@@ -19,6 +19,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2';
 import MapboxLayout from 'components/templates/MapboxLayout';
 import ReviewsLayout from 'components/templates/ReviewsLayout';
+import AddReviews from 'components/templates/AddReviews';
 
 interface Props {
   loading?: boolean;
@@ -75,7 +76,7 @@ function DetailPage(props: Props) {
   }, [id]);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <Typography>Loading...</Typography>;
   }
 
   return (
@@ -202,7 +203,7 @@ function DetailPage(props: Props) {
         >
           {data.images.map((val: any, key: any) => {
             return (
-              <div key={key}>
+              <Typography key={key}>
                 <CardMedia
                   sx={{
                     filter: 'brightness(80%)',
@@ -218,12 +219,14 @@ function DetailPage(props: Props) {
                   image={val}
                   alt='Paella dish'
                 />
-              </div>
+              </Typography>
             );
           })}
         </Grid>
 
         <ReviewsLayout reviews={data.reviews} />
+
+        <AddReviews />
 
         <MapboxLayout />
 

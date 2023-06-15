@@ -65,7 +65,10 @@ function RestaurantList(props: Props) {
       >
         Restaurants
       </Typography>
-      <Typography variant='h6' sx={{ my: 3, textAlign: 'center',  color: '#152A38' }}>
+      <Typography
+        variant='h6'
+        sx={{ my: 3, textAlign: 'center', color: '#152A38' }}
+      >
         Find the restaurant you like and then make a reservation.
       </Typography>
       <Grid container spacing={3}>
