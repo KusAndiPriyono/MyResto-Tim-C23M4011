@@ -77,38 +77,22 @@ export default function FooterLayout() {
           </Typography>
           <List>
             <ListItemText>
-              <Typography
-                lineHeight={2}
-                variant='body2'
-                sx={{ fontFamily: 'Poppins, sans-serif' }}
-              >
+              <Typography lineHeight={2} variant='body2'>
                 Kus Andi Priyono
               </Typography>
             </ListItemText>
             <ListItemText>
-              <Typography
-                lineHeight={2}
-                variant='body2'
-                sx={{ fontFamily: 'Poppins, sans-serif' }}
-              >
+              <Typography lineHeight={2} variant='body2'>
                 Nirwan Arrachman
               </Typography>
             </ListItemText>
             <ListItemText>
-              <Typography
-                lineHeight={2}
-                variant='body2'
-                sx={{ fontFamily: 'Poppins, sans-serif' }}
-              >
+              <Typography lineHeight={2} variant='body2'>
                 Widha Astianna
               </Typography>
             </ListItemText>
             <ListItemText>
-              <Typography
-                lineHeight={2}
-                variant='body2'
-                sx={{ fontFamily: 'Poppins, sans-serif' }}
-              >
+              <Typography lineHeight={2} variant='body2'>
                 Muhammad Fatkhurrozin
               </Typography>
             </ListItemText>

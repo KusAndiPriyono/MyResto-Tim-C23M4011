@@ -8,17 +8,12 @@ import ReactMapGL, {
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useState } from 'react';
 import * as API from 'api/services';
+import RoomIcon from '@mui/icons-material/Room';
 
 export default function MapboxLayout() {
   const mapboxAccessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
-  const [data, setData] = useState<
-    {
-      startLocation: { coordinates: number[] };
-      name: string;
-      description: string;
-    }[]
-  >([]);
+  const [data, setData] = useState([]);
   const [lng, setLng] = useState<number>();
   const [lat, setLat] = useState<number>();
   const [selectedMarker, setSelectedMarker] = useState<any>(null);
@@ -48,12 +43,9 @@ export default function MapboxLayout() {
     };
   }, []);
 
-  const handleMarkerClick = (marker: any) => {
-    setSelectedMarker(marker);
-  };
-
   return (
     <>
+      Map Location Restaurant
       <ReactMapGL
         mapboxAccessToken={mapboxAccessToken}
         mapStyle='mapbox://styles/andipriyono94/clir17ych00mo01qv0hz074kk'
@@ -62,36 +54,35 @@ export default function MapboxLayout() {
       >
         {data.map((item: any) => (
           <Marker
-            key={item}
+            key={item.id}
             latitude={item.startLocation.coordinates[0]}
             longitude={item.startLocation.coordinates[1]}
           >
-            <img
-              onClick={() => handleMarkerClick(item)}
+            <RoomIcon
               style={{
-                width: '50px',
-                height: '50px',
+                width: '35px',
+                height: '35px',
                 cursor: 'pointer',
-                backgroundImage: `url(../images/mapbox-icon.png)`,
+                color: '#ff0034',
               }}
-              src='../images/mapbox-icon.png'
             />
           </Marker>
         ))}
 
-        {selectedMarker && (
+        {data.map((item: any) => (
           <Popup
-            latitude={selectedMarker.startLocation.coordinates[0]}
-            longitude={selectedMarker.startLocation.coordinates[1]}
-            onClose={() => setSelectedMarker(null)}
+            key={item.id}
+            latitude={item.startLocation.coordinates[0]}
+            longitude={item.startLocation.coordinates[1]}
+            closeButton={false}
             closeOnClick={false}
+            anchor='top'
           >
             <div>
-              <h3>{selectedMarker.name}</h3>
-              <p>{selectedMarker.description}</p>
+              <p>{item.name}</p>
             </div>
           </Popup>
-        )}
+        ))}
 
         <NavigationControl position='bottom-right' />
         <FullscreenControl />

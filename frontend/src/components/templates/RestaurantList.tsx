@@ -66,7 +66,10 @@ function RestaurantList(props: Props) {
       >
         Restaurants
       </Typography>
-      <Typography variant='h6' sx={{ fontFamily: 'Poppins, sans-serif', my: 3, textAlign: 'center',  color: '#152A38' }}>
+      <Typography
+        variant='h6'
+        sx={{ my: 3, textAlign: 'center', color: '#152A38' }}
+      >
         Find the restaurant you like and then make a reservation.
       </Typography>
       <Grid container spacing={3}>
@@ -96,11 +99,17 @@ function RestaurantList(props: Props) {
                   <Typography
                     variant='h5'
                     component='div'
-                    sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: '600' }}
+                    sx={{
+                      fontFamily: 'Poppins, sans-serif',
+                      fontWeight: '600',
+                    }}
                   >
                     {data.name}
                   </Typography>
-                  <Typography variant='body2' sx={{ display: 'flex', fontFamily: 'Poppins, sans-serif' }}>
+                  <Typography
+                    variant='body2'
+                    sx={{ display: 'flex', fontFamily: 'Poppins, sans-serif' }}
+                  >
                     {data.ratingsAverage}
                     &nbsp;
                     <Rating
@@ -112,15 +121,21 @@ function RestaurantList(props: Props) {
                     />
                     &nbsp; ({data.ratingsQuantity})
                   </Typography>
-                  <Typography sx={{ mt: 2, fontFamily: 'Poppins, sans-serif' }} variant='body2'>
+                  <Typography
+                    sx={{ mt: 2, fontFamily: 'Poppins, sans-serif' }}
+                    variant='body2'
+                  >
                     {data?.description?.slice(0, 100) || ''}
                     ...
                   </Typography>
-                  <Typography variant='body2' sx={{ mt: 2, fontFamily: 'Poppins, sans-serif' }}>
+                  <Typography
+                    variant='body2'
+                    sx={{ mt: 2, fontFamily: 'Poppins, sans-serif' }}
+                  >
                     Location: {data.startLocation.address}
                   </Typography>
                   <Typography variant='body2'>
-                    Capacity: {data.maxCapacity}
+                    Maximun Seats: {data.maxCapacity}
                   </Typography>
                   <Typography
                     sx={{
@@ -136,11 +151,20 @@ function RestaurantList(props: Props) {
                       component={Link}
                       to={`/detail/${data._id}`}
                       className='detail-button'
-                      sx={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#FFCC1D', color: '#000000', '&:hover': { backgroundColor: '#FFFFFF' }, }}
+                      sx={{
+                        fontFamily: 'Poppins, sans-serif',
+                        backgroundColor: '#FFCC1D',
+                        color: '#000000',
+                        '&:hover': { backgroundColor: '#FFFFFF' },
+                      }}
                     >
                       Detail
                     </Button>
-                    <Typography variant='body2' color='#00aa17' sx={{ fontFamily: 'Poppins, sans-serif'  }}>
+                    <Typography
+                      variant='body2'
+                      color='#00aa17'
+                      sx={{ fontFamily: 'Poppins, sans-serif' }}
+                    >
                       $.{data.price}
                     </Typography>
                   </Typography>
