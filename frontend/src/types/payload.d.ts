@@ -13,6 +13,7 @@ export interface LoginPayload {
 export interface UpdateMePayload {
   name: string;
   email: string;
+  photo: File | null;
 }
 
 export interface IdOnlyPayload {

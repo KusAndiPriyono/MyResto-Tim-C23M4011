@@ -1,19 +1,19 @@
 import {
   Box,
+  Button,
   Card,
+  CircularProgress,
+  Container,
   Typography,
   TextField,
-  Button,
-  CircularProgress,
 } from '@mui/material';
-import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { UpdateMePayload } from 'types/payload';
 import { useMutation } from '@tanstack/react-query';
 import { isAxiosError } from 'axios';
 import Swal from 'sweetalert2';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import UserApi from 'api/services/user';
 
 export default function AccountPage() {
@@ -32,9 +32,13 @@ export default function AccountPage() {
     defaultValues: {
       name: '',
       email: '',
+      photo: null,
     },
     mode: 'onChange',
   });
+
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const formData: UpdateMePayload = { name: '', email: '', photo: null };
 
   const updateMeMutation = useMutation(UserApi.getUpdateAuthenticatedUser, {
     onError: (error) => {
@@ -78,12 +82,21 @@ export default function AccountPage() {
   });
 
   const onSubmit = (values: UpdateMePayload) => {
-    updateMeMutation.mutate(values);
+    formData.name = values.name;
+    formData.email = values.email;
+    if (imageFile) {
+      formData.photo = imageFile;
+    } else {
+      formData.photo = null;
+    }
+
+    updateMeMutation.mutate(formData);
   };
 
   useEffect(() => {
     if (errors.name?.type) trigger('name');
     if (errors.email?.type) trigger('email');
+    if (errors.photo?.type) trigger('photo')
   }, []);
 
   return (
@@ -93,6 +106,7 @@ export default function AccountPage() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          flexDirection: 'column',
           gap: '40px',
           '@media (min-width: 768px)': {
             padding: '72px 24px',
@@ -110,74 +124,89 @@ export default function AccountPage() {
             Your Account Settings
           </Typography>
         </Box>
-      </Card>
-      <Card sx={{ padding: '14px', display: 'flex' }}>
-        <Box
-          component='form'
-          onSubmit={handleSubmit(onSubmit)}
-          sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
-        >
-          <Typography variant='h2' sx={{ fontSize: '18px' }}>
-            Username
-          </Typography>
-          <Controller
-            control={control}
-            name='name'
-            rules={{
-              required: 'Nama tidak boleh kosong',
-            }}
-            render={({ field: { onChange, value } }) => (
-              <TextField
-                label='nama'
-                placeholder='Masukan nama anda'
-                name='name'
-                onChange={onChange}
-                value={value}
-                error={Boolean(errors.name?.message)}
-                helperText={errors.name?.message}
-              />
-            )}
-          />
-          <Typography variant='h2' sx={{ fontSize: '18px' }}>
-            Email
-          </Typography>
-          <Controller
-            control={control}
-            name='email'
-            rules={{
-              required: 'Email tidak boleh kosong',
-              pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                message: 'Masukan email yang valid',
-              },
-            }}
-            render={({ field: { onChange, value } }) => (
-              <TextField
-                label='Email'
-                placeholder='Masukkan email anda'
-                name='email'
-                onChange={(e) => {
-                  e.target.value = e.target.value.trim();
-                  onChange(e);
-                }}
-                value={value}
-                error={Boolean(errors.email?.message)}
-                helperText={errors.email?.message}
-              />
-            )}
-          />
-          <Button
-            variant='contained'
-            color='success'
-            disabled={!isDirty || !isValid}
-            type='submit'
-            startIcon={
-              updateMeMutation.isLoading && <CircularProgress size={20} />
-            }
+        <Card sx={{ padding: '14px', display: 'flex' }}>
+          <Box
+            component='form'
+            onSubmit={handleSubmit(onSubmit)}
+            sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}
           >
-            {updateMeMutation.isLoading ? 'Loading...' : 'Save Settings'}
-          </Button>
-        </Box>
+            <Typography variant='h2' sx={{ fontSize: '18px' }}>
+              Username
+            </Typography>
+            <Controller
+              control={control}
+              name='name'
+              rules={{
+                required: 'Nama tidak boleh kosong',
+              }}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  label='nama'
+                  placeholder='Masukan nama anda'
+                  name='name'
+                  onChange={onChange}
+                  value={value}
+                  error={Boolean(errors.name?.message)}
+                  helperText={errors.name?.message}
+                />
+              )}
+            />
+            <Typography variant='h2' sx={{ fontSize: '18px' }}>
+              Email
+            </Typography>
+            <Controller
+              control={control}
+              name='email'
+              rules={{
+                required: 'Email tidak boleh kosong',
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                  message: 'Masukan email yang valid',
+                },
+              }}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  label='Email'
+                  placeholder='Masukkan email anda'
+                  name='email'
+                  onChange={(e) => {
+                    e.target.value = e.target.value.trim();
+                    onChange(e);
+                  }}
+                  value={value}
+                  error={Boolean(errors.email?.message)}
+                  helperText={errors.email?.message}
+                />
+              )}
+            />
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              {/* ... */}
+              <Typography variant='h2' sx={{ fontSize: '18px' }}>
+                Profile Picture
+              </Typography>
+              <input
+                type='file'
+                onChange={(e) => {
+                  const file = e.target.files?.[0] || null;
+                  setImageFile(file);
+                  setValue('photo', file);
+                }}
+              />
+              {/* ... */}
+            </Box>
+            <Button
+              variant='contained'
+              color='success'
+              disabled={!isDirty || !isValid}
+              type='submit'
+              startIcon={
+                updateMeMutation.isLoading && <CircularProgress size={20} />
+              }
+            >
+              {updateMeMutation.isLoading ? 'Loading...' : 'Save Settings'}
+            </Button>
+          </Box>
+        </Card>
       </Card>
     </Container>
   );
