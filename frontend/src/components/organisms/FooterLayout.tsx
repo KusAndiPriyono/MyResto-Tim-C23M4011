@@ -25,22 +25,21 @@ export default function FooterLayout() {
             sx={{
               textTransform: 'uppercase',
               marginBottom: '1em',
+              fontFamily: 'Poppins, sans-serif',
+              fontWeight: '600',
             }}
           >
             About us
           </Typography>
           <Typography
             variant='body2'
-            sx={
-              {
-                // width: '500',
-              }
-            }
+            sx={{
+              fontFamily: 'Poppins, sans-serif',
+            }}
           >
-            Aplikasi My Resto adalah sebuah platform yang dirancang untuk
-            membantu pengguna dalam mencari dan menemukan tempat restoran.
-            Aplikasi ini menyediakan berbagai fitur yang memudahkan pengguna
-            dalam menemukan restoran berdasarkan preferensi mereka.
+            The My Resto app is a platform designed to help users find and find
+            restaurant places. The app provides various features that make it
+            easier for users to find restaurants based on their preferences.
           </Typography>
           <Box
             sx={{
@@ -60,44 +59,69 @@ export default function FooterLayout() {
           >
             <Typography
               variant='body2'
-              sx={
-                {
-                  // width: '500',
-                }
-              }
+              sx={{
+                fontFamily: 'Poppins, sans-serif',
+              }}
             >
-              Copyright@ My Resto - 2023️
+              Copyright &#64; My Resto - 2023️
             </Typography>
           </Box>
         </Grid>
         <Grid item md={6} lg={2}></Grid>
-        <Grid item md={6} lg={2}></Grid>
-        <Grid item md={6} lg={2}>
-          <Typography sx={{ mr: 1 }} variant='body1'>
+        <Grid item md={6} lg={4}>
+          <Typography
+            sx={{ mr: 1, fontFamily: 'Poppins, sans-serif', fontWeight: '600' }}
+            variant='body1'
+          >
             My Team
           </Typography>
           <List>
             <ListItemText>
-              <Typography lineHeight={2} variant='body2'>
-                Andi
+              <Typography
+                lineHeight={2}
+                variant='body2'
+                sx={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                Kus Andi Priyono
               </Typography>
             </ListItemText>
             <ListItemText>
-              <Typography lineHeight={2} variant='body2'>
-                Nirwan
+              <Typography
+                lineHeight={2}
+                variant='body2'
+                sx={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                Nirwan Arrachman
               </Typography>
             </ListItemText>
             <ListItemText>
-              <Typography lineHeight={2} variant='body2'>
-                Widha
+              <Typography
+                lineHeight={2}
+                variant='body2'
+                sx={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                Widha Astianna
               </Typography>
             </ListItemText>
             <ListItemText>
-              <Typography lineHeight={2} variant='body2'>
-                Rozin
+              <Typography
+                lineHeight={2}
+                variant='body2'
+                sx={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                Muhammad Fatkhurrozin
               </Typography>
             </ListItemText>
           </List>
+          <Box mt={2}>
+            <img
+              style={{
+                width: '350px',
+                height: '50px',
+              }}
+              src='../images/payment.png'
+            />
+          </Box>
         </Grid>
       </Grid>
     </Box>

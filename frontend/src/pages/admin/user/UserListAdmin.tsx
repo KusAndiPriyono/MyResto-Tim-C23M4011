@@ -50,7 +50,7 @@ export default function UserListAdmin(props: Props) {
   }, []);
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
