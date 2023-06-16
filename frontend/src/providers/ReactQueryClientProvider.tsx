@@ -43,10 +43,7 @@ const ReactQueryClientProvider: React.FC<Props> = ({ children }) => {
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };
 
