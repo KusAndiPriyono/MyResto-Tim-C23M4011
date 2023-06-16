@@ -193,6 +193,7 @@ function DetailPage(props: Props) {
             <Skeleton variant='rectangular' width={210} height={118} />
           )}
         </CardContent>
+        <Typography sx={{ mb: 3, fontSize: 20 }}>Menu Makanan</Typography>
         <Grid
           container
           wrap='wrap'

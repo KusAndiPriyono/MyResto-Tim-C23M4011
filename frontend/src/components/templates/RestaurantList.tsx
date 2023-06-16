@@ -135,7 +135,7 @@ function RestaurantList(props: Props) {
                     Location: {data.startLocation.address}
                   </Typography>
                   <Typography variant='body2'>
-                    Capacity: {data.maxCapacity}
+                    Maximun Seats: {data.maxCapacity}
                   </Typography>
                   <Typography
                     sx={{

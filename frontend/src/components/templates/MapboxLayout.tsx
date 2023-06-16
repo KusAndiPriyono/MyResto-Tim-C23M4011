@@ -45,6 +45,7 @@ export default function MapboxLayout() {
 
   return (
     <>
+      Map Location Restaurant
       <ReactMapGL
         mapboxAccessToken={mapboxAccessToken}
         mapStyle='mapbox://styles/andipriyono94/clir17ych00mo01qv0hz074kk'

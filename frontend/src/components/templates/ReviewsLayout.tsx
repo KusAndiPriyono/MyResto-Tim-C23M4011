@@ -77,6 +77,7 @@ export default function ReviewsLayout(props: Props) {
 
   return (
     <Container sx={{ mt: 6, mb: 6 }}>
+      <Typography sx={{ fontSize: 20 }}>Reviews</Typography>
       <Slider {...settings}>
         {reviews.map((review) => (
           <Grid
