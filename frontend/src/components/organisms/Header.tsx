@@ -16,6 +16,8 @@ import NavLink from 'components/atoms/NavLink';
 import Token from 'api/token';
 import axios from 'api/axios';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import UserApi from 'api/services/user';
 
 interface Props {
   isAuthenticated: boolean;
@@ -27,6 +29,8 @@ interface Props {
 const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+  const { data, isSuccess } = useQuery(['User'], UserApi.getAuthenticatedUser);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -53,7 +57,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
           position: 'unset',
           top: '20px',
           left: '0px',
-          background: '#F9F5EB',
+          background: '##EFF0FF',
           padding: '16px',
           marginBottom: '16px',
           borderRadius: '8px',
@@ -96,7 +100,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                   margin: 0,
                   fontFamily: 'Poppins, sans-serif',
                   fontWeight: 'Bold',
-                  color: '#588157',
+                  color: '#152A38',
                 }}
               >
                 🥗My Resto
@@ -109,6 +113,7 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
             sx={{
               display: 'flex',
               gap: '12px',
+              marginLeft: '250px',
             }}
           >
             <NavLink href='/' tooltip='ke home'>
@@ -172,8 +177,23 @@ const Header: React.FC<Props> = ({ isAuthenticated, photo, role }) => {
                     //   'Authorization'
                     // ] = `Bearer ${Token.getToken()}`;
                   }}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
                 >
                   Account
+                  <MenuItem
+                    sx={{
+                      cursor: 'none',
+                      '&:hover': {
+                        background: 'none',
+                      },
+                    }}
+                  >
+                    {data?.data.name.toLowerCase()}
+                  </MenuItem>
                 </MenuItem>
 
                 {role === 'admin' && (

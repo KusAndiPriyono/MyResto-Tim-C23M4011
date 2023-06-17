@@ -19,6 +19,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import Swal from 'sweetalert2';
 import MapboxLayout from 'components/templates/MapboxLayout';
 import ReviewsLayout from 'components/templates/ReviewsLayout';
+import AddReviews from 'components/templates/AddReviews';
 
 interface Props {
   loading?: boolean;
@@ -75,7 +76,7 @@ function DetailPage(props: Props) {
   }, [id]);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <Typography>Loading...</Typography>;
   }
 
   return (
@@ -89,8 +90,9 @@ function DetailPage(props: Props) {
       <Card
         sx={{
           maxWidth: '100%',
-          backgroundColor: '#fff',
+          backgroundColor: '#EFF0FF',
           fontFamily: 'Roboto',
+          boxShadow: 'none',
         }}
       >
         {data ? (
@@ -101,6 +103,9 @@ function DetailPage(props: Props) {
               width: '100%',
               height: 500,
               filter: 'brightness(50%)',
+              borderRadius: 4,
+              margin: 'auto',
+              boxShadow: 5,
             }}
           />
         ) : (
@@ -112,7 +117,7 @@ function DetailPage(props: Props) {
             flexDirection: 'column',
             padding: 4,
             justifyContent: 'space-between',
-            fontSize: '25px',
+            fontSize: '35px',
             fontWeight: 'bold',
             '& .booking-button': {
               marginLeft: 'auto',
@@ -129,6 +134,7 @@ function DetailPage(props: Props) {
               width: 200,
               display: 'flex',
               alignItems: 'center',
+              fontSize: '25px',
               mb: 2,
               '@media (min-width: 600px)': {
                 mb: 0,
@@ -187,6 +193,9 @@ function DetailPage(props: Props) {
             <Skeleton variant='rectangular' width={210} height={118} />
           )}
         </CardContent>
+        <Typography sx={{ mb: 3, fontSize: 20, textAlign: 'center' }}>
+          Menu Makanan
+        </Typography>
         <Grid
           container
           wrap='wrap'
@@ -197,7 +206,7 @@ function DetailPage(props: Props) {
         >
           {data.images.map((val: any, key: any) => {
             return (
-              <div key={key}>
+              <Typography key={key}>
                 <CardMedia
                   sx={{
                     filter: 'brightness(80%)',
@@ -213,12 +222,14 @@ function DetailPage(props: Props) {
                   image={val}
                   alt='Paella dish'
                 />
-              </div>
+              </Typography>
             );
           })}
         </Grid>
 
         <ReviewsLayout reviews={data.reviews} />
+
+        <AddReviews />
 
         <MapboxLayout />
 

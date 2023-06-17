@@ -10,8 +10,6 @@ import {
   Typography,
 } from '@mui/material';
 
-import React from 'react';
-// import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
@@ -78,69 +76,85 @@ export default function ReviewsLayout(props: Props) {
   }, [id, name, reviews]);
 
   return (
-    <Container sx={{ mt: 10, mb: 10 }}>
+    <Container sx={{ mt: 6, mb: 6 }}>
+      <Typography sx={{ fontSize: 20 }}>Reviews</Typography>
       <Slider {...settings}>
         {reviews.map((review) => (
-          <div key={review.id}>
-            <Grid
-              container
-              wrap='wrap'
-              spacing={2}
-              gap={2}
-              justifyContent='center'
-              columns={{ xs: 4, sm: 8, md: 6 }}
+          <Grid
+            key={review.id}
+            container
+            wrap='wrap'
+            spacing={2}
+            gap={2}
+            justifyContent='center'
+            columns={{ xs: 4, sm: 8, md: 6 }}
+            padding={2}
+          >
+            <Card
+              sx={{
+                maxWidth: 1200,
+                height: 150,
+                width: 200,
+                backgroundColor: '#152A38',
+                color: '#fff',
+                padding: '50px',
+                boxShadow: 1,
+                marginBottom: '10px',
+                borderRadius: 4,
+                transition: 'background-color 0.3s',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: '#000',
+                },
+              }}
             >
-              <Card
+              <Typography
                 sx={{
-                  maxWidth: 1200,
-                  height: 150,
-                  width: 200,
-                  backgroundColor: '#ffffff',
-                  padding: '50px',
-                  boxShadow: 1,
+                  display: 'flex',
+                  alignItems: 'center',
                   marginBottom: '10px',
-                  borderRadius: '8px',
-                  transition: 'background-color 0.3s',
-                  '&:hover': {
-                    backgroundColor: '#c2c0c0',
-                  },
+                  gap: 2,
                 }}
+                component='div'
               >
-                <Typography
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '10px',
-                    gap: 2,
+                <Avatar
+                  src={review.user.photo}
+                  alt=''
+                  style={{
+                    width: '50px',
+                    height: '50px',
+                    borderRadius: '50%',
                   }}
-                >
-                  <Avatar src='https://icon-icons.com/id/icon/bulat-akun-tombol-dengan-pengguna-dalam/72596' />
-                  {review.user.name.charAt(0).toUpperCase() +
-                    review.user.name.slice(1)}
+                />
+                {review.user.name.charAt(0).toUpperCase() +
+                  review.user.name.slice(1)}
+              </Typography>
+              <Typography component='div'>
+                {review.review}
+                <Typography variant='body2' sx={{ display: 'flex' }}>
+                  &nbsp;
+                  <Rating
+                    size='small'
+                    name='half-rating-read'
+                    value={review.rating}
+                    precision={0.1}
+                    readOnly
+                  />
+                  &nbsp; ({review.rating})
                 </Typography>
-                <Typography>
-                  <p>{review.review}</p>
-                  <Typography
-                    variant='body2'
-                    color='#000000'
-                    sx={{ display: 'flex'}}
-                  >
-                    &nbsp;
-                    <Rating
-                      size='small'
-                      name='half-rating-read'
-                      value={review.rating}
-                      precision={0.1}
-                      readOnly
-                    />
-                    &nbsp; ({review.rating})
-                  </Typography>
-                </Typography>
-              </Card>
-            </Grid>
-          </div>
+              </Typography>
+            </Card>
+          </Grid>
         ))}
       </Slider>
+      <style>
+        {`
+        .slick-prev:before,
+          .slick-next:before {
+            color: black !important;
+          }
+        `}
+      </style>
     </Container>
   );
 }

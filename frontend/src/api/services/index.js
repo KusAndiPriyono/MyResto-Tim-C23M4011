@@ -44,3 +44,26 @@ export const DataGet2 = async (endPoint) => {
     };
   }
 };
+
+export const DataPost = async (endPoint, body) => {
+  try {
+    const res = await axios({
+      url: API_URL + endPoint,
+      method: 'post',
+      headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+      data: body,
+      responseType: 'json',
+    });
+    return {
+      status: res.status,
+      message: res.message,
+      data: res.data.data,
+    };
+  } catch (err) {
+    return {
+      status: err.response.status,
+      message: err.message,
+      data: null,
+    };
+  }
+};

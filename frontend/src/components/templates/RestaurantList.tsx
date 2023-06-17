@@ -40,21 +40,36 @@ function RestaurantList(props: Props) {
   }, []);
 
   return (
-    <Container sx={{ mt: 25 }}>
+    <Container
+      sx={{
+        mt: 25,
+        '@media (max-width: 1200px)': {
+          mt: 15,
+        },
+      }}
+    >
       <Typography
         variant='h2'
         sx={{
+          fontFamily: 'Poppins, sans-serif',
+          color: '#152A38',
           fontWeight: 'bold',
           my: 3,
           textAlign: 'center',
           '@media (max-width: 1000px)': {
             mt: 20,
           },
+          '@media (max-width: 900px)': {
+            mt: 2,
+          },
         }}
       >
         Restaurants
       </Typography>
-      <Typography variant='h6' sx={{ my: 3, textAlign: 'center' }}>
+      <Typography
+        variant='h6'
+        sx={{ my: 3, textAlign: 'center', color: '#152A38' }}
+      >
         Find the restaurant you like and then make a reservation.
       </Typography>
       <Grid container spacing={3}>
@@ -65,6 +80,8 @@ function RestaurantList(props: Props) {
                 height: '100%',
                 borderRadius: '30px 30px 0 0',
                 boxShadow: 1,
+                backgroundColor: '#152A38',
+                color: '#fff',
               }}
             >
               {data ? (
@@ -82,14 +99,16 @@ function RestaurantList(props: Props) {
                   <Typography
                     variant='h5'
                     component='div'
-                    sx={{ fontWeight: 'bold' }}
+                    sx={{
+                      fontFamily: 'Poppins, sans-serif',
+                      fontWeight: '600',
+                    }}
                   >
                     {data.name}
                   </Typography>
                   <Typography
                     variant='body2'
-                    color='#000000'
-                    sx={{ display: 'flex' }}
+                    sx={{ display: 'flex', fontFamily: 'Poppins, sans-serif' }}
                   >
                     {data.ratingsAverage}
                     &nbsp;
@@ -103,22 +122,25 @@ function RestaurantList(props: Props) {
                     &nbsp; ({data.ratingsQuantity})
                   </Typography>
                   <Typography
-                    sx={{ mt: 2 }}
+                    sx={{ mt: 2, fontFamily: 'Poppins, sans-serif' }}
                     variant='body2'
-                    color='text.secondary'
                   >
                     {data?.description?.slice(0, 100) || ''}
                     ...
                   </Typography>
-                  <Typography variant='body2' sx={{ mt: 2 }}>
+                  <Typography
+                    variant='body2'
+                    sx={{ mt: 2, fontFamily: 'Poppins, sans-serif' }}
+                  >
                     Location: {data.startLocation.address}
                   </Typography>
                   <Typography variant='body2'>
-                    Capacity: {data.maxCapacity}
+                    Maximun Seats: {data.maxCapacity}
                   </Typography>
                   <Typography
                     sx={{
                       display: 'flex',
+                      fontFamily: 'Poppins, sans-serif',
                       justifyContent: 'space-between',
                       mt: 2,
                     }}
@@ -129,10 +151,20 @@ function RestaurantList(props: Props) {
                       component={Link}
                       to={`/detail/${data._id}`}
                       className='detail-button'
+                      sx={{
+                        fontFamily: 'Poppins, sans-serif',
+                        backgroundColor: '#FFCC1D',
+                        color: '#000000',
+                        '&:hover': { backgroundColor: '#FFFFFF' },
+                      }}
                     >
                       Detail
                     </Button>
-                    <Typography variant='body2' color='#00aa17'>
+                    <Typography
+                      variant='body2'
+                      color='#00aa17'
+                      sx={{ fontFamily: 'Poppins, sans-serif' }}
+                    >
                       $.{data.price}
                     </Typography>
                   </Typography>

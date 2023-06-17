@@ -13,6 +13,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TablePagination from '@mui/material/TablePagination';
 import { Button } from '@mui/material';
 import NavDashboard from '../nav/NavDashboard';
 
@@ -48,6 +49,18 @@ export default function UserListAdmin(props: Props) {
     };
   }, []);
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(4);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -79,7 +92,9 @@ export default function UserListAdmin(props: Props) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {(loading ? Array.from(new Array(3)) : data).map(
+                    {(loading ? Array.from(new Array(3)) : data)
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map(
                       (data, index) => (
                         <TableRow
                           key={data._id}
@@ -116,6 +131,15 @@ export default function UserListAdmin(props: Props) {
                   </TableBody>
                 </Table>
               </TableContainer>
+              <TablePagination
+                    rowsPerPageOptions={[4, 8, 16]}
+                    component="div"
+                    count={data.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                  />
             </Paper>
           </Container>
         </Box>

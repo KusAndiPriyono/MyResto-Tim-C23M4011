@@ -105,28 +105,28 @@ const LoginPage = () => {
 
   return (
     <>
-      <Container sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                
-            }}>
+      <Container
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
         <Card
           sx={{
             display: 'flex',
-            padding:3,
+            padding: 3,
             flexDirection: 'column',
             alignItems: 'center',
             gap: '10px',
-            backgroundColor:'#3A5A40',
-            borderRadius:3,
+            backgroundColor: '#152A38',
+            borderRadius: 3,
             '@media (min-width: 768px)': {
               padding: '72px 24px',
               alignItems: 'center',
             },
           }}
         >
-
           <Box
             // component='aside'
             sx={{
@@ -146,13 +146,17 @@ const LoginPage = () => {
                 alignItems: 'center',
               }}
             >
-              <Typography component="h1" variant="h5" sx={{
-                fontSize: '55px',
-                fontWeight:'bold',
-                color:'#F9F5EB'
-              }}>
+              <Typography
+                component='h1'
+                variant='h5'
+                sx={{
+                  fontSize: '55px',
+                  fontWeight: 'bold',
+                  color: '#FFCC1D',
+                }}
+              >
                 Sign In
-            </Typography>
+              </Typography>
             </Box>
             <Box
               component='form'
@@ -190,11 +194,11 @@ const LoginPage = () => {
                     helperText={errors.email?.message}
                     sx={{
                       input: {
-                        color: "#000000",
-                        backgroundColor: "#FFFFFF",
+                        color: '#000000',
+                        backgroundColor: '#FFFFFF',
                         width: 300,
-                        borderRadius:2,
-                      }
+                        borderRadius: 2,
+                      },
                     }}
                   />
                 )}
@@ -220,73 +224,74 @@ const LoginPage = () => {
                     helperText={errors.password?.message}
                     sx={{
                       input: {
-                        color: "#000000",
-                        backgroundColor: "#FFFFFF",
+                        color: '#000000',
+                        backgroundColor: '#FFFFFF',
                         width: 300,
-                        borderRadius:2,
-                      }
+                        borderRadius: 2,
+                      },
                     }}
                   />
                 )}
               />
-               <Box  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '8px',
-                    width: 300,
-                }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px',
+                  width: 300,
+                }}
+              >
                 <Typography
-                    component='p'
-                    variant='body1'
-                    sx={{
-                        fontSize: '14px',
-                        textAlign: 'right',
-                        color: '#F9F5EB',
-                    }}
+                  component='p'
+                  variant='body1'
+                  sx={{
+                    fontSize: '14px',
+                    textAlign: 'right',
+                    color: '#F9F5EB',
+                  }}
                 >
-                    <Link href="#"  color="#E0C097">
-                            Forgot password?
-                    </Link>
+                  <Link href='#' color='#FFCC1D'>
+                    Forgot password?
+                  </Link>
                 </Typography>
-
-               </Box>
+              </Box>
               <Button
                 disabled={!isDirty || !isValid}
                 type='submit'
                 // variant='contained'
-                size="large"
+                size='large'
                 startIcon={
                   loginMutation.isLoading && <CircularProgress size={20} />
                 }
                 sx={{
-                  color: "#000000",
-                  backgroundColor: "#FFFFFF",
+                  color: '#000000',
+                  backgroundColor: '#FFCC1D',
                   marginTop: 2,
                   width: 208,
                   height: 60,
-                  borderRadius:2,
+                  borderRadius: 2,
                   '&:hover': {
-                      backgroundColor: '#c2c0c0',
+                    backgroundColor: '#FFFFFF',
                   },
-            }}
+                }}
               >
                 {loginMutation.isLoading ? 'Loading' : 'Masuk'}
               </Button>
             </Box>
             <Typography
-                component='p'
-                variant='body1'
-                sx={{
-                    fontSize: '14px',
-                    textAlign: 'center',
-                    color: '#F9F5EB',
-                }}
+              component='p'
+              variant='body1'
+              sx={{
+                fontSize: '14px',
+                textAlign: 'center',
+                color: '#F9F5EB',
+              }}
             >
-                Not regsiter yet?{' '}
-                <Link href='/auth/signup' color="#E0C097">
-                    Make one
-                </Link>
-          </Typography>
+              Not registered yet?{' '}
+              <Link href='/auth/signup' color='#FFCC1D'>
+                Make one
+              </Link>
+            </Typography>
           </Box>
         </Card>
       </Container>
