@@ -55,7 +55,9 @@ export default function Orders() {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
@@ -75,20 +77,20 @@ export default function Orders() {
         <TableBody>
           {data &&
             data
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((booking) => (
-              <TableRow key={booking._id}>
-                <TableCell>{booking.createdAt.slice(0,10)}</TableCell>
-                <TableCell>{booking.restaurant.name}</TableCell>
-                <TableCell>{booking.user.name}</TableCell>
-                <TableCell align='right'>{`$${booking.price}`}</TableCell>
-              </TableRow>
-            ))}
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((booking) => (
+                <TableRow key={booking._id}>
+                  <TableCell>{booking.createdAt.slice(0, 10)}</TableCell>
+                  <TableCell>{booking.restaurant.name}</TableCell>
+                  <TableCell>{booking.user?.name}</TableCell>
+                  <TableCell align='right'>{`$${booking.price}`}</TableCell>
+                </TableRow>
+              ))}
         </TableBody>
       </Table>
       <TablePagination
         rowsPerPageOptions={[5, 10, 50]}
-        component="div"
+        component='div'
         count={data.length}
         rowsPerPage={rowsPerPage}
         page={page}
